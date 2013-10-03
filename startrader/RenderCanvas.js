@@ -69,6 +69,6 @@ function draw(c, mode) {
         }
         ship.draw(c);
     }else if(mode == 'planet'){
-        ship.location.drawDetails(c, drawingCanvas);
+        ship.planet.drawDetails(c, drawingCanvas);
     }
 }

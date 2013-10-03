@@ -26,3 +26,26 @@ $('document').ready( function() {
 
 });
 
+function travel() {
+
+    ship.travel();
+    //days += ship.daysToTravel();
+    //ship.planet = ship.destination;
+    //ship.destination.isDestination = false;
+    //ship.destination = null;
+}
+
+function currentLocation() {
+
+    alert(ship.planet.displayText());
+
+}
+
+function land() {
+    drawingCanvas.mode = 'planet';
+}
+
+function takeOff() {
+    drawingCanvas.mode = 'galaxy';
+}
+

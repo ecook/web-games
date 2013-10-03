@@ -54,28 +54,6 @@ $('document').ready( function() {
 
 });
 
-function travel() {
-
-    days += ship.daysToTravel();
-    ship.location = ship.destination;
-    ship.destination.isDestination = false;
-    ship.destination = null;
-}
-
-function currentLocation() {
-
-    alert(ship.location.displayText());
-
-}
-
-function land() {
-    drawingCanvas.mode = 'planet';
-}
-
-function takeOff() {
-    drawingCanvas.mode = 'galaxy';
-}
-
 function random(min, max) {
     var ran = Math.random();
     return Math.floor((ran*max)+min)

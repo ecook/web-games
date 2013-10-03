@@ -3,7 +3,7 @@ function Planet(x, y) {
     this.x = x;
     this.y = y;
     this.type = this.GeneratePlanetType();
-    this.size = 5;
+    this.size = 10;
     this.isDestination = false;
     this.market = new Market(this);
     this.producers = GenerateProducers(this);
@@ -41,7 +41,7 @@ function Planet(x, y) {
         c.fill();
 
         //market
-        this.market.draw(c);
+        //this.market.draw(c);
 
         //producers
         var x = 50;

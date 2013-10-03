@@ -9,9 +9,11 @@
     <file path="/Planet.js" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380696160992" ignored="false" />
     <file path="/Market.js" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380695586374" ignored="false" />
     <file path="/StarTrader.htm" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380693637481" ignored="false" />
-    <file path="/Main.js" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380694744656" ignored="false" />
-    <file path="/RenderCanvas.js" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380694360347" ignored="false" />
+    <file path="/Main.js" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380771207461" ignored="false" />
+    <file path="/RenderCanvas.js" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380773952330" ignored="false" />
     <file path="/Producer.js" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380695893998" ignored="false" />
+    <file path="/ship.js" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380773833571" ignored="false" />
+    <file path="/events.js" changelist="f21c1932-1918-45cd-8b53-4d5b105322af" time="1380773067745" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +28,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -63,6 +64,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -84,16 +86,16 @@
       <file leaf-file-name="Producer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Producer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="41" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
+            <state line="6" column="35" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Planet.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Planet.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Planet.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="59" selection-start="1532" selection-end="1532" vertical-scroll-proportion="0.35220996">
+            <state line="23" column="44" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -102,7 +104,7 @@
       <file leaf-file-name="Market.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Market.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+            <state line="5" column="42" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -111,7 +113,7 @@
       <file leaf-file-name="StarTrader.htm" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StarTrader.htm">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="21" selection-start="756" selection-end="756" vertical-scroll-proportion="-3.3076923">
+            <state line="19" column="21" selection-start="756" selection-end="756" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -120,7 +122,7 @@
       <file leaf-file-name="events.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/events.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="36" column="40" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -129,7 +131,7 @@
       <file leaf-file-name="Main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="32" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
+            <state line="54" column="3" selection-start="1541" selection-end="1541" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -138,16 +140,16 @@
       <file leaf-file-name="RenderCanvas.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RenderCanvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="21" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.0">
+            <state line="73" column="32" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ship.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ship.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ship.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="12" selection-start="649" selection-end="660" vertical-scroll-proportion="0.0">
+            <state line="44" column="103" selection-start="1561" selection-end="1561" vertical-scroll-proportion="0.7534626">
               <folding />
             </state>
           </provider>
@@ -175,11 +177,13 @@
         <option value="$PROJECT_DIR$/Settings.js" />
         <option value="$PROJECT_DIR$/Item.js" />
         <option value="$PROJECT_DIR$/StarTrader.htm" />
-        <option value="$PROJECT_DIR$/Main.js" />
-        <option value="$PROJECT_DIR$/RenderCanvas.js" />
         <option value="$PROJECT_DIR$/Market.js" />
         <option value="$PROJECT_DIR$/Producer.js" />
         <option value="$PROJECT_DIR$/Planet.js" />
+        <option value="$PROJECT_DIR$/Main.js" />
+        <option value="$PROJECT_DIR$/events.js" />
+        <option value="$PROJECT_DIR$/RenderCanvas.js" />
+        <option value="$PROJECT_DIR$/ship.js" />
       </list>
     </option>
   </component>
@@ -229,15 +233,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="project.structure.proportion" value="0.0" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GoToClass.includeLibraries" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RunManager">
@@ -253,6 +257,19 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -280,19 +297,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -454,6 +458,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="18" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Item.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -503,58 +514,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/events.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StarTrader.htm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="21" selection-start="756" selection-end="756" vertical-scroll-proportion="-3.3076923">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="32" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RenderCanvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="21" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ship.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="12" selection-start="649" selection-end="660" vertical-scroll-proportion="0.0">
+        <state line="19" column="21" selection-start="756" selection-end="756" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Market.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="129" selection-end="129" vertical-scroll-proportion="0.0">
+        <state line="5" column="42" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Producer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="41" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
+        <state line="6" column="35" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Planet.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="59" selection-start="1532" selection-end="1532" vertical-scroll-proportion="0.35220996">
+        <state line="23" column="44" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/events.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="40" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="3" selection-start="1541" selection-end="1541" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RenderCanvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="32" selection-start="1675" selection-end="1675" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ship.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="103" selection-start="1561" selection-end="1561" vertical-scroll-proportion="0.7534626">
           <folding />
         </state>
       </provider>
