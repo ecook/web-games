@@ -3,11 +3,16 @@ function Planet(x, y) {
     this.x = x;
     this.y = y;
     this.type = this.GeneratePlanetType();
-    this.size = 10;
+	this.workers = new Array();
+    this.size = settings.planetSize;
     this.isDestination = false;
     this.market = new Market(this);
     this.producers = GenerateProducers(this);
     this.population = random(settings.minStartPop, settings.maxStartPop);
+	this.popChange = settings.basePopGrowthPerDay;
+	this.cash = settings.planetStartCash;
+	this.nextAi = 0;
+	this.workers[0] = this.population / 2;
 
     this.draw = function(c)
     {
@@ -39,26 +44,65 @@ function Planet(x, y) {
         c.closePath();
         c.stroke();
         c.fill();
+		
+		// population
+		var x = 20;
+		var y = drawingCanvas.height - 10;
+		for(var i = 0; i < this.population; i+=25) {
+			c.strokeStyle = "white";
+			c.fillStyle = "white";
+			c.beginPath();
+			c.arc(x, y, 5,0,Math.PI * 2,true);
+			c.closePath();
+			c.stroke();
+			c.fill();
+			x+=15;
+		}
 
         //market
         //this.market.draw(c);
 
         //producers
-        var x = 50;
-        var y = drawingCanvas.height - 50;
+		var x = new Array();
+		var y = new Array();
+        x[0] = 50;
+        y[0] = drawingCanvas.height - 50;
+        x[1] = 75;
+        y[1] = drawingCanvas.height - 100;		
+        x[2] = 100;
+        y[2] = drawingCanvas.height - 150;			
+		
         var size = 30;
         for(var p in this.producers){
-            this.producers[p].draw(c, x, y, size);
-            x += size + 10;
+            this.producers[p].draw(c, x[this.producers[p].level-1], y[this.producers[p].level-1], size);
+            x[this.producers[p].level-1] += size + 10;
         }
     }
 
     this.ai = function()
     {
-        for(var i = 0; i < this.producers.length; i++) {
-            this.producers[i].produce();
-        }
+		if(days >= this.nextAi) {
+			this.population += this.popChange;
+		
+			for(var i = 0; i < this.producers.length; i++) {
+				this.producers[i].produce();
+			}
+			
+			this.nextAi = days + 1;
+		}
     }
+	
+	this.hire = function(workers, level) {
+		
+		if(this.workers[level-1] != undefined && this.workers[level-1] >= workers) {
+			// assign workers
+			this.workers[level-1] - workers;
+			return workers;
+		} else {
+			return 0;
+		}
+	
+	}
 
     this.find = function(x, y) {
 
@@ -79,7 +123,7 @@ function Planet(x, y) {
         text += '\n';
         text += 'Y: ' + this.y;
         text += '\n';
-        text += 'Type: ' + this.type.type;
+        text += 'Type: ' + this.type;
         text += '\n';
         text += 'Population: ' + this.population;
 
@@ -98,7 +142,11 @@ Planet.prototype.GeneratePlanetType = function() {
     var rand = Math.random();
     var pt = {
         type: '',
-        color: ''
+        color: '',
+		terain: '',
+		temperature: '',
+		weather: '',
+		hasEcosystem: ''
     }
 
 

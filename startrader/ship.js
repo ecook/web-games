@@ -5,7 +5,7 @@ function Ship(planet) {
     this.y = planet.y;
     this.planet = planet;
     this.destination;
-    this.offset = 5 + planet.size;
+    this.offset = planet.size / 2;
     this.capacity = settings.shipStartCapacity;
     this.cargo = new Array();
     this.speed = settings.shipStartSpeed;
@@ -13,7 +13,7 @@ function Ship(planet) {
 
     this.draw = function(c)
     {
-        // Create the green pellet
+        // draw the ship
         c.strokeStyle = "red";
         c.fillStyle = "white";
         c.beginPath();
@@ -22,6 +22,7 @@ function Ship(planet) {
         c.stroke();
         c.fill();
 
+		// draw the destination line
         if(this.destination != null) {
             c.strokeStyle = "white";
             c.beginPath();
@@ -37,6 +38,7 @@ function Ship(planet) {
                 //ship has arrived
                 this.isTraveling = false;
                 this.planet = this.destination;
+				this.destination.isDestination = false;
                 this.destination = null;
                 this.x = this.planet.x - this.offset;
                 this.y = this.planet.y - this.offset;

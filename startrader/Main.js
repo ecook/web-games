@@ -13,6 +13,7 @@ var uiSpeed;
 var uiDays;
 var mouse = { x:0, y:0 };
 var days = 0;
+var Items;
 
 $('document').ready( function() {
 
@@ -40,6 +41,8 @@ $('document').ready( function() {
         context = drawingCanvas.getContext('2d');
         //Canvas commands go here
 
+		Items = new ItemStore();
+		
         for(var i = 0; i<settings.planetCount; i++) {
             var x = random(1, drawingCanvas.width);
             var y = random(1, drawingCanvas.height);

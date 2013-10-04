@@ -11,9 +11,11 @@ var settings = {
 
     //planets
     planetCount: 30,
-    minStartPop: 100,
-    maxStartPop: 1500,
-    basePopGrowthPerDay: 0.01,
+    minStartPop: 10,
+    maxStartPop: 150,
+    basePopGrowthPerDay: 1,
+	planetStartCash: 10000,
+	planetSize: 10,
     populationPerProducerTier1: 100,
     populationPerProducerTier2: 500,
     populationPerProducerTier3: 1000,
@@ -21,7 +23,10 @@ var settings = {
     marketStartMoney: 1000,
 
     //producers
-    baseWage: 100
-
+    producerStartCash: 1000,
+	producerStartWage: 10,
+	producerStartMargin: 0.3,
+	producerLevelOneMin: 2,
+	producerLevelOneMax: 6
 
 }

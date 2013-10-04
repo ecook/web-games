@@ -4,6 +4,8 @@ function Market(planet) {
     this.items = new ItemStore;
     this.money = settings.marketStartMoney;
     this.priceMod = Math.random();
+	this.cash = 10000;
+	this.margin;
 
     this.draw = function(c) {
         var x = 300;
@@ -19,5 +21,13 @@ function Market(planet) {
         c.closePath();
         c.stroke();
     }
-
+	
+	
+	this.sell = function(name, qty, price) {
+		var item = this.items.get(name);
+		item.quantity += qty;
+		this.cash -= qty * price;	
+		return qty * price;
+	
+	}
 }
