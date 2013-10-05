@@ -72,3 +72,124 @@ function draw(c, mode) {
         ship.planet.drawDetails(c, drawingCanvas);
     }
 }
+
+function drawShape(shape, color, size, x, y) {
+
+	switch(shape){
+		case 'circle': {		
+			context.strokeStyle = color;
+			context.fillStyle = color;
+			context.beginPath();
+			context.arc(x,y,size,0,Math.PI*2,true);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			break;
+		}
+		case 'doubleCircle': {
+			context.strokeStyle = color;
+			context.fillStyle = color;
+			context.beginPath();
+			context.arc(x,y,size,0,Math.PI*2,true);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			x+=size;
+			context.beginPath();
+			context.arc(x,y,size,0,Math.PI*2,true);
+			context.closePath();
+			context.stroke();
+			context.fill();
+		
+			break;
+		}
+		case 'triangle': {
+			context.strokeStyle = color;
+			context.fillStyle = color;
+			context.beginPath();
+			context.moveTo(x, y - size);
+			context.lineTo(x + size, y + size);
+			context.lineTo(x - size, y + size);
+			context.lineTo(x, y - size);
+			context.closePath();
+			context.stroke();
+			context.fill();
+		
+			break;
+		}
+		case 'arrowUp': {
+			context.strokeStyle = 'white';
+			context.fillStyle = color;
+			context.beginPath();
+			context.moveTo(x, y);
+			context.lineTo(x + size, y + size);
+			context.lineTo(x + size * 0.25, y + size);
+			context.lineTo(x + size * 0.25, y + size * 2);
+			context.lineTo(x - size * 0.25, y + size * 2);
+			context.lineTo(x - size * 0.25, y + size);
+			context.lineTo(x - size, y + size);
+			context.lineTo(x, y);
+			context.closePath();
+			context.stroke();
+			context.fill();			
+			break;
+		}
+		case 'arrowDown': {
+			context.strokeStyle = 'white';
+			context.fillStyle = color;
+			context.beginPath();
+			context.moveTo(x, y);
+			context.lineTo(x + size * 0.3, y);
+			context.lineTo(x + size * 0.3, y + size * 2);
+			context.lineTo(x + size * 0.6, y + size * 2);
+			context.lineTo(x + size * 0.15, y + size * 2 + size);
+			context.lineTo(x - size * 0.3, y + size * 2);
+			context.lineTo(x, y + size * 2);
+			context.lineTo(x, y);
+			context.closePath();
+			context.stroke();
+			context.fill();		
+			break;
+		}
+		case 'square': {
+			context.strokeStyle = color;
+			context.fillStyle = color;
+			context.beginPath();
+			context.moveTo(x, y);
+			context.lineTo(x + size, y);
+			context.lineTo(x + size, y + size);
+			context.lineTo(x, y + size);
+			context.lineTo(x, y);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			break;
+		}
+		case 'rectangle': {
+			context.strokeStyle = color;
+			context.fillStyle = color;
+			context.beginPath();
+			context.moveTo(x, y);
+			context.lineTo(x + size * 2, y);
+			context.lineTo(x + size * 2, y + size);
+			context.lineTo(x, y + size);
+			context.lineTo(x, y);
+			context.closePath();
+			context.stroke();
+			context.fill();
+		
+			break;
+		}
+		case 'rectangleX': {
+			context.strokeStyle = color;
+			context.beginPath();
+			context.moveTo(x, y);
+			context.lineTo(x + size * 2, y + size);
+			context.moveTo(x, y + size);
+			context.lineTo(x + size * 2, y);
+			context.closePath();
+			context.stroke();		
+			break;
+		}
+	}
+}

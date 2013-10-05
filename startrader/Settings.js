@@ -10,23 +10,26 @@ var settings = {
     shipStartSpeed: 5,
 
     //planets
-    planetCount: 30,
+    planetCount: 10,
     minStartPop: 10,
-    maxStartPop: 150,
-    basePopGrowthPerDay: 1,
+    maxStartPop: 50,
+    basePopGrowthPerDay: .2,
 	planetStartCash: 10000,
 	planetSize: 10,
-    populationPerProducerTier1: 100,
-    populationPerProducerTier2: 500,
-    populationPerProducerTier3: 1000,
-    minWagePerDay: 50,
-    marketStartMoney: 1000,
+    minWagePerDay: 15,
+    marketStartMoney: 10000,
+	workerStartLevels: [0.5, 0.3, 0.2],
+	popRep: 5,
 
     //producers
     producerStartCash: 1000,
-	producerStartWage: 10,
+	producerStartWage: 50,
 	producerStartMargin: 0.3,
 	producerLevelOneMin: 2,
-	producerLevelOneMax: 6
+	producerLevelOneMax: 6,
+	producerLayoffThreshold: -5,
+	producerHireThreshold: 10,
+	workerRep: 5,
+	dailyFacilityCost: 100
 
 }

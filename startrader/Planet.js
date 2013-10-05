@@ -12,17 +12,14 @@ function Planet(x, y) {
 	this.popChange = settings.basePopGrowthPerDay;
 	this.cash = settings.planetStartCash;
 	this.nextAi = 0;
-	this.workers[0] = this.population / 2;
+	
+	for(var i in settings.workerStartLevels) {
+		this.workers[i] = this.population * settings.workerStartLevels[i];
+	}
 
     this.draw = function(c)
     {
-        c.strokeStyle = "white";
-        c.fillStyle = this.color();
-        c.beginPath();
-        c.arc(this.x,this.y,this.size,0,Math.PI*2,true);
-        c.closePath();
-        c.stroke();
-        c.fill();
+		drawShape('circle', this.color(), this.size, this.x, this.y);
 
         if(this.isDestination) {
             c.strokeStyle = "white";
@@ -48,14 +45,8 @@ function Planet(x, y) {
 		// population
 		var x = 20;
 		var y = drawingCanvas.height - 10;
-		for(var i = 0; i < this.population; i+=25) {
-			c.strokeStyle = "white";
-			c.fillStyle = "white";
-			c.beginPath();
-			c.arc(x, y, 5,0,Math.PI * 2,true);
-			c.closePath();
-			c.stroke();
-			c.fill();
+		for(var i = 0; i < this.population; i+=settings.popRep) {
+			drawShape('circle', 'white', 5, x, y);
 			x+=15;
 		}
 
@@ -66,16 +57,16 @@ function Planet(x, y) {
 		var x = new Array();
 		var y = new Array();
         x[0] = 50;
-        y[0] = drawingCanvas.height - 50;
+        y[0] = drawingCanvas.height - 75;
         x[1] = 75;
-        y[1] = drawingCanvas.height - 100;		
+        y[1] = drawingCanvas.height - 125;		
         x[2] = 100;
-        y[2] = drawingCanvas.height - 150;			
+        y[2] = drawingCanvas.height - 175;			
 		
-        var size = 30;
+        var size = 40;
         for(var p in this.producers){
             this.producers[p].draw(c, x[this.producers[p].level-1], y[this.producers[p].level-1], size);
-            x[this.producers[p].level-1] += size + 10;
+            x[this.producers[p].level-1] += (size * 2) + 10;
         }
     }
 
@@ -102,6 +93,10 @@ function Planet(x, y) {
 			return 0;
 		}
 	
+	}
+	
+	this.layoff = function(workers, level) {
+		this.workers[level-1] + workers;
 	}
 
     this.find = function(x, y) {
