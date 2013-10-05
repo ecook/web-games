@@ -10,7 +10,7 @@ var settings = {
     shipStartSpeed: 5,
 
     //planets
-    planetCount: 10,
+    planetCount: 30,
     minStartPop: 10,
     maxStartPop: 50,
     basePopGrowthPerDay: .2,

@@ -1,25 +1,24 @@
 function ItemStore() {
 
     this.data = [
-    {name: 'ore', description: 'rocks', level: 1, days: 3, color: 'grey', shape: 'circle', workers: 5, basePrice: 100, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'precious metals', description: 'rocks', level: 1, days: 5, color: 'yellow', shape: 'circle', workers: 5, basePrice: 600, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'crystals', description: 'rocks', level: 1, days: 4, color: 'blue', shape: 'circle', workers: 5, basePrice: 250, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'chemicals', description: 'rocks', level: 1, days: 3, color: 'red', shape: 'circle', workers: 5, basePrice: 200, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'animals', description: 'rocks', level: 1, days: 3, color: '#663300', shape: 'circle', workers: 5, basePrice: 210, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'food', description: 'rocks', level: 1, days: 3, color: 'green', shape: 'circle', workers: 5, basePrice: 210, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'electronics', description: 'rocks', level: 2, days: 3, color: 'blue', shape: 'doubleCircle', workers: 5, basePrice: 100, mass: 10, quantity: 0,
-        dependentItems: [{name: 'precious metals', qty: 2}, {name: 'crystals', qty: 1}] },
-    {name: 'medicine', description: 'rocks', level: 2, days: 3, color: 'red', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'textiles', description: 'rocks', level: 2, days: 3, color: 'green', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'processed foods', description: 'rocks', level: 2, days: 3, color: '#663300', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'explosives', description: 'rocks', level: 2, days: 3, color: 'yellow', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'jewelry', description: 'rocks', level: 2, days: 3, color: '#6600FF', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'refined metals', description: 'rocks', level: 2, days: 3, color: 'grey', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'engines', description: 'rocks', level: 3, days: 3, color: 'grey', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'arms', description: 'rocks', level: 3, days: 3, color: 'red', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'sensors', description: 'rocks', level: 3, days: 3, color: 'yellow', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'shields', description: 'rocks', level: 3, days: 3, color: 'blue', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] },
-    {name: 'missiles', description: 'rocks', level: 3, days: 3, color: 'green', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [] }
+    {level: 1, days: 3, workers: 5, basePrice: 100, mass: 10, quantity: 0, cost: 0, name: 'ore', 			 color: 'grey',    shape: 'circle', dependentItems: [] },
+    {level: 1, days: 5, workers: 5, basePrice: 600, mass: 10, quantity: 0, cost: 0, name: 'precious metals', color: 'yellow',  shape: 'circle', dependentItems: [] },
+    {level: 1, days: 4, workers: 5, basePrice: 250, mass: 10, quantity: 0, cost: 0, name: 'crystals', 		 color: 'blue',    shape: 'circle', dependentItems: [] },
+    {level: 1, days: 3, workers: 5, basePrice: 200, mass: 10, quantity: 0, cost: 0, name: 'chemicals',  	 color: 'red',     shape: 'circle', dependentItems: [] },
+    {level: 1, days: 3, workers: 5, basePrice: 210, mass: 10, quantity: 0, cost: 0, name: 'animals', 		 color: '#663300', shape: 'circle', dependentItems: [] },
+    {level: 1, days: 3, workers: 5, basePrice: 210, mass: 10, quantity: 0, cost: 0, name: 'food', 			 color: 'green',   shape: 'circle', dependentItems: [] },
+    {level: 2, days: 3, workers: 5, basePrice: 100, mass: 10, quantity: 0, cost: 0, name: 'electronics',     color: 'blue',    shape: 'doubleCircle', dependentItems: [{name: 'precious metals', qty: 2}, {name: 'crystals', qty: 1}] },
+    {name: 'medicine', level: 2, days: 3, color: 'red', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'chemicals', qty: 1}, {name: 'food', qty: 1}] },
+    {name: 'textiles', level: 2, days: 3, color: 'green', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'animals', qty: 1}, {name: 'chemicals', qty: 1}] },
+    {name: 'processed foods', level: 2, days: 3, color: '#663300', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'food', qty: 2}, {name: 'chemicals', qty: 1}] },
+    {name: 'explosives', level: 2, days: 3, color: 'yellow', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'ore', qty: 2}, {name: 'chemicals', qty: 1}] },
+    {name: 'jewelry', level: 2, days: 3, color: '#6600FF', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'precious metals', qty: 2}, {name: 'crystals', qty: 1}] },
+    {name: 'refined metals', level: 2, days: 3, color: 'grey', shape: 'doubleCircle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'ore', qty: 1}, {name: 'chemicals', qty: 1}] },
+    {name: 'engines', level: 3, days: 3, color: 'grey', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'refined metals', qty: 4}, {name: 'electronics', qty: 1}] },
+    {name: 'arms', level: 3, days: 3, color: 'red', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'refined metals', qty: 1}, {name: 'explosives', qty: 1}] },
+    {name: 'sensors', level: 3, days: 3, color: 'yellow', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'electronics', qty: 1}, {name: 'precious metals', qty: 1}] },
+    {name: 'shields', level: 3, days: 3, color: 'blue', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'electronics', qty: 2}, {name: 'crystals', qty: 5}] },
+    {name: 'missiles', level: 3, days: 3, color: 'green', shape: 'triangle', workers: 5, basePrice: 10, mass: 10, quantity: 0, dependentItems: [{name: 'electronics', qty: 1}, {name: 'explosives', qty: 1}] }
     ];
 
 
@@ -30,8 +29,29 @@ function ItemStore() {
 			}
 		}
 	}
+	
+	this.getClone = function(name) {
+	
+		var orig = this.get(name);
+		var copy = {
+			level: orig.level,
+			days: orig.days,
+			workers: orig.workers,
+			basePrice: orig.basePrice,
+			mass: orig.mass,
+			quantity: orig.quantity,
+			cost: orig.cost,
+			name: orig.name,
+			color: orig.color,
+			shape: orig.shape,
+			dependentItems: orig.dependentItems		
+		};
+		
+		return copy;
+	
+	}
 
-	this.pickName = function(level) {
+	this.pick = function(level) {
 	
 		var shortList = new Array();
 		var j = 0;

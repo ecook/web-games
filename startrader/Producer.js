@@ -13,6 +13,9 @@ function Producer(planet, item, level) {
 	this.trend = 0;
 	this.madeMoney = true;
 	this.isOpen = true;
+	for(var i in this.item.dependentItems) {
+		this.stores[this.stores.length] = Items.getClone(this.item.dependentItems[i].name);
+	}
 
     this.produce = function() {
 		if(this.isOpen) {
@@ -22,7 +25,7 @@ function Producer(planet, item, level) {
 				var startingCash = this.cash;
 				
 				//hire workers
-				var workersNeeded = Items.get(this.item).workers;
+				var workersNeeded = this.item.workers;
 				if(this.workers < workersNeeded) {
 					this.workers += this.planet.hire(workersNeeded - this.workers, this.level);
 				} else if(this.trend > settings.producerHireThreshold) {
@@ -31,11 +34,18 @@ function Producer(planet, item, level) {
 				}
 				
 				//check for dependant items
-				//TODO:
-				
+				var totalPossible = 99;
+				var count = 0;
+				for(var s in this.item.dependentItems) {
+					count = this.item.dependentItems[s].uoh / this.item.dependentItems[s].qty;
+					if(count < totalPossible) totalPossible = count;
+				}
+							
 				//produce and sell product
 				var produced = this.workers / workersNeeded;
-				this.cash += this.planet.market.sell(this.item, produced, Items.get(this.item).basePrice += (Items.get(this.item).basePrice * this.margin));
+				if(produced < totalPossible) {
+					this.cash += this.planet.market.sell(this.item.name, produced, this.item.basePrice += (this.item.basePrice * this.margin));
+				}
 				
 				// pay workers
 				this.cash -= this.wage * this.workers;
@@ -83,7 +93,7 @@ function Producer(planet, item, level) {
     }
 	
 	this.calcNextProduction = function() {
-		this.nextProduction = days + Items.get(this.item).days;
+		this.nextProduction = days + this.item.days;
 	}
 
     this.draw = function(c, x, y, size) {
@@ -102,8 +112,7 @@ function Producer(planet, item, level) {
 			}
 			
 			// product
-			var item = Items.get(this.item);
-			drawShape(item.shape, item.color, 10, x + 15, y + 15);
+			drawShape(this.item.shape, this.item.color, 10, x + 15, y + 15);
 			
 			// arrow
 			if(this.madeMoney) {
@@ -116,9 +125,9 @@ function Producer(planet, item, level) {
 			var depend;
 			j = x + 45;
 			k = y + 15;
-			if(item.dependentItems.length != 0) {
-				for(var i in item.dependentItems) {
-					depend = Items.get(item.dependentItems[i].name);
+			if(this.item.dependentItems.length != 0) {
+				for(var i in this.item.dependentItems) {
+					depend = Items.get(this.item.dependentItems[i].name);
 					drawShape(depend.shape, depend.color, 6, j, k);
 					j += 20;
 				}
@@ -140,17 +149,17 @@ GenerateProducers = function(planet) {
 	var level2Count = 0;
 
     for(var i = 0; i < random(settings.producerLevelOneMin, settings.producerLevelOneMax); i++) {
-        prods[i] = new Producer(planet, Items.pickName(1), 1);
+        prods[i] = new Producer(planet, Items.getClone(Items.pick(1)), 1);
 		prevCount++;
     }
 	
 	for(var i = prevCount; i < random(prevCount, prevCount + prevCount/2); i++) {
-		prods[i] = new Producer(planet, Items.pickName(2), 2);
+		prods[i] = new Producer(planet, Items.getClone(Items.pick(2)), 2);
 		level2Count++;
     }	
 	
 	if(level2Count > 0 && random(1, 10) > 8) {
-		prods[prods.length] = new Producer(planet, Items.pickName(3), 3);
+		prods[prods.length] = new Producer(planet, Items.getClone(Items.pick(3)), 3);
 	}
 
     return prods;
