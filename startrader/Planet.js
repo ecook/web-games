@@ -68,6 +68,18 @@ function Planet(x, y) {
             this.producers[p].draw(c, x[this.producers[p].level-1], y[this.producers[p].level-1], size);
             x[this.producers[p].level-1] += (size * 2) + 10;
         }
+		
+		//planet stats
+		var statsX = settings.planetStatsX;
+		var statsY = settings.planetStatsY;
+		var statsSpacing = 20;
+		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'type: ' + this.type.type);
+		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'color: ' + this.type.color);
+		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'Tech level workers');
+		for(var level in this.workers) {
+			drawText(statsX + 20, statsY+=statsSpacing, settings.planetStatsColor, (parseInt(level) + 1) + ':      ' + this.workers[level]);
+		}
+		
     }
 
     this.ai = function()

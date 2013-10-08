@@ -2,56 +2,24 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>Bug</title>
+    <title>Star Trader</title>
     <script type="text/javascript" src="jquery-1.7.2.js"></script>
     <script type="text/javascript" src="Settings.js"></script>
+	<script type="text/javascript" src="Controls.js"></script>
     <script type="text/javascript" src="Item.js"></script>
     <script type="text/javascript" src="Producer.js"></script>
     <script type="text/javascript" src="Market.js"></script>
     <script type="text/javascript" src="Planet.js"></script>
     <script type="text/javascript" src="Ship.js"></script>
     <script type="text/javascript" src="RenderCanvas.js"></script>
+    <script type="text/javascript" src="events.js"></script>	
     <script type="text/javascript" src="Main.js"></script>
-    <script type="text/javascript" src="events.js"></script>
 
     <meta charset="UTF-8">
 
   </head>
   <body>
-    <table><tr><td>
     <canvas id="myDrawing" width="750" height="750" style="border: solid; border-color: Red; border-size: 2px;">This page requires an HTML5 compliant browser</canvas>
-    </td>
-    <td>
-        <h2>Stats</h2><br />
-        Current Day: <input id="days" value="0" /><br />
-        mouse X: <input id="positionX" value="0" /><br />
-        mouse Y: <input id="positionY" value="0" /><br />
-
-        <button id="currentLocation" onclick="currentLocation()">Current Location</button><br />
-        <div id='galaxyControls'>
-            <div>
-                <h2>Destination</h2><br />
-                Days to travel: <input id="travelDays" value="0" /><br />
-                X: <input id="destinationX" value="0" /><br />
-                Y: <input id="destinationY" value="0" /><br />
-                <button id="travel" onclick="travel()">Travel</button><br />
-            </div>
-
-            <div>
-                <h2>Ship</h2><br />
-                Cargo: <input id="cargoAmount" value="0" />/<input id="cargoMax" value="0" /><br />
-                Speed: <input id="speed" value="0" /><br />
-            </div>
-
-            <button id="land" onclick="land()">Land</button><br />
-        </div>
-        <div id='planetControls'>
-
-            <button id="takeOff" onclick="takeOff()">Take Off</button><br />
-        </div>
-    </td>
-    </tr>
-    </table>
   </body>
 </html>
 

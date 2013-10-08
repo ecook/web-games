@@ -10,6 +10,7 @@ function Ship(planet) {
     this.cargo = new Array();
     this.speed = settings.shipStartSpeed;
     this.isTraveling = false;
+	this.cash = settings.shipStartCash;
 
     this.draw = function(c)
     {

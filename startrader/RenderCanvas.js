@@ -18,43 +18,52 @@ function tick() {
 
 }
 
-oldMode = '';
 function refreshUi(mode) {
-
-    uiPositionX.value = mouse.x;
-    uiPositionY.value = mouse.y;
-    uiDays.value = days;
+	
+	if(settings.debug) {
+		drawText(10, 50, 'yellow', 'x: ' + mouse.x);
+		drawText(10, 60, 'yellow', 'y: ' + mouse.y);
+	}
+	
+	//ship stats
+	drawText(10, 15, 'yellow', 'days: ' + days);
+	drawText(150, 15, 'yellow', 'cash: ' + ship.cash);
+	drawText(250, 15, 'yellow', 'speed: ' + ship.speed);
+	drawText(350, 15, 'yellow', 'cargo: ' + ship.cargoAmount() + '/' + ship.capacity);	
 
     if(mode == 'galaxy'){
 
         if(ship.destination != null) {
-            uiDestinationX.value = ship.destination.x;
-            uiDestinationY.value = ship.destination.y;
-            uiTravelDays.value = ship.daysToTravel();
-        } else {
-            uiDestinationX.value = '';
-            uiDestinationY.value = '';
-            uiTravelDays.value = '';
-        }
+			btnTravel.visible = true;
+			btnTravel.x = ship.destination.x;
+			btnTravel.y = ship.destination.y;
+			drawText(ship.destination.x, ship.destination.y + 20, 'yellow', 'day to travel: ' + ship.daysToTravel());
 
-        uiSpeed.value = ship.speed;
-        uiCargoMax.value = ship.capacity;
-        uiCargoAmount.value = ship.cargoAmount();
+        } else {
+			btnTravel.visible = false;		
+
+        }
+		
+		btnLand.visible = true;
+		btnTakeOff.visible = false;
+		
     } else if(mode == 'planet') {
-
-
+		btnLand.visible = false;
+		btnTakeOff.visible = true;
+		btnTravel.visible = false;
+		
     }
-
-    if(mode != oldMode){
-        oldMode = mode;
-        if(mode == 'galaxy'){
-            $('#galaxyControls').show('fast');
-            $('#planetControls').hide('fast');
-        } else {
-            $('#galaxyControls').hide('fast');
-            $('#planetControls').show('fast');
-        }
-    }
+	
+	if(modal.isActive) {
+	
+		//draw modal
+	
+	}
+	
+	for(var btn in buttons) {
+		buttons[btn].draw(context);
+	}
+	
 }
 
 function clear(c) {
@@ -192,4 +201,13 @@ function drawShape(shape, color, size, x, y) {
 			break;
 		}
 	}
+}
+
+function drawText(x, y, color, text) {
+
+	context.fillStyle = color;
+	//context.font = "bold 16px Arial";
+	context.font = "10px Arial";
+	context.fillText(text, x, y);
+
 }

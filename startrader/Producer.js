@@ -13,6 +13,7 @@ function Producer(planet, item, level) {
 	this.trend = 0;
 	this.madeMoney = true;
 	this.isOpen = true;
+	this.selected = false;
 	for(var i in this.item.dependentItems) {
 		this.stores[this.stores.length] = Items.getClone(this.item.dependentItems[i].name);
 	}
@@ -98,6 +99,12 @@ function Producer(planet, item, level) {
 
     this.draw = function(c, x, y, size) {
 	
+		// cache hit box
+		this.x = x;
+		this.y = y;
+		this.width = size * 2;
+		this.height = size;
+	
 		// building
 		drawShape('rectangle', '#686856', size, x, y);
 		
@@ -132,6 +139,43 @@ function Producer(planet, item, level) {
 					j += 20;
 				}
 			}
+			
+			if(this.selected) {
+			
+				//draw selection box
+				context.strokeStyle = 'red';
+				context.beginPath();
+				context.moveTo(x - 2, y - 2);
+				context.lineTo(x + size * 2 + 4, y - 2);
+				context.lineTo(x + size * 2 + 4, y + size + 2);
+				context.lineTo(x - 2, y + size + 2);
+				context.lineTo(x - 2, y - 2);
+				context.closePath();
+				context.stroke();
+			
+				//draw stats
+				var statsX = settings.producerStatsX;
+				var statsY = settings.producerStatsY;
+				var statsSpacing = 20;
+				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'item: ' + this.item.name);
+				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'tech level: ' + this.level);
+				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'efficiency: ' + this.efficiency);
+				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'workers: ' + this.workers);
+				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'cash: ' + this.cash);
+				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'wage: ' + this.wage);
+				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'madeMoney: ' + this.madeMoney);
+				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'margin: ' + this.margin);
+				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'trend: ' + this.trend);
+				
+				if(this.stores != undefined && this.stores.length > 0) {
+					drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'dependent Items: ' + this.stores.length);
+					for(var idx in this.stores) {
+						drawText(statsX, statsY, settings.producerStatsColor, 'uoh: ' + this.stores[idx].uoh);
+						drawText(statsX + 20, statsY, settings.producerStatsColor, 'cost: ' + this.stores[idx].cost);
+						drawText(statsX + 40, statsY, settings.producerStatsColor, 'name: ' + this.stores[idx].name);
+					}
+				}
+			}
 		
 		} else {
 			
@@ -139,6 +183,14 @@ function Producer(planet, item, level) {
 			drawShape('rectangleX', 'red', size, x, y);		
 		}
     }
+	
+	this.hit = function(x, y) {
+		if(x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height) 
+			return true;
+		else
+			return false;
+	
+	}
 }
 
 

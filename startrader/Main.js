@@ -14,11 +14,20 @@ var uiDays;
 var mouse = { x:0, y:0 };
 var days = 0;
 var Items;
+var modal = new Modal();
+var buttons = new Array();
+var btnLand = new Button(675, 710, 60, 20, 'yellow', 'blue', 'Land', 'Arial', 12, land);
+var btnTakeOff = new Button(675, 450, 60, 20, 'yellow', 'blue', 'TakeOff', 'Arial', 12, takeOff);
+var btnTravel = new Button(10, 10, 30, 20, 'yellow', 'blue', 'Go', 'Arial', 10, travel);
 
 $('document').ready( function() {
 
     drawingCanvas = document.getElementById('myDrawing');
     drawingCanvas.mode = 'galaxy';
+	
+	buttons[0] = btnLand;
+	buttons[1] = btnTakeOff;
+	buttons[2] = btnTravel;
 
     //status
     uiPositionX = document.getElementById('positionX');

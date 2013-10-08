@@ -1,44 +1,64 @@
 $('document').ready( function() {
 
 
-    $('#myDrawing').on('click', function(e) {
+    $('#myDrawing').on('mousemove', function(e) {
+
+        mouse.x = e.pageX - this.offsetLeft; // - settings.mouseAdjustOffset;
+        mouse.y = e.pageY - this.offsetTop; // - settings.mouseAdjustOffset;
+
+    });
+	
+	$('#myDrawing').on('mouseup', function(e) {
 
         //mouse.x = e.pageX - this.offsetTop;
         //mouse.y = e.pageY - this.offsetLeft;
 
-        var p = findPlanet(mouse.x, mouse.y);
+		var action = null;
+		
+		// check buttons
+		for(var btn in buttons) {
+			if(buttons[btn].hit(mouse.x, mouse.y)) {
+				action = buttons[btn].action;
+				break;
+			}
+		}
+		
+		if(action == null) {
+		
+			if(drawingCanvas.mode == 'planet') {
+				//test producers
+				for(var f in ship.planet.producers) {
+					if(ship.planet.producers[f].hit(mouse.x, mouse.y)) {
+						ship.planet.producers[f].selected = true;
+					} else {
+						ship.planet.producers[f].selected = false;
+					}
+				}
+			}
+		
+			var p = findPlanet(mouse.x, mouse.y);
 
-        if( p != null && ship.location != p ) {
-            if(ship.destination != null) ship.destination.isDestination = false;
-            ship.destination = p;
-            p.isDestination = true;
-        } else {
-            //alert('planet not found');
-        }
-    });
-
-    $('#myDrawing').on('mousemove', function(e) {
-
-        mouse.x = e.pageX - this.offsetLeft - settings.mouseAdjustOffset;
-        mouse.y = e.pageY - this.offsetTop - settings.mouseAdjustOffset;
-
+			if( p != null && ship.location != p ) {
+				if(ship.destination != null) ship.destination.isDestination = false;
+				ship.destination = p;
+				p.isDestination = true;
+			} else {
+				//alert('planet not found');
+			}
+		} else {
+			action();
+		}
+		
     });
 
 });
 
 function travel() {
-
     ship.travel();
-    //days += ship.daysToTravel();
-    //ship.planet = ship.destination;
-    //ship.destination.isDestination = false;
-    //ship.destination = null;
 }
 
 function currentLocation() {
-
     alert(ship.planet.displayText());
-
 }
 
 function land() {

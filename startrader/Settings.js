@@ -1,9 +1,11 @@
 var settings = {
 
     //general
+	debug: true,
     ticksPerDay: 60,
     ticksPerMinute: 33,
     mouseAdjustOffset: 10,
+	shipStartCash: 500,
 
     //ship
     shipStartCapacity: 25,
@@ -20,6 +22,10 @@ var settings = {
     marketStartMoney: 10000,
 	workerStartLevels: [0.5, 0.3, 0.2],
 	popRep: 5,
+	planetStatsColor: 'yellow',
+	planetStatsX: 10,
+	planetStatsY: 60,
+	
 
     //producers
     producerStartCash: 1000,
@@ -30,6 +36,9 @@ var settings = {
 	producerLayoffThreshold: -5,
 	producerHireThreshold: 10,
 	workerRep: 5,
-	dailyFacilityCost: 100
+	dailyFacilityCost: 100,
+	producerStatsColor: 'red',
+	producerStatsX: 10,
+	producerStatsY: 200,
 
 }
