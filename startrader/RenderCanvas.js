@@ -34,10 +34,15 @@ function refreshUi(mode) {
     if(mode == 'galaxy'){
 
         if(ship.destination != null) {
+			if(ship.destination.x > drawingCanvas.width - 120 || ship.destination.y > drawingCanvas.height - 55) {
+				// shift to upper right
+				btnTravel.move(ship.destination.x - ship.destination.size * 2 - 100, ship.destination.y - 15);
+				drawText(ship.destination.x - ship.destination.size * 2 - 100, ship.destination.y - ship.destination.size * 2, 'yellow', 'days to travel: ' + ship.daysToTravel());				
+			} else {	
+				btnTravel.move(ship.destination.x + ship.destination.size * 2, ship.destination.y + 25);
+				drawText(ship.destination.x + ship.destination.size * 2, ship.destination.y + ship.destination.size * 2, 'yellow', 'days to travel: ' + ship.daysToTravel());
+			}
 			btnTravel.visible = true;
-			btnTravel.x = ship.destination.x;
-			btnTravel.y = ship.destination.y;
-			drawText(ship.destination.x, ship.destination.y + 20, 'yellow', 'day to travel: ' + ship.daysToTravel());
 
         } else {
 			btnTravel.visible = false;		
@@ -46,12 +51,15 @@ function refreshUi(mode) {
 		
 		btnLand.visible = true;
 		btnTakeOff.visible = false;
+		btnMarketBuy.visible = false;
+		btnMarketSell.visible = false;
 		
     } else if(mode == 'planet') {
 		btnLand.visible = false;
 		btnTakeOff.visible = true;
 		btnTravel.visible = false;
-		
+		btnMarketBuy.visible = true;
+		btnMarketSell.visible = true;
     }
 	
 	if(modal.isActive) {
@@ -207,7 +215,7 @@ function drawText(x, y, color, text) {
 
 	context.fillStyle = color;
 	//context.font = "bold 16px Arial";
-	context.font = "10px Arial";
+	context.font = "12px Arial";
 	context.fillText(text, x, y);
 
 }

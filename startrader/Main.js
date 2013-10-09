@@ -18,7 +18,9 @@ var modal = new Modal();
 var buttons = new Array();
 var btnLand = new Button(675, 710, 60, 20, 'yellow', 'blue', 'Land', 'Arial', 12, land);
 var btnTakeOff = new Button(675, 450, 60, 20, 'yellow', 'blue', 'TakeOff', 'Arial', 12, takeOff);
-var btnTravel = new Button(10, 10, 30, 20, 'yellow', 'blue', 'Go', 'Arial', 10, travel);
+var btnTravel = new Button(100, 100, 30, 20, 'yellow', 'blue', 'Go', 'Arial', 12, travel);
+var btnMarketBuy = new Button(300, 390, 60, 20, 'yellow', 'blue', 'Buy', 'Arial', 12, marketBuy);
+var btnMarketSell = new Button(370, 390, 60, 20, 'yellow', 'blue', 'Sell', 'Arial', 12, marketSell);
 
 $('document').ready( function() {
 
@@ -28,6 +30,8 @@ $('document').ready( function() {
 	buttons[0] = btnLand;
 	buttons[1] = btnTakeOff;
 	buttons[2] = btnTravel;
+	buttons[3] = btnMarketBuy;
+	buttons[4] = btnMarketSell;
 
     //status
     uiPositionX = document.getElementById('positionX');

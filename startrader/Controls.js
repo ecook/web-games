@@ -24,8 +24,8 @@ function Button(x, y, width, height, foreColor, backColor, text, font, size, act
 			context.beginPath();
 			context.moveTo(this.x, this.y);
 			context.lineTo(this.x + this.width, this.y);
-			context.lineTo(this.x + this.width, y + this.height);
-			context.lineTo(this.x, y + this.height);
+			context.lineTo(this.x + this.width, this.y + this.height);
+			context.lineTo(this.x, this.y + this.height);
 			context.lineTo(this.x, this.y);
 			context.closePath();
 			context.stroke();
@@ -36,6 +36,12 @@ function Button(x, y, width, height, foreColor, backColor, text, font, size, act
 			context.font = this.px + 'px ' + this.font;
 			context.fillText(this.text, this.x + this.margin, this.y + this.margin);
 		}
+	
+	}
+	
+	this.move = function(x, y) {
+		this.x = x;
+		this.y = y;
 	
 	}
 	

@@ -4,41 +4,50 @@ var settings = {
 	debug: true,
     ticksPerDay: 60,
     ticksPerMinute: 33,
-    mouseAdjustOffset: 10,
-	shipStartCash: 500,
+    //mouseAdjustOffset: 10,
 
     //ship
+	shipStartCash: 500,
     shipStartCapacity: 25,
-    shipStartSpeed: 5,
+    shipStartSpeed: 10,
 
     //planets
     planetCount: 30,
     minStartPop: 10,
-    maxStartPop: 50,
+    maxStartPop: 100,
     basePopGrowthPerDay: .2,
 	planetStartCash: 10000,
+	planetLivingCost: 10,
 	planetSize: 10,
     minWagePerDay: 15,
-    marketStartMoney: 10000,
 	workerStartLevels: [0.5, 0.3, 0.2],
-	popRep: 5,
+	populationPerIcon: 5,
 	planetStatsColor: 'yellow',
 	planetStatsX: 10,
 	planetStatsY: 60,
+	populationCashThreshold: 1000,
+	populationDecreasePerDay: 1,
 	
+	//market
+	marketStartMoney: 10000,
+	marketMargin: .3,
+	marketStatsColor: 'yellow',
+	marketStatsX: 600,
+	marketStatsY: 5,
 
     //producers
-    producerStartCash: 1000,
-	producerStartWage: 50,
+    producerStartCash: 5000,
+	producerStartWage: 25,
 	producerStartMargin: 0.3,
 	producerLevelOneMin: 2,
 	producerLevelOneMax: 6,
 	producerLayoffThreshold: -5,
 	producerHireThreshold: 10,
-	workerRep: 5,
+	workersPerIcon: 5,
 	dailyFacilityCost: 100,
-	producerStatsColor: 'red',
+	producerStatsColor: 'white',
 	producerStatsX: 10,
-	producerStatsY: 200,
+	producerStatsY: 230,
+	purchaseInventoryCashTheshold: 500
 
 }

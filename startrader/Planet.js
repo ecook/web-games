@@ -12,9 +12,10 @@ function Planet(x, y) {
 	this.popChange = settings.basePopGrowthPerDay;
 	this.cash = settings.planetStartCash;
 	this.nextAi = 0;
+	this.newWorkers = 0;
 	
 	for(var i in settings.workerStartLevels) {
-		this.workers[i] = this.population * settings.workerStartLevels[i];
+		this.workers[i] = parseInt(this.population * settings.workerStartLevels[i]);
 	}
 
     this.draw = function(c)
@@ -45,13 +46,13 @@ function Planet(x, y) {
 		// population
 		var x = 20;
 		var y = drawingCanvas.height - 10;
-		for(var i = 0; i < this.population; i+=settings.popRep) {
+		for(var i = 0; i < this.population; i+=settings.populationPerIcon) {
 			drawShape('circle', 'white', 5, x, y);
 			x+=15;
 		}
 
         //market
-        //this.market.draw(c);
+        this.market.draw(c);
 
         //producers
 		var x = new Array();
@@ -75,9 +76,11 @@ function Planet(x, y) {
 		var statsSpacing = 20;
 		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'type: ' + this.type.type);
 		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'color: ' + this.type.color);
-		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'Tech level workers');
+		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'population: ' + this.population);
+		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'cash: ' + parseInt(this.cash));
+		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'available workers');
 		for(var level in this.workers) {
-			drawText(statsX + 20, statsY+=statsSpacing, settings.planetStatsColor, (parseInt(level) + 1) + ':      ' + this.workers[level]);
+			drawText(statsX + 20, statsY+=statsSpacing, settings.planetStatsColor, 'level ' + (parseInt(level) + 1) + ':      ' + this.workers[level]);
 		}
 		
     }
@@ -85,10 +88,52 @@ function Planet(x, y) {
     this.ai = function()
     {
 		if(days >= this.nextAi) {
-			this.population += this.popChange;
 		
-			for(var i = 0; i < this.producers.length; i++) {
-				this.producers[i].produce();
+			if(this.population > 0) {
+				// check for population decrease
+				if(this.cash < settings.populationCashThreshold) {
+					this.population -= settings.populationDecreasePerDay;
+					this.newWorkers = 0;
+					
+					// remove workers from pool
+					var workersLeaving = settings.populationDecreasePerDay;
+					workersLeaving = this.removeWorkers(workersLeaving, 2);
+					workersLeaving = this.removeWorkers(workersLeaving, 1);
+					workersLeaving = this.removeWorkers(workersLeaving, 0);
+				
+				}	
+			
+				// population increase
+				this.newWorkers += this.popChange;
+				if(this.newWorkers > 0) {
+					var newPeople = parseInt(this.newWorkers);
+					this.newWorkers -= newPeople;
+					this.population += newPeople;
+					// add new people to worker pools
+					var rnd = random(1, 10);
+					if(rnd < settings.workerStartLevels[2] * 10) {
+						this.workers[2] += newPeople;
+					} else if(rnd < settings.workerStartLevels[1] * 10) {
+						this.workers[1] += newPeople;
+					} else {
+						this.workers[0] += newPeople;
+					}
+				}
+				
+				// pay cost of living
+				var livingCost = settings.planetLivingCost * this.population;
+				if(livingCost > this.cash) {
+					this.market.cash += this.cash;
+					this.cash = 0;
+				} else {
+					this.market.cash += livingCost;
+					this.cash -= livingCost;
+				}	
+			
+				// production phase
+				for(var i = 0; i < this.producers.length; i++) {
+					this.producers[i].produce();
+				}
 			}
 			
 			this.nextAi = days + 1;
@@ -99,7 +144,7 @@ function Planet(x, y) {
 		
 		if(this.workers[level-1] != undefined && this.workers[level-1] >= workers) {
 			// assign workers
-			this.workers[level-1] - workers;
+			this.workers[level-1] -= workers;
 			return workers;
 		} else {
 			return 0;
@@ -108,7 +153,7 @@ function Planet(x, y) {
 	}
 	
 	this.layoff = function(workers, level) {
-		this.workers[level-1] + workers;
+		this.workers[level-1] += workers;
 	}
 
     this.find = function(x, y) {
@@ -140,6 +185,19 @@ function Planet(x, y) {
     this.color = function() {
         return this.type.color;
     }
+	
+	this.removeWorkers = function(workersLeaving, level) {
+		if(workersLeaving > 0 && this.workers[level] > 0) {
+			if(workersLeaving > this.workers[level]) {
+				workersLeaving -= this.workers[level];
+				this.workers[level] = 0;
+			} else {
+				this.workers[level] -= workersLeaving;
+				workersLeaving = 0;
+			}		
+		}
+		return workersLeaving;
+	}
 
 
 }
@@ -167,7 +225,7 @@ Planet.prototype.GeneratePlanetType = function() {
 
     }else if(rand < 0.90) {
         pt.type = 'mineral';
-        pt.color = 'brown';
+        pt.color = '#663300';
 
     }else {
         pt.type = 'industrial';

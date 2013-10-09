@@ -4,7 +4,7 @@ function Producer(planet, item, level) {
     this.item = item;
     this.efficiency = 0;
     this.workers = 0;
-    this.stores = new ItemStore();
+    //this.stores = new ItemStore();
 	this.level = level;
 	this.cash = settings.producerStartCash;
 	this.wage = settings.producerStartWage;
@@ -14,9 +14,11 @@ function Producer(planet, item, level) {
 	this.madeMoney = true;
 	this.isOpen = true;
 	this.selected = false;
-	for(var i in this.item.dependentItems) {
-		this.stores[this.stores.length] = Items.getClone(this.item.dependentItems[i].name);
-	}
+	// for(var i in this.item.dependentItems) {
+		// this.stores[this.stores.length] = Items.getClone(this.item.dependentItems[i].name);
+	// }
+	
+	this.item.result = new saleResult();
 
     this.produce = function() {
 		if(this.isOpen) {
@@ -28,14 +30,32 @@ function Producer(planet, item, level) {
 				//hire workers
 				var workersNeeded = this.item.workers;
 				if(this.workers < workersNeeded) {
-					this.workers += this.planet.hire(workersNeeded - this.workers, this.level);
+					this.workers += this.planet.hire(workersNeeded, this.level);
 				} else if(this.trend > settings.producerHireThreshold) {
 					this.trend = 0;
 					this.workers += this.planet.hire(workersNeeded, this.level);
 				}
 				
-				//check for dependant items
-				var totalPossible = 99;
+				// update inventory
+				var totalPossible = this.workers / workersNeeded;
+				if(this.cash > settings.purchaseInventoryCashTheshold) {
+					for(var s in this.item.dependentItems) {
+						if(this.item.dependentItems[s].uoh < this.item.dependentItems[s].qty * totalPossible) {
+							//try to purchase more
+							var qty = (this.item.dependentItems[s].qty * totalPossible) - this.item.dependentItems[s].uoh;
+							var result = this.planet.market.buy(this.item.dependentItems[s].name, qty, this.planet.market.price(this.item.dependentItems[s].name));
+							if(result.success) {
+								this.cash -= result.totalPrice;
+								this.item.dependentItems[s].uoh += result.qty;
+							}
+							this.item.dependentItems[s].lastSaleResult = result;
+							if(this.cash < settings.purchaseInventoryCashTheshold)
+								break;
+						}	
+					}								
+				}
+				
+				//check for total items possible
 				var count = 0;
 				for(var s in this.item.dependentItems) {
 					count = this.item.dependentItems[s].uoh / this.item.dependentItems[s].qty;
@@ -44,15 +64,20 @@ function Producer(planet, item, level) {
 							
 				//produce and sell product
 				var produced = this.workers / workersNeeded;
-				if(produced < totalPossible) {
-					this.cash += this.planet.market.sell(this.item.name, produced, this.item.basePrice += (this.item.basePrice * this.margin));
+				if(produced <= totalPossible) {
+					this.item.result = this.planet.market.sell(this.item.name, produced, this.item.basePrice + (this.item.basePrice * this.margin));
+					if(this.item.result != undefined && this.item.result.success) {
+						this.cash += parseInt(this.item.result.totalPrice);
+					}
 				}
 				
 				// pay workers
 				this.cash -= this.wage * this.workers;
+				this.planet.cash += this.wage * this.workers;
 				
 				// pay for facilities
 				this.cash -= settings.dailyFacilityCost;
+				this.planet.cash += settings.dailyFacilityCost;
 			
 				//calc the trend
 				if(startingCash < this.cash) {
@@ -113,7 +138,7 @@ function Producer(planet, item, level) {
 			//workers
 			var j = x + 5;
 			var k = y + size - 3;
-			for(var i = 0; i < this.workers; i+=settings.workerRep) {
+			for(var i = 0; i < this.workers; i+=settings.workersPerIcon) {
 				drawShape('circle', 'white', 3, j, k);
 				j+=8;
 			}
@@ -156,23 +181,30 @@ function Producer(planet, item, level) {
 				//draw stats
 				var statsX = settings.producerStatsX;
 				var statsY = settings.producerStatsY;
+				var statsColor = settings.producerStatsColor;
 				var statsSpacing = 20;
-				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'item: ' + this.item.name);
-				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'tech level: ' + this.level);
-				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'efficiency: ' + this.efficiency);
-				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'workers: ' + this.workers);
-				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'cash: ' + this.cash);
-				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'wage: ' + this.wage);
-				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'madeMoney: ' + this.madeMoney);
-				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'margin: ' + this.margin);
-				drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'trend: ' + this.trend);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'item: ' + this.item.name);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'last sales: ' + this.item.result.message);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'tech level: ' + this.level);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'efficiency: ' + this.efficiency);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'workers: ' + this.workers);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'cash: ' + this.cash);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'wage: ' + this.wage);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'madeMoney: ' + this.madeMoney);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'margin: ' + this.margin);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'trend: ' + this.trend);
 				
-				if(this.stores != undefined && this.stores.length > 0) {
-					drawText(statsX, statsY+=statsSpacing, settings.producerStatsColor, 'dependent Items: ' + this.stores.length);
-					for(var idx in this.stores) {
-						drawText(statsX, statsY, settings.producerStatsColor, 'uoh: ' + this.stores[idx].uoh);
-						drawText(statsX + 20, statsY, settings.producerStatsColor, 'cost: ' + this.stores[idx].cost);
-						drawText(statsX + 40, statsY, settings.producerStatsColor, 'name: ' + this.stores[idx].name);
+				if(this.item.dependentItems.length > 0) {
+					statsY = settings.producerStatsY;
+					drawText(statsX + 150, statsY+=statsSpacing, statsColor, 'dependent Items: ' + this.item.dependentItems.length);
+					statsY += statsSpacing;
+					for(var idx in this.item.dependentItems) {
+						statsY += idx * statsSpacing;
+						drawText(statsX + 150, statsY, statsColor, 'uoh: ' + this.item.dependentItems[idx].uoh);
+						drawText(statsX + 190, statsY, statsColor, 'qty: ' + this.item.dependentItems[idx].qty);
+						drawText(statsX + 250, statsY, statsColor, 'name: ' + this.item.dependentItems[idx].name);
+						if(this.item.dependentItems[idx].lastSaleResult != undefined)
+							drawText(statsX + 390, statsY, statsColor, 'last purchase: ' + this.item.dependentItems[idx].lastSaleResult.message);
 					}
 				}
 			}

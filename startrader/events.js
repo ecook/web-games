@@ -17,7 +17,7 @@ $('document').ready( function() {
 		
 		// check buttons
 		for(var btn in buttons) {
-			if(buttons[btn].hit(mouse.x, mouse.y)) {
+			if(buttons[btn].visible && buttons[btn].hit(mouse.x, mouse.y)) {
 				action = buttons[btn].action;
 				break;
 			}
@@ -67,5 +67,13 @@ function land() {
 
 function takeOff() {
     drawingCanvas.mode = 'galaxy';
+}
+
+function marketBuy() {
+	alert('buy stuff');
+}
+
+function marketSell() {
+	alert('sell stuff');
 }
 
