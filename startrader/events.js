@@ -12,44 +12,60 @@ $('document').ready( function() {
 
         //mouse.x = e.pageX - this.offsetTop;
         //mouse.y = e.pageY - this.offsetLeft;
+		
+		if(viewTrade.visible) {
+		
+			viewTrade.event(e, 'mouseup');
+		
+		} else {
 
-		var action = null;
-		
-		// check buttons
-		for(var btn in buttons) {
-			if(buttons[btn].visible && buttons[btn].hit(mouse.x, mouse.y)) {
-				action = buttons[btn].action;
-				break;
-			}
-		}
-		
-		if(action == null) {
-		
-			if(drawingCanvas.mode == 'planet') {
-				//test producers
-				for(var f in ship.planet.producers) {
-					if(ship.planet.producers[f].hit(mouse.x, mouse.y)) {
-						ship.planet.producers[f].selected = true;
-					} else {
-						ship.planet.producers[f].selected = false;
-					}
+			var action = null;
+			
+			// check buttons
+			for(var btn in buttons) {
+				if(buttons[btn].visible && buttons[btn].hit(mouse.x, mouse.y)) {
+					action = buttons[btn].action;
+					break;
 				}
 			}
-		
-			var p = findPlanet(mouse.x, mouse.y);
+			
+			if(action == null) {
+			
+				if(drawingCanvas.mode == 'planet') {
+					//test producers
+					for(var f in ship.planet.producers) {
+						if(ship.planet.producers[f].hit(mouse.x, mouse.y)) {
+							ship.planet.producers[f].selected = true;
+						} else {
+							ship.planet.producers[f].selected = false;
+						}
+					}
+				}
+			
+				var p = findPlanet(mouse.x, mouse.y);
 
-			if( p != null && ship.location != p ) {
-				if(ship.destination != null) ship.destination.isDestination = false;
-				ship.destination = p;
-				p.isDestination = true;
+				if( p != null && ship.location != p ) {
+					if(ship.destination != null) ship.destination.isDestination = false;
+					ship.destination = p;
+					p.isDestination = true;
+				} else {
+					//alert('planet not found');
+				}
 			} else {
-				//alert('planet not found');
+				action();
 			}
-		} else {
-			action();
+		
 		}
 		
     });
+	
+	$('#myDrawing').on('mousedown', function(e) {
+	
+		if(viewTrade.visible) {
+			viewTrade.event(e, 'mousedown');
+		}
+	
+	});
 
 });
 
@@ -70,10 +86,10 @@ function takeOff() {
 }
 
 function marketBuy() {
-	alert('buy stuff');
+	viewTrade.show();
 }
 
 function marketSell() {
-	alert('sell stuff');
+	viewTrade.show();
 }
 

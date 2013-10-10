@@ -52,14 +52,14 @@ function refreshUi(mode) {
 		btnLand.visible = true;
 		btnTakeOff.visible = false;
 		btnMarketBuy.visible = false;
-		btnMarketSell.visible = false;
+		//btnMarketSell.visible = false;
 		
     } else if(mode == 'planet') {
 		btnLand.visible = false;
 		btnTakeOff.visible = true;
 		btnTravel.visible = false;
 		btnMarketBuy.visible = true;
-		btnMarketSell.visible = true;
+		//btnMarketSell.visible = true;
     }
 	
 	if(modal.isActive) {
@@ -71,6 +71,11 @@ function refreshUi(mode) {
 	for(var btn in buttons) {
 		buttons[btn].draw(context);
 	}
+	
+	if(viewTrade.visible)
+		viewTrade.draw(context);
+		
+	// draw sale modal
 	
 }
 

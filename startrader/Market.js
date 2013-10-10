@@ -1,11 +1,15 @@
 function Market(planet) {
 
     this.planet = planet;
-    this.items = new ItemStore;
+    this.items = new ItemStore();
     this.money = settings.marketStartMoney;
     this.priceMod = Math.random();
 	this.cash = 10000;
 	this.margin = settings.marketMargin;
+	
+	for(var i in this.items.data) {
+		this.items.data[i].quantity = settings.marketStartStock[this.items.data[i].level-1];
+	}
 
     this.draw = function(c) {
 		

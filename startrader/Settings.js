@@ -34,6 +34,7 @@ var settings = {
 	marketStatsColor: 'yellow',
 	marketStatsX: 600,
 	marketStatsY: 5,
+	marketStartStock: [10, 5, 1],
 
     //producers
     producerStartCash: 5000,

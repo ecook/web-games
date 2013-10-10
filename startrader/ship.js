@@ -7,7 +7,7 @@ function Ship(planet) {
     this.destination;
     this.offset = planet.size / 2;
     this.capacity = settings.shipStartCapacity;
-    this.cargo = new Array();
+    this.items = new ItemStore();
     this.speed = settings.shipStartSpeed;
     this.isTraveling = false;
 	this.cash = settings.shipStartCash;
@@ -62,9 +62,8 @@ function Ship(planet) {
     this.cargoAmount = function() {
 
         var total = 0;
-        for(var i = 0; i < this.cargo.length; i++) {
-
-            total += this.cargo[i].mass * this.cargo[i].quantity;
+        for(var i in this.items) {
+            total += this.items[i].quantity;
         }
 
         return total;
