@@ -26,9 +26,6 @@ function Trade() {
 		c.stroke();
 		c.fill();
 		
-		//draw market inventory
-		
-		
 		//draw controls
 		for(var i in this.controls) {
 			if(this.controls[i].visible) {
@@ -55,60 +52,80 @@ function Trade() {
 			drawShape(this.dragItem.item.shape, this.dragItem.item.color, 10, mouse.x, mouse.y);
 			
 		}	
+		
+		//draw sale modal
+		if(this.saleview.visible)
+			this.saleview.draw(context);
 	
 	}
 	
+	this.processSale = function(sale) {
+	
+		if(!sale.cancel) {
+			
+			alert(sale.item.name + '\n' + sale.qty + '\n' + sale.price);
+		
+		}
+	}
+	
+	this.saleview = new SaleView(100, 100, 400, 300, this.processSale);
+	
 	this.event = function(e, type) {
 	
-		var mx = mouse.x - this.x;
-		var my = mouse.y - this.y;
+		if(this.saleview.visible) {
 		
-		if(type == 'mouseup') {
-	
-			if(this.isDraging) {
+			this.saleview.event(e, type);
 			
-				var text = 'trading ' + this.dragItem.item.name;
-				this.isDraging = false;
-				this.dragItem = null;				
-				alert(text);
-
-			}
+		} else {
 			
-			for(var i in this.controls) {
-				if(this.controls[i].hit(mouse.x, mouse.y)) {
-					var action = this.controls[i].action;
-					break;
-				}
-			}
-			
-			if(action != null)
-				action(this);
+			if(type == 'mouseup') {
 		
-			
-		} else if(type == 'mousedown') {
-			
-			for(var i in this.marketItems) {
-				if(this.marketItems[i].visible && this.marketItems[i].hit(mouse.x, mouse.y)) {
-					this.dragItem = this.marketItems[i];
-					break;
+				if(this.isDraging) {
+				
+					this.saleview.price = this.dragItem.item.basePrice;
+					this.saleview.qty = this.dragItem.item.quantity;
+					this.saleview.item = this.dragItem.item;			
+					this.isDraging = false;
+					this.dragItem = null;				
+					
+					this.saleview.show();
 				}
-			}
-			if(this.dragItem == null) {
-				for(var i in this.shipItems) {
-					if(this.shipItems[i].visible && this.shipItems[i].hit(mouse.x, mouse.y)) {
-						this.dragItem = this.shipItems[i];
+				
+				for(var i in this.controls) {
+					if(this.controls[i].hit(mouse.x, mouse.y)) {
+						var action = this.controls[i].action;
 						break;
 					}
 				}
-			}
+				
+				if(action != null)
+					action(this);
 			
-			if(this.dragItem != null)
-				this.isDraging = true;
+				
+			} else if(type == 'mousedown') {
+				
+				for(var i in this.marketItems) {
+					if(this.marketItems[i].visible && this.marketItems[i].hit(mouse.x, mouse.y)) {
+						this.dragItem = this.marketItems[i];
+						break;
+					}
+				}
+				if(this.dragItem == null) {
+					for(var i in this.shipItems) {
+						if(this.shipItems[i].visible && this.shipItems[i].hit(mouse.x, mouse.y)) {
+							this.dragItem = this.shipItems[i];
+							break;
+						}
+					}
+				}
+				
+				if(this.dragItem != null)
+					this.isDraging = true;
 
 
-		}
+			}
 		
-	
+		}
 	}
 	
 	this.show = function() {
