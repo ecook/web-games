@@ -65,17 +65,23 @@ function Trade(x, y, width, height) {
 		if(!sale.cancel) {
 			
 			if(sale.mode == 'buy') {
+			
 				ship.cash -= sale.price * sale.newQty;
 				var item = ship.planet.market.items.get(sale.item.name);
 				item.quantity -= sale.newQty;
 				item = ship.items.get(sale.item.name);
 				item.quantity += sale.newQty;
+				item.cost = sale.price;
+				this.loadShipItems();
+				
 			} else if(sale.mode == 'sell') {
+			
 				ship.cash += sale.price * sale.newQty;
 				var item = ship.planet.market.items.get(sale.item.name);
 				item.quantity += sale.newQty;
 				item = ship.items.get(sale.item.name);
 				item.quantity -= sale.newQty;
+				this.loadShipItems();
 			}			
 		
 		}
@@ -102,7 +108,7 @@ function Trade(x, y, width, height) {
 						this.saleview.mode = 'buy';
 						this.saleview.capacity = ship.capacity - ship.cargoAmount();
 						this.saleview.cash = ship.cash;
-						this.saleview.price = this.dragItem.item.basePrice;
+						this.saleview.price = this.dragItem.price;
 						this.saleview.qty = this.dragItem.item.quantity;
 						this.saleview.item = this.dragItem.item;			
 						this.isDraging = false;
@@ -116,7 +122,7 @@ function Trade(x, y, width, height) {
 						this.saleview.mode = 'sell';
 						this.saleview.capacity = ship.capacity - ship.cargoAmount();
 						this.saleview.cash = ship.planet.market.cash;
-						this.saleview.price = this.dragItem.item.basePrice;
+						this.saleview.price = ship.planet.market.price(this.dragItem.item.name);
 						this.saleview.qty = this.dragItem.item.quantity;
 						this.saleview.item = this.dragItem.item;			
 						this.isDraging = false;
@@ -178,24 +184,34 @@ function Trade(x, y, width, height) {
 		}
 		
 		//load market items
+		this.loadMarketItems();
+		
+		//load ship items
+		this.loadShipItems();
+	}
+	
+	this.loadMarketItems = function() {
 		this.marketItems = new Array();
 		var x = this.x + 400;
 		var y = this.y + 50;
 		for(var i in ship.planet.market.items.data) {
 			y+=30;
-			this.marketItems[i] = new InvItem(x, y, 150, 30, 'white', 'black', ship.planet.market.items.data[i], 'Arial', 14, null);
+			this.marketItems[i] = new InvItem(x, y, 150, 30, 'white', 'black', ship.planet.market.items.data[i], ship.planet.market.price(ship.planet.market.items.data[i].name), 'Arial', 14, null);
 			this.marketItems[i].visible = true;
 		}
-		
-		//load ship items
+	}
+	
+	this.loadShipItems = function() {
+	
 		this.shipItems = new Array();
 		x = this.x + 40;
 		y = this.y + 50;
 		for(var i in ship.items.data) {
 			y+=30;
-			this.shipItems[i] = new InvItem(x, y, 150, 30, 'white', 'black', ship.items.data[i], 'Arial', 14, null);
+			this.shipItems[i] = new InvItem(x, y, 150, 30, 'white', 'black', ship.items.data[i], ship.items.data[i].cost, 'Arial', 14, null);
 			this.shipItems[i].visible = true;
 		}	
+	
 	}
 	
 	this.hide = function() {

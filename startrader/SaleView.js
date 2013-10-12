@@ -134,10 +134,12 @@ function SaleView(x, y, width, height, callback) {
 	
 	this.all = function(o) {
 		o.newQty = o.qty;
+		o.validateSale();
 	}
 	
 	this.none = function(o) {
 		o.newQty = 0;
+		o.validateSale();
 	}
 	
 	this.onePlus = function(o) {
@@ -182,6 +184,10 @@ function SaleView(x, y, width, height, callback) {
 			this.newQty += change;
 		}
 		
+		this.validateSale();
+	}
+	
+	this.validateSale = function() {
 		this.message = '';
 		
 		if(this.mode == 'buy') {
@@ -207,6 +213,7 @@ function SaleView(x, y, width, height, callback) {
 				this.message = 'ship does not have enough stock';
 			}			
 		}
+	
 	}
 
 	//add controls

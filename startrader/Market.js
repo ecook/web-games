@@ -76,7 +76,7 @@ function Market(planet) {
 	
 	this.price = function(name) {
 		var item = this.items.get(name);
-		return item.basePrice + (item.basePrice * this.margin);
+		return parseInt(item.basePrice + (item.basePrice * this.margin) + (item.basePrice * this.priceMod));
 	}
 	
 	this.displayInventory = function() {

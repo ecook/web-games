@@ -103,13 +103,14 @@ function Label(x, y, width, height, foreColor, backColor, text, font, size, acti
 
 }
 
-function InvItem(x, y, width, height, foreColor, backColor, item, font, size, action) {
+function InvItem(x, y, width, height, foreColor, backColor, item, price, font, size, action) {
 
 	this.x = x;
 	this.y = y;
 	this.width = width;
 	this.height = height;
 	this.item = item;
+	this.price = price;
 	this.foreColor = foreColor;
 	this.backColor = backColor;
 	this.enabled = false;
@@ -127,7 +128,7 @@ function InvItem(x, y, width, height, foreColor, backColor, item, font, size, ac
 			// draw label text
 			context.fillStyle = this.foreColor;
 			context.font = this.px + 'px ' + this.font;
-			var text = this.item.quantity + '   $' + this.item.basePrice + ' == ' + this.item.name;
+			var text = this.item.quantity + '   $' + this.price + ' == ' + this.item.name;
 			context.fillText(text, this.x + this.margin, this.y + this.margin);
 		}
 	

@@ -90,7 +90,7 @@ function Ship(planet) {
         if(this.destination != null) {
             var d = distance(this.x, this.y, this.destination.x + this.destination.size / 2, this.destination.y + this.destination.size / 2);
             var t = parseInt(d) / parseInt(this.speed);
-            return t;
+            return parseInt(t);
         }
     }
 
