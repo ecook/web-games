@@ -1,16 +1,17 @@
-function Trade() {
+function Trade(x, y, width, height) {
 
 	this.visible = false;
-	this.x = 60;
-	this.y = 60;
-	this.width = 660;
-	this.height = 660;
+	this.x = x;
+	this.y = y;
+	this.width = width;
+	this.height = height;
 	this.fillStyle = "rgba(0, 0, 0, 0.9)";
 	this.controls = new Array();
 	this.marketItems;
 	this.shipItems;
 	this.isDraging = false;
 	this.dragItem = null;
+	this.dragStart = '';
 	
 	this.draw = function(c) {
 	
@@ -63,12 +64,12 @@ function Trade() {
 	
 		if(!sale.cancel) {
 			
-			alert(sale.item.name + '\n' + sale.qty + '\n' + sale.price);
+			alert(sale.mode + '\n' + sale.item.name + '\n' + sale.qty + '\n' + sale.price);
 		
 		}
 	}
 	
-	this.saleview = new SaleView(100, 100, 400, 300, this.processSale);
+	this.saleview = new SaleView(this.x + this.width / 2 - 210, this.y + this.height / 2 - 175, 420, 350, this.processSale);
 	
 	this.event = function(e, type) {
 	
@@ -82,13 +83,37 @@ function Trade() {
 		
 				if(this.isDraging) {
 				
-					this.saleview.price = this.dragItem.item.basePrice;
-					this.saleview.qty = this.dragItem.item.quantity;
-					this.saleview.item = this.dragItem.item;			
-					this.isDraging = false;
-					this.dragItem = null;				
+					if(this.dragStart == 'market' && mouse.x > this.x && mouse.x < this.x + (this.width / 2)) { 
 					
-					this.saleview.show();
+						// buy
+						this.saleview.mode = 'buy';
+						this.saleview.cargoSpace = ship.capacity;
+						this.saleview.cash = ship.cash;
+						this.saleview.price = this.dragItem.item.basePrice;
+						this.saleview.qty = this.dragItem.item.quantity;
+						this.saleview.item = this.dragItem.item;			
+						this.isDraging = false;
+						this.dragItem = null;				
+						
+						this.saleview.show();
+					} else if(this.dragStart == 'ship' && mouse.x < this.x + this.width && mouse.x > this.x + (this.width / 2)) {
+					
+						//sell
+						this.saleview.mode = 'sell';
+						this.saleview.cargoSpace = ship.capacity;
+						this.saleview.cash = ship.planet.market.cash;
+						this.saleview.price = this.dragItem.item.basePrice;
+						this.saleview.qty = this.dragItem.item.quantity;
+						this.saleview.item = this.dragItem.item;			
+						this.isDraging = false;
+						this.dragItem = null;				
+						
+						this.saleview.show();
+					} else {
+						this.isDraging = false;
+						this.dragItem = null;		
+						this.dragStart = '';
+					}
 				}
 				
 				for(var i in this.controls) {
@@ -107,6 +132,7 @@ function Trade() {
 				for(var i in this.marketItems) {
 					if(this.marketItems[i].visible && this.marketItems[i].hit(mouse.x, mouse.y)) {
 						this.dragItem = this.marketItems[i];
+						this.dragStart = 'market';
 						break;
 					}
 				}
@@ -114,13 +140,15 @@ function Trade() {
 					for(var i in this.shipItems) {
 						if(this.shipItems[i].visible && this.shipItems[i].hit(mouse.x, mouse.y)) {
 							this.dragItem = this.shipItems[i];
+							this.dragStart = 'ship';
 							break;
 						}
 					}
 				}
 				
-				if(this.dragItem != null)
+				if(this.dragItem != null) {
 					this.isDraging = true;
+				}	
 
 
 			}

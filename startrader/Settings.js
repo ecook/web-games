@@ -12,7 +12,7 @@ var settings = {
     shipStartSpeed: 10,
 
     //planets
-    planetCount: 30,
+    planetCount: 50,
     minStartPop: 10,
     maxStartPop: 100,
     basePopGrowthPerDay: .2,
@@ -32,7 +32,7 @@ var settings = {
 	marketStartMoney: 10000,
 	marketMargin: .3,
 	marketStatsColor: 'yellow',
-	marketStatsX: 600,
+	marketStatsX: 1130,
 	marketStatsY: 5,
 	marketStartStock: [10, 5, 1],
 

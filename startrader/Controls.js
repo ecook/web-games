@@ -94,7 +94,7 @@ function Label(x, y, width, height, foreColor, backColor, text, font, size, acti
 			context.strokeStyle = this.foreColor;
 			//context.fillStyle = this.backColor;
 			context.font = this.px + 'px ' + this.font;
-			context.fillText(this.text, this.x + this.margin, this.y + this.margin);
+			context.fillText(this.text, this.x, this.y);
 		}
 	
 	}
