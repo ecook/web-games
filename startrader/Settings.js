@@ -2,14 +2,15 @@ var settings = {
 
     //general
 	debug: true,
-    ticksPerDay: 60,
-    ticksPerMinute: 33,
+    ticksPerDayGalaxy: 30,
+	ticksPerDayPlanet: 300,
+    ticksPerSecond: 33,
     //mouseAdjustOffset: 10,
 
     //ship
 	shipStartCash: 500,
     shipStartCapacity: 25,
-    shipStartSpeed: 10,
+    shipStartSpeed: 30,
 
     //planets
     planetCount: 50,

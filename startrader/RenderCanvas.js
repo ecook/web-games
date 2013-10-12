@@ -3,10 +3,18 @@ var ticks = 0;
 function tick() {
 
     ticks++;
-    if(ticks > settings.ticksPerDay) {
-        days++;
-        ticks = 0;
-    }
+	if(drawingCanvas.mode == 'galaxy') {
+		if(ticks > settings.ticksPerDayGalaxy) {
+			days++;
+			ticks = 0;
+			ship.move();
+		}
+	} else if(drawingCanvas.mode == 'planet') {
+		if(ticks > settings.ticksPerDayPlanet) {
+			days++;
+			ticks = 0;
+		}
+	}
 
     //process planet ai
     for(var i = 0; i < galaxy.length; i++) {
@@ -42,7 +50,10 @@ function refreshUi(mode) {
 				btnTravel.move(ship.destination.x + ship.destination.size * 2, ship.destination.y + 25);
 				drawText(ship.destination.x + ship.destination.size * 2, ship.destination.y + ship.destination.size * 2, 'yellow', 'days to travel: ' + ship.daysToTravel());
 			}
-			btnTravel.visible = true;
+			if(!ship.isTraveling)
+				btnTravel.visible = true;
+			else
+				btnTravel.visible = false;
 
         } else {
 			btnTravel.visible = false;		

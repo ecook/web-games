@@ -1,4 +1,4 @@
-function Button(x, y, width, height, foreColor, backColor, text, font, size, action) {
+function Button(x, y, width, height, foreColor, backColor, text, margin, font, size, action) {
 
 	this.x = x;
 	this.y = y;
@@ -12,7 +12,7 @@ function Button(x, y, width, height, foreColor, backColor, text, font, size, act
 	this.pressed = false;
 	this.px = size;
 	this.font = font;
-	this.margin = this.px;
+	this.margin = margin;
 	this.action = action;
 	
 	this.draw = function(c) {
@@ -34,7 +34,7 @@ function Button(x, y, width, height, foreColor, backColor, text, font, size, act
 			// draw button text
 			context.fillStyle = this.foreColor;
 			context.font = this.px + 'px ' + this.font;
-			context.fillText(this.text, this.x + this.margin, this.y + this.margin);
+			context.fillText(this.text, this.x + this.margin, this.y + this.px);
 		}
 	
 	}
@@ -77,22 +77,9 @@ function Label(x, y, width, height, foreColor, backColor, text, font, size, acti
 	this.draw = function(c) {
 	
 		if(this.visible) {
-			// draw button
-			// context.strokeStyle = this.foreColor;
-			// context.fillStyle = this.backColor;
-			// context.beginPath();
-			// context.moveTo(this.x, this.y);
-			// context.lineTo(this.x + this.width, this.y);
-			// context.lineTo(this.x + this.width, this.y + this.height);
-			// context.lineTo(this.x, this.y + this.height);
-			// context.lineTo(this.x, this.y);
-			// context.closePath();
-			// context.stroke();
-			// context.fill();
 		
 			// draw label text
-			context.strokeStyle = this.foreColor;
-			//context.fillStyle = this.backColor;
+			context.fillStyle = this.foreColor;
 			context.font = this.px + 'px ' + this.font;
 			context.fillText(this.text, this.x, this.y);
 		}
@@ -136,24 +123,11 @@ function InvItem(x, y, width, height, foreColor, backColor, item, font, size, ac
 	this.draw = function(c) {
 	
 		if(this.visible) {
-			// draw button
-			// context.strokeStyle = this.foreColor;
-			// context.fillStyle = this.backColor;
-			// context.beginPath();
-			// context.moveTo(this.x, this.y);
-			// context.lineTo(this.x + this.width, this.y);
-			// context.lineTo(this.x + this.width, this.y + this.height);
-			// context.lineTo(this.x, this.y + this.height);
-			// context.lineTo(this.x, this.y);
-			// context.closePath();
-			// context.stroke();
-			// context.fill();
 		
 			// draw label text
-			context.strokeStyle = this.foreColor;
-			//context.fillStyle = this.backColor;
+			context.fillStyle = this.foreColor;
 			context.font = this.px + 'px ' + this.font;
-			var text = this.item.name + ' ' + this.item.quantity + ' ' + this.item.basePrice;
+			var text = this.item.quantity + '   $' + this.item.basePrice + ' == ' + this.item.name;
 			context.fillText(text, this.x + this.margin, this.y + this.margin);
 		}
 	

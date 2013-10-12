@@ -16,10 +16,10 @@ var days = 0;
 var Items;
 var modal = new Modal();
 var buttons = new Array();
-var btnLand = new Button(1200, 690, 60, 20, 'yellow', 'blue', 'Land', 'Arial', 12, land);
-var btnTakeOff = new Button(1200, 660, 60, 20, 'yellow', 'blue', 'TakeOff', 'Arial', 12, takeOff);
-var btnTravel = new Button(100, 100, 30, 20, 'yellow', 'blue', 'Go', 'Arial', 12, travel);
-var btnMarketBuy = new Button(600, 400, 70, 20, 'yellow', 'blue', 'Market', 'Arial', 14, marketBuy);
+var btnLand = new Button(1200, 690, 60, 20, 'yellow', 'blue', 'Land', 10, 'Arial', 12, land);
+var btnTakeOff = new Button(1200, 660, 60, 20, 'yellow', 'blue', 'TakeOff', 10, 'Arial', 12, takeOff);
+var btnTravel = new Button(100, 100, 30, 20, 'yellow', 'blue', 'Go', 10, 'Arial', 12, travel);
+var btnMarketBuy = new Button(600, 400, 70, 20, 'yellow', 'blue', 'Market', 10, 'Arial', 14, marketBuy);
 var viewTrade;
 
 $('document').ready( function() {
@@ -51,7 +51,7 @@ $('document').ready( function() {
 
         ship = new Ship(galaxy[0]);
 
-        setInterval(tick, settings.ticksPerMinute);
+        setInterval(tick, settings.ticksPerSecond);
     }
 
 });
@@ -83,4 +83,6 @@ function findPlanet(x, y) {
     }
     return null;
 }
+
+
 

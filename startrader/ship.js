@@ -24,7 +24,7 @@ function Ship(planet) {
         c.fill();
 
 		// draw the destination line
-        if(this.destination != null) {
+        if(this.destination != null && this.isTraveling == false) {
             c.strokeStyle = "white";
             c.beginPath();
             c.moveTo(this.x, this.y);
@@ -33,9 +33,12 @@ function Ship(planet) {
             c.stroke();
         }
 
+
+    }
+	
+	this.move = function() {
         if(this.isTraveling){
-            if(this.destination.x + this.destination.size > this.x && this.destination.x - this.destination.size < this.x
-                && this.destination.y + this.destination.size > this.y && this.destination.y - this.destination.size < this.y){
+            if(this.daysToTravel() < 1){
                 //ship has arrived
                 this.isTraveling = false;
                 this.planet = this.destination;
@@ -44,13 +47,26 @@ function Ship(planet) {
                 this.x = this.planet.x - this.offset;
                 this.y = this.planet.y - this.offset;
             } else {
+				var totalDistance = distance(this.x, this.y, this.destination.x, this.destination.y);
+				var travel = parseInt(totalDistance / (this.daysToTravel()));
+				
+				// var newX = parseInt((totalDistance / this.x) * travel);
+				// var newY = parseInt((totalDistance / this.y) * travel);			
+			
                 // still traveling
                 // calculate next x and y toward destination
-                this.x = this.destination.x;
-                this.y = this.destination.y;
+				if(this.destination.x > this.x)
+					this.x += travel;
+				else
+					this.x -= travel;
+					
+				if(this.destination.y > this.y)
+					this.y += travel;
+				else	
+					this.y -= travel;
             }
-        }
-    }
+        }	
+	}
 
     this.travel = function(){
         if(this.destination != null){
@@ -71,8 +87,8 @@ function Ship(planet) {
 
     this.daysToTravel = function() {
 
-        if(this.destination != null && this.planet != null) {
-            var d = distance(this.planet.x, this.planet.y, this.destination.x, this.destination.y);
+        if(this.destination != null) {
+            var d = distance(this.x, this.y, this.destination.x + this.destination.size / 2, this.destination.y + this.destination.size / 2);
             var t = parseInt(d) / parseInt(this.speed);
             return t;
         }

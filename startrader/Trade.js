@@ -5,7 +5,7 @@ function Trade(x, y, width, height) {
 	this.y = y;
 	this.width = width;
 	this.height = height;
-	this.fillStyle = "rgba(0, 0, 0, 0.9)";
+	this.fillStyle = "rgba(0, 0, 0, 0.8)";
 	this.controls = new Array();
 	this.marketItems;
 	this.shipItems;
@@ -81,7 +81,7 @@ function Trade(x, y, width, height) {
 		}
 	}
 	
-	this.saleview = new SaleView(this.x + this.width / 2 - 210, this.y + this.height / 2 - 175, 420, 350, this.processSale);
+	this.saleview = new SaleView(this.x + this.width / 2 - 210, this.y + this.height / 2 - 205, 420, 350, this.processSale);
 	
 	this.event = function(e, type) {
 	
@@ -214,7 +214,7 @@ function Trade(x, y, width, height) {
 	}
 	
 	// add controls
-	this.controls[0] = new Button(this.x + this.width - 70, this.y + this.height - 30, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'cancel', 'Arial', 12, this.cancel);
+	this.controls[0] = new Button(this.x + this.width - 70, this.y + this.height - 30, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'cancel', 10, 'Arial', 12, this.cancel);
 	this.controls[1] = new Label(this.x + 40, this.y + 50, 100, 20, 'yellow', 'black', 'Ship Inventory', 'Arial', 18, null);
 	this.controls[2] = new Label(this.x + 400, this.y + 50, 100, 20, 'yellow', 'black', 'Market Inventory', 'Arial', 18, null);
 	
