@@ -64,7 +64,19 @@ function Trade(x, y, width, height) {
 	
 		if(!sale.cancel) {
 			
-			alert(sale.mode + '\n' + sale.item.name + '\n' + sale.qty + '\n' + sale.price);
+			if(sale.mode == 'buy') {
+				ship.cash -= sale.price * sale.newQty;
+				var item = ship.planet.market.items.get(sale.item.name);
+				item.quantity -= sale.newQty;
+				item = ship.items.get(sale.item.name);
+				item.quantity += sale.newQty;
+			} else if(sale.mode == 'sell') {
+				ship.cash += sale.price * sale.newQty;
+				var item = ship.planet.market.items.get(sale.item.name);
+				item.quantity += sale.newQty;
+				item = ship.items.get(sale.item.name);
+				item.quantity -= sale.newQty;
+			}			
 		
 		}
 	}
@@ -86,8 +98,9 @@ function Trade(x, y, width, height) {
 					if(this.dragStart == 'market' && mouse.x > this.x && mouse.x < this.x + (this.width / 2)) { 
 					
 						// buy
+						this.saleview.clearValues();
 						this.saleview.mode = 'buy';
-						this.saleview.cargoSpace = ship.capacity;
+						this.saleview.capacity = ship.capacity - ship.cargoAmount();
 						this.saleview.cash = ship.cash;
 						this.saleview.price = this.dragItem.item.basePrice;
 						this.saleview.qty = this.dragItem.item.quantity;
@@ -99,8 +112,9 @@ function Trade(x, y, width, height) {
 					} else if(this.dragStart == 'ship' && mouse.x < this.x + this.width && mouse.x > this.x + (this.width / 2)) {
 					
 						//sell
+						this.saleview.clearValues();
 						this.saleview.mode = 'sell';
-						this.saleview.cargoSpace = ship.capacity;
+						this.saleview.capacity = ship.capacity - ship.cargoAmount();
 						this.saleview.cash = ship.planet.market.cash;
 						this.saleview.price = this.dragItem.item.basePrice;
 						this.saleview.qty = this.dragItem.item.quantity;

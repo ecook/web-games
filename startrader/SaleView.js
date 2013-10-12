@@ -33,7 +33,16 @@ function SaleView(x, y, width, height, callback) {
 	this.newQty = 0;
 	this.message = '';
 	
-	//this.setValues
+	this.clearValues = function() {
+		this.mode = '';
+		this.cash = 0;
+		this.capacity = 0;
+		this.item = null;
+		this.qty = 0;
+		this.price = 0;
+		this.newQty = 0;
+		this.message = '';
+	}
 
 	this.show = function() {
 		this.cancel = true;
@@ -173,10 +182,16 @@ function SaleView(x, y, width, height, callback) {
 			this.newQty += change;
 		}
 		
+		this.message = '';
+		
 		if(this.mode == 'buy') {
 			if(this.newQty > this.capacity) {
 				this.message = 'not enough cargo space on ship';
 			}
+			
+			if(this.newQty > this.qty) {
+				this.message = 'market does not have enough stock';
+			}	
 			
 			if((this.price * this.newQty) > this.cash) {
 				this.message = 'not enough cash for purchase';
@@ -186,6 +201,10 @@ function SaleView(x, y, width, height, callback) {
 			
 			if((this.price * this.newQty) > this.cash) {
 				this.message = 'market does not enough cash for sale';
+			}
+
+			if(this.newQty > this.qty) {
+				this.message = 'ship does not have enough stock';
 			}			
 		}
 	}

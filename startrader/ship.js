@@ -62,8 +62,8 @@ function Ship(planet) {
     this.cargoAmount = function() {
 
         var total = 0;
-        for(var i in this.items) {
-            total += this.items[i].quantity;
+        for(var i in this.items.data) {
+            total += this.items.data[i].quantity;
         }
 
         return total;
