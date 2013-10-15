@@ -47,23 +47,15 @@ function Ship(planet) {
                 this.x = this.planet.x - this.offset;
                 this.y = this.planet.y - this.offset;
             } else {
-				var totalDistance = distance(this.x, this.y, this.destination.x, this.destination.y);
-				var travel = parseInt(totalDistance / (this.daysToTravel()));
-				
-				// var newX = parseInt((totalDistance / this.x) * travel);
-				// var newY = parseInt((totalDistance / this.y) * travel);			
 			
-                // still traveling
-                // calculate next x and y toward destination
-				if(this.destination.x > this.x)
-					this.x += travel;
-				else
-					this.x -= travel;
-					
-				if(this.destination.y > this.y)
-					this.y += travel;
-				else	
-					this.y -= travel;
+				var totalDistance = distance(this.x, this.y, this.destination.x, this.destination.y);
+				var travel = totalDistance / (this.daysToTravel() * settings.ticksPerDayGalaxy);
+				
+				var r = travel / totalDistance; //segment ratio
+
+				this.x = r * this.destination.x + (1 - r) * this.x; //find point that divides the segment
+				this.y = r * this.destination.y + (1 - r) * this.y; //into the ratio (1-r):r				
+
             }
         }	
 	}

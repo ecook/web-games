@@ -7,8 +7,9 @@ function tick() {
 		if(ticks > settings.ticksPerDayGalaxy) {
 			days++;
 			ticks = 0;
-			ship.move();
+
 		}
+		ship.move();		
 	} else if(drawingCanvas.mode == 'planet') {
 		if(ticks > settings.ticksPerDayPlanet) {
 			days++;
@@ -60,7 +61,11 @@ function refreshUi(mode) {
 
         }
 		
-		btnLand.visible = true;
+		if(!ship.isTraveling) 
+			btnLand.visible = true;
+		else
+			btnLand.visible = false;
+			
 		btnTakeOff.visible = false;
 		btnMarketBuy.visible = false;
 		//btnMarketSell.visible = false;
