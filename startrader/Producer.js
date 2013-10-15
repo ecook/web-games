@@ -28,7 +28,7 @@ function Producer(planet, item, level) {
 				var startingCash = this.cash;
 				
 				//hire workers
-				var workersNeeded = this.item.workers;
+				var workersNeeded = parseInt(this.item.workers + (this.item.workers * this.efficiency));
 				if(this.workers < workersNeeded) {
 					this.workers += this.planet.hire(workersNeeded, this.level);
 				} else if(this.trend > settings.producerHireThreshold) {
@@ -119,7 +119,7 @@ function Producer(planet, item, level) {
     }
 	
 	this.calcNextProduction = function() {
-		this.nextProduction = days + this.item.days;
+		this.nextProduction = days + parseInt(this.item.days + (this.item.days * this.efficiency));
 	}
 
     this.draw = function(c, x, y, size) {

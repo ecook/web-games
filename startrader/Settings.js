@@ -28,6 +28,12 @@ var settings = {
 	planetStatsY: 60,
 	populationCashThreshold: 1000,
 	populationDecreasePerDay: 1,
+	atmoColorNone: '',
+	atmoColorMild: 'blue',
+	atmoColorSevere: 'white',
+	planetColorHot: '#8F2400',
+	planetColorTemperate: '#244700',
+	planetColorCold: '#94FFDB',
 	
 	//market
 	marketStartMoney: 10000,

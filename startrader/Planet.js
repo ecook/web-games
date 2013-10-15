@@ -20,6 +20,9 @@ function Planet(x, y) {
 
     this.draw = function(c)
     {
+		if(this.type.atmosphere) {
+			drawShape('circle', this.atmoColor(), this.size + 2, this.x, this.y);
+		}
 		drawShape('circle', this.color(), this.size, this.x, this.y);
 
         if(this.isDestination) {
@@ -35,7 +38,15 @@ function Planet(x, y) {
     this.drawDetails = function(c, drawingCanvas) {
 
         //planet background
-        c.strokeStyle = "white";
+		if(this.type.atmosphere) {
+			c.fillStyle = this.atmoColor();
+			c.beginPath();
+			c.arc(drawingCanvas.width/2, drawingCanvas.height, drawingCanvas.width/2 + 4,0,Math.PI,true);
+			c.closePath();
+			c.stroke();
+			c.fill();
+		}
+
         c.fillStyle = this.color();
         c.beginPath();
         c.arc(drawingCanvas.width/2, drawingCanvas.height, drawingCanvas.width/2,0,Math.PI,true);
@@ -74,8 +85,8 @@ function Planet(x, y) {
 		var statsX = settings.planetStatsX;
 		var statsY = settings.planetStatsY;
 		var statsSpacing = 20;
-		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'type: ' + this.type.type);
-		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'color: ' + this.type.color);
+		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'temperature: ' + this.type.temperature);
+		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'weather: ' + this.type.weather);
 		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'population: ' + this.population);
 		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'cash: ' + parseInt(this.cash));
 		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'available workers');
@@ -183,8 +194,26 @@ function Planet(x, y) {
     }
 
     this.color = function() {
-        return this.type.color;
+        switch(this.type.temperature) {
+			case 'hot':
+				return settings.planetColorHot;
+			case 'cold':
+				return settings.planetColorCold;
+			default:
+				return settings.planetColorTemperate;
+		}
     }
+	
+	this.atmoColor = function() {
+        switch(this.type.weather) {
+			case 'mild':
+				return settings.atmoColorMild;
+			case 'severe':
+				return settings.atmoColorSevere;
+			default:
+				return settings.atmoColorNone;
+		}
+	}
 	
 	this.removeWorkers = function(workersLeaving, level) {
 		if(workersLeaving > 0 && this.workers[level] > 0) {
@@ -206,33 +235,68 @@ Planet.prototype.GeneratePlanetType = function() {
 
     var rand = Math.random();
     var pt = {
-        type: '',
-        color: '',
-		terain: '',
+		atmosphere: '',
 		temperature: '',
 		weather: '',
-		hasEcosystem: ''
+		madeOf: {
+			water: '',		
+			ore: '',
+			preciousMetals: '',
+			crystal: '',
+			gases: '',
+			plants: '',
+			animals: ''
+		}
+    }
+	
+	//weather & atmosphere
+	if(rand > 0.66) {
+		pt.atmosphere = false;
+		pt.weather = 'none';
+	} else if(rand > 0.33) {
+		pt.atmosphere = true;
+		pt.weather = 'mild';
+	} else {
+		pt.atmosphere = true;
+		pt.weather = 'severe';
+	}		
+
+	//temperature
+	rand = Math.random();
+    if(rand < 0.33) {
+        pt.temperature = 'hot';
+    }else if(rand < 0.66) {
+        pt.temperature = 'temperate';
+    } else {
+        pt.temperature = 'cold';
     }
 
-
-    if(rand < 0.30) {
-        pt.type = 'agriculture';
-        pt.color = 'green';
-
-    }else if(rand < 0.60) {
-        pt.type = 'water';
-        pt.color = 'blue';
-
-    }else if(rand < 0.90) {
-        pt.type = 'mineral';
-        pt.color = '#663300';
-
-    }else {
-        pt.type = 'industrial';
-        pt.color = 'grey';
-
-    }
-
+	// water
+	rand = Math.random();
+	pt.madeOf.water = parseInt(rand * 100);
+	
+	var whatsLeft = 100 - pt.madeOf.water;
+	
+	//what its made of
+	pt.madeOf.ore = random(0, whatsLeft);
+	whatsLeft -= pt.madeOf.ore;
+	
+	pt.madeOf.gases = random(0, whatsLeft);
+	whatsLeft -= pt.madeOf.gases;
+	
+	if(pt.atmophere && pt.madeOf.water > 0) {
+		pt.madeOf.plants = random(0, whatsLeft);
+		whatsLeft -= pt.madeOf.plants;
+		
+		pt.madeOf.animals = random(0, whatsLeft);
+		whatsLeft -= pt.madeOf.animals;
+	}
+	
+	pt.madeOf.crystal = random(0, whatsLeft);
+	whatsLeft -= pt.madeOf.crystal;
+	
+	pt.madeOf.preciousMetals = whatsLeft;
+	
     return pt;
 }
 
