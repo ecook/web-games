@@ -94,6 +94,18 @@ function Planet(x, y) {
 			drawText(statsX + 20, statsY+=statsSpacing, settings.planetStatsColor, 'level ' + (parseInt(level) + 1) + ':      ' + this.workers[level]);
 		}
 		
+		//madeOf stats
+		statsX = settings.planetMadeOfStatsX;
+		statsY = settings.planetMadeOfStatsY;
+		statsSpacing = 20;
+		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'water: ' + this.type.madeOf.water);
+		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'ore: ' + this.type.madeOf.ore);
+		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'gases: ' + this.type.madeOf.gases);
+		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'crystals: ' + this.type.madeOf.crystals);
+		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'precious Metals: ' + this.type.madeOf.preciousMetals);	
+		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'plants: ' + this.type.madeOf.plants);
+		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'animals: ' + this.type.madeOf.animals);		
+		
     }
 
     this.ai = function()
@@ -242,7 +254,7 @@ Planet.prototype.GeneratePlanetType = function() {
 			water: '',		
 			ore: '',
 			preciousMetals: '',
-			crystal: '',
+			crystals: '',
 			gases: '',
 			plants: '',
 			animals: ''
@@ -284,7 +296,7 @@ Planet.prototype.GeneratePlanetType = function() {
 	pt.madeOf.gases = random(0, whatsLeft);
 	whatsLeft -= pt.madeOf.gases;
 	
-	if(pt.atmophere && pt.madeOf.water > 0) {
+	if(pt.atmosphere && pt.madeOf.water > 0) {
 		pt.madeOf.plants = random(0, whatsLeft);
 		whatsLeft -= pt.madeOf.plants;
 		
@@ -292,8 +304,8 @@ Planet.prototype.GeneratePlanetType = function() {
 		whatsLeft -= pt.madeOf.animals;
 	}
 	
-	pt.madeOf.crystal = random(0, whatsLeft);
-	whatsLeft -= pt.madeOf.crystal;
+	pt.madeOf.crystals = random(0, whatsLeft);
+	whatsLeft -= pt.madeOf.crystals;
 	
 	pt.madeOf.preciousMetals = whatsLeft;
 	

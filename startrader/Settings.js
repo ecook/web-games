@@ -34,6 +34,9 @@ var settings = {
 	planetColorHot: '#8F2400',
 	planetColorTemperate: '#244700',
 	planetColorCold: '#94FFDB',
+	planetMadeOfStatsX: 800,
+	planetMadeOfStatsY: 400,
+	planetMadeOfStatsColor: 'black',
 	
 	//market
 	marketStartMoney: 10000,
