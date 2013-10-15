@@ -70,6 +70,9 @@ function refreshUi(mode) {
 		btnMarketBuy.visible = false;
 		//btnMarketSell.visible = false;
 		
+		// display version
+		drawText(10, drawingCanvas.height - 20, 'yellow', 'version: 10-14-2013 9:15PM');
+		
     } else if(mode == 'planet') {
 		btnLand.visible = false;
 		btnTakeOff.visible = true;
