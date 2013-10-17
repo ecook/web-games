@@ -3,6 +3,8 @@ function Producer(planet, item, level) {
     this.planet = planet;
     this.item = item;
     this.efficiency = 0;
+	this.workersNeeded = 0;
+	this.daysRequired = 0;
     this.workers = 0;
     //this.stores = new ItemStore();
 	this.level = level;
@@ -28,16 +30,15 @@ function Producer(planet, item, level) {
 				var startingCash = this.cash;
 				
 				//hire workers
-				var workersNeeded = parseInt(this.item.workers + (this.item.workers * this.efficiency));
-				if(this.workers < workersNeeded) {
-					this.workers += this.planet.hire(workersNeeded, this.level);
+				if(this.workers < this.workersNeeded) {
+					this.workers += this.planet.hire(this.workersNeeded, this.level);
 				} else if(this.trend > settings.producerHireThreshold) {
 					this.trend = 0;
-					this.workers += this.planet.hire(workersNeeded, this.level);
+					this.workers += this.planet.hire(this.workersNeeded, this.level);
 				}
 				
 				// update inventory
-				var totalPossible = this.workers / workersNeeded;
+				var totalPossible = this.workers / this.workersNeeded;
 				if(this.cash > settings.purchaseInventoryCashTheshold) {
 					for(var s in this.item.dependentItems) {
 						if(this.item.dependentItems[s].uoh < this.item.dependentItems[s].qty * totalPossible) {
@@ -63,7 +64,7 @@ function Producer(planet, item, level) {
 				}
 							
 				//produce and sell product
-				var produced = this.workers / workersNeeded;
+				var produced = this.workers / this.workersNeeded;
 				if(produced <= totalPossible) {
 					this.item.result = this.planet.market.sell(this.item.name, produced, this.item.basePrice + (this.item.basePrice * this.margin));
 					if(this.item.result != undefined && this.item.result.success) {
@@ -97,17 +98,17 @@ function Producer(planet, item, level) {
 				}
 				
 				// check for need to layoff workers
-				if(this.workers > workersNeeded) {
+				if(this.workers > this.workersNeeded) {
 					if(this.trend < settings.producerLayoffThreshold) {
-						this.workers -= workersNeeded;
-						this.planet.layoff(workersNeeded, this.level);
+						this.workers -= this.workersNeeded;
+						this.planet.layoff(this.workersNeeded, this.level);
 					}
 				}				
 				
 				// check for closer
 				if(this.cash < 0) {
 					//layoff the last of the workers and close the plant
-					this.planet.layoff(workersNeeded, this.level);
+					this.planet.layoff(this.workersNeeded, this.level);
 					this.isOpen = false;
 				}
 			
@@ -119,7 +120,7 @@ function Producer(planet, item, level) {
     }
 	
 	this.calcNextProduction = function() {
-		this.nextProduction = days + parseInt(this.item.days + (this.item.days * this.efficiency));
+		this.nextProduction = days + parseInt(this.daysRequired);
 	}
 
     this.draw = function(c, x, y, size) {
@@ -223,6 +224,27 @@ function Producer(planet, item, level) {
 			return false;
 	
 	}
+	
+	this.setEfficiency = function() {
+	
+		var days = this.item.days - ((this.planet.madeOf(this.item.name) / 100) * this.item.days);
+		var workers = this.item.workers - ((this.planet.madeOf(this.item.name) / 100) * this.item.workers);
+		
+		if(this.planet.type.temperature != 'temperate') {
+			days += (settings.producerModExtremeTemperature * this.item.days);
+			workers += (settings.producerModExtremeTemperature * this.item.workers);
+		}
+		
+		if(this.planet.type.weather == 'severe') {
+			days += (settings.producerModSevereWeather * this.item.days);
+			workers += (settings.producerModSevereWeather * this.item.days);
+		}
+		
+		this.daysRequired = parseInt(days);
+		this.workersNeeded = parseInt(workers);
+	}
+	
+	this.setEfficiency();
 }
 
 

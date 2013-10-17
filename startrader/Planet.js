@@ -240,7 +240,20 @@ function Planet(x, y) {
 		return workersLeaving;
 	}
 
+}
 
+Planet.prototype.madeOf = function(itemName) {
+		
+	switch(itemName) {
+		case 'ore': return this.type.madeOf.ore;
+		case 'water': return this.type.madeOf.water;
+		case 'precious metals': return this.type.madeOf.preciousMetals;
+		case 'crystals': return this.type.madeOf.crystals;
+		case 'gases': return this.type.madeOf.gases;
+		case 'plants': return this.type.madeOf.plants;
+		case 'animals': return this.type.madeOf.animals;
+		default: return 0;
+	}
 }
 
 Planet.prototype.GeneratePlanetType = function() {

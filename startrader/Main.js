@@ -38,7 +38,7 @@ $('document').ready( function() {
         context = drawingCanvas.getContext('2d');
         //Canvas commands go here
 
-		viewTrade = new Trade(drawingCanvas.width / 2 - 330, drawingCanvas.height / 2 - 330, 660, 660);
+		viewTrade = new Trade(drawingCanvas.width / 2 - 330, drawingCanvas.height / 2 - 330, 660, 680);
 		
 		Items = new ItemStore();
 		

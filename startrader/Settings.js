@@ -59,6 +59,8 @@ var settings = {
 	producerStatsColor: 'white',
 	producerStatsX: 10,
 	producerStatsY: 230,
-	purchaseInventoryCashTheshold: 500
+	purchaseInventoryCashTheshold: 500,
+	producerModExtremeTemperature: 0.5,
+	producerModSevereWeather: 1.5 
 
 }

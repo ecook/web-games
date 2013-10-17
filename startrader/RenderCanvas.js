@@ -71,7 +71,7 @@ function refreshUi(mode) {
 		//btnMarketSell.visible = false;
 		
 		// display version
-		drawText(10, drawingCanvas.height - 20, 'yellow', 'version: 10-14-2013 9:15PM');
+		drawText(10, drawingCanvas.height - 20, 'yellow', 'version: 10-16-2013 8:00PM');
 		
     } else if(mode == 'planet') {
 		btnLand.visible = false;
