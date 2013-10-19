@@ -2,7 +2,7 @@ function Producer(planet, item, level) {
 
     this.planet = planet;
     this.item = item;
-    this.efficiency = 0;
+    //this.efficiency = 0;
 	this.workersNeeded = 0;
 	this.daysRequired = 0;
     this.workers = 0;
@@ -62,15 +62,21 @@ function Producer(planet, item, level) {
 					count = this.item.dependentItems[s].uoh / this.item.dependentItems[s].qty;
 					if(count < totalPossible) totalPossible = count;
 				}
+				
+				//remove from stock used inventory
+				for(var s in this.item.dependentItems) {
+					this.item.dependentItems[s].uoh -= this.item.dependentItems[s].qty * totalPossible;
+				}
 							
 				//produce and sell product
-				var produced = this.workers / this.workersNeeded;
-				if(produced <= totalPossible) {
-					this.item.result = this.planet.market.sell(this.item.name, produced, this.item.basePrice + (this.item.basePrice * this.margin));
-					if(this.item.result != undefined && this.item.result.success) {
-						this.cash += parseInt(this.item.result.totalPrice);
-					}
+				var produced = totalPossible;
+				this.item.quantity += produced;
+				this.item.result = this.planet.market.sell(this.item.name, produced, this.item.basePrice + (this.item.basePrice * this.margin));
+				if(this.item.result != undefined && this.item.result.success) {
+					this.cash += parseInt(this.item.result.totalPrice);
+					this.item.quantity -= this.item.result.qty;
 				}
+
 				
 				// pay workers
 				this.cash -= this.wage * this.workers;
@@ -136,10 +142,27 @@ function Producer(planet, item, level) {
 		
 		if(this.isOpen) {
 		
+			if(this.workers >= this.workersNeeded) {
+				//next production
+				var npHeight = this.height;
+				var npPixelsPerDay = parseInt(this.width / this.daysRequired);		
+				var npWidth = (this.daysRequired - (this.nextProduction - days)) * npPixelsPerDay;
+				c.fillStyle = settings.producerNextProductionColor;
+				c.beginPath();
+				c.moveTo(x, y);
+				c.lineTo(x + npWidth, y);
+				c.lineTo(x + npWidth, y + npHeight);
+				c.lineTo(x, y + npHeight);
+				c.lineTo(x, y);
+				c.closePath();
+				c.stroke();
+				c.fill();
+			}
+		
 			//workers
 			var j = x + 5;
 			var k = y + size - 3;
-			for(var i = 0; i < this.workers; i+=settings.workersPerIcon) {
+			for(var i = 0; i < this.workers; i+=this.workersRequired) {
 				drawShape('circle', 'white', 3, j, k);
 				j+=8;
 			}
@@ -187,7 +210,7 @@ function Producer(planet, item, level) {
 				drawText(statsX, statsY+=statsSpacing, statsColor, 'item: ' + this.item.name);
 				drawText(statsX, statsY+=statsSpacing, statsColor, 'last sales: ' + this.item.result.message);
 				drawText(statsX, statsY+=statsSpacing, statsColor, 'tech level: ' + this.level);
-				drawText(statsX, statsY+=statsSpacing, statsColor, 'efficiency: ' + this.efficiency);
+				drawText(statsX, statsY+=statsSpacing, statsColor, 'uoh: ' + this.item.quantity);
 				drawText(statsX, statsY+=statsSpacing, statsColor, 'workers: ' + this.workers);
 				drawText(statsX, statsY+=statsSpacing, statsColor, 'cash: ' + this.cash);
 				drawText(statsX, statsY+=statsSpacing, statsColor, 'wage: ' + this.wage);

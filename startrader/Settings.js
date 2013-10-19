@@ -1,6 +1,7 @@
 var settings = {
 
     //general
+	version: '10-19-2013 8:00AM',
 	debug: true,
     ticksPerDayGalaxy: 30,
 	ticksPerDayPlanet: 300,
@@ -17,7 +18,7 @@ var settings = {
     minStartPop: 10,
     maxStartPop: 100,
     basePopGrowthPerDay: .2,
-	planetStartCash: 10000,
+	planetStartCash: 50000,
 	planetLivingCost: 10,
 	planetSize: 10,
     minWagePerDay: 15,
@@ -31,9 +32,9 @@ var settings = {
 	atmoColorNone: '',
 	atmoColorMild: 'blue',
 	atmoColorSevere: 'white',
-	planetColorHot: '#8F2400',
+	planetColorHot: '#4A1919',
 	planetColorTemperate: '#244700',
-	planetColorCold: '#94FFDB',
+	planetColorCold: '#006699',
 	planetMadeOfStatsX: 800,
 	planetMadeOfStatsY: 400,
 	planetMadeOfStatsColor: 'black',
@@ -48,7 +49,7 @@ var settings = {
 
     //producers
     producerStartCash: 5000,
-	producerStartWage: 25,
+	producerStartWage: 50,
 	producerStartMargin: 0.3,
 	producerLevelOneMin: 2,
 	producerLevelOneMax: 6,
@@ -61,6 +62,7 @@ var settings = {
 	producerStatsY: 230,
 	purchaseInventoryCashTheshold: 500,
 	producerModExtremeTemperature: 0.5,
-	producerModSevereWeather: 1.5 
+	producerModSevereWeather: 1.5,
+	producerNextProductionColor: '#FF9999'
 
 }

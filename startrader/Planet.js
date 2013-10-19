@@ -1,5 +1,6 @@
 function Planet(x, y) {
 
+	this.name = this.newPlanetName();
     this.x = x;
     this.y = y;
     this.type = this.GeneratePlanetType();
@@ -85,6 +86,7 @@ function Planet(x, y) {
 		var statsX = settings.planetStatsX;
 		var statsY = settings.planetStatsY;
 		var statsSpacing = 20;
+		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'name: ' + this.name);
 		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'temperature: ' + this.type.temperature);
 		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'weather: ' + this.type.weather);
 		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'population: ' + this.population);
@@ -325,4 +327,95 @@ Planet.prototype.GeneratePlanetType = function() {
     return pt;
 }
 
+currentNameIndex = -1;
+currentNameSuffix = 0;
 
+Planet.prototype.newPlanetName = function() {
+	currentNameIndex++;
+	if(currentNameIndex > this.names.length -1) {
+		currentNameIndex = 0;
+		currentNameSuffix++;
+	}
+	if(currentNameSuffix > 0) {
+		return this.names[currentNameIndex] + ' ' + currentNameSuffix;
+	} else {
+		return this.names[currentNameIndex];
+	}
+}
+
+Planet.prototype.names = [
+		'Talitha',
+		'Alula',
+		'Ursa',
+		'Esther',
+		'Roxana',
+		'Vesper',
+		'Tana',
+		'Seren',
+		'Adara',
+		'Alya',
+		'Chara',
+		'Danica',
+		'Navi',
+		'Lyra',
+		'Vega',
+		'Makara',
+		'Zaniah',
+		'Zosma',
+		'Yvaine',
+		'Shaula',
+		'Phoebe',
+		'Diana',
+		'Selene',
+		'Deva',
+		'Neoma',
+		'Rhiannon',
+		'Lucine',
+		'Leda',
+		'Helene',
+		'Calypso',
+		'Cordelia',
+		'Ophelia',
+		'Bianca',
+		'Cressida',
+		'Juliet',
+		'Portia',
+		'Rosalind',
+		'Belinda',
+		'Miranda',
+		'Ariel',
+		'Thalassa',
+		'Despina',
+		'Larissa',
+		'Evanthe',
+		'Sunniva',
+		'Marisol',
+		'Soledad',
+		'Solina',
+		'Soleil',
+		'Aideen',
+		'Rabia',
+		'Mitra',
+		'Apollonia',
+		'Draco',
+		'Orpheus',
+		'Leo',
+		'Archer',
+		'Sagittarius',
+		'Callisto',
+		'Umbriel',
+		'Oberon',
+		'Prospero',
+		'Stephano',
+		'Kale',
+		'Apollo',
+		'Feivel',
+		'Faivish',
+		'Phoibus',
+		'Ravi',
+		'Galileo',
+		'Tycho',
+		'Johannes',
+		'Neil',
+		'Aldren	'
+	];

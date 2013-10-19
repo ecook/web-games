@@ -9,22 +9,33 @@ function ItemStore() {
     {level: 1, days: 3, workers: 1, basePrice: 210, mass: 10, quantity: 0, cost: 0, name: 'plants',			 color: 'green',   shape: 'circle', dependentItems: [] },
 	{level: 1, days: 1, workers: 1, basePrice: 1,   mass: 10, quantity: 0, cost: 0, name: 'water',			 color: 'blue',    shape: 'circle', dependentItems: [] },
 	
-    {level: 2, days: 3, workers: 5, basePrice: 200, mass: 10, quantity: 0, cost: 0, name: 'chemicals',  	 color: 'red',     shape: 'doubleCircle', dependentItems: [{name: 'gases', qty: 1, uoh: 0}, {name: 'plants', qty: 1, uoh: 0}] },	
-    {level: 2, days: 3, workers: 5, basePrice: 100, mass: 10, quantity: 0, cost: 0, name: 'electronics',     color: 'blue',    shape: 'doubleCircle', dependentItems: [{name: 'precious metals', qty: 1, uoh: 0}, {name: 'crystals', qty: 1, uoh: 0}] },
-    {level: 2, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'medicine',        color: 'red',     shape: 'doubleCircle', dependentItems: [{name: 'chemicals', qty: 1, uoh: 0}, {name: 'plants', qty: 1, uoh: 0}] },
+    {level: 2, days: 3, workers: 2, basePrice: 200, mass: 10, quantity: 0, cost: 0, name: 'chemicals',  	 color: 'red',     shape: 'doubleCircle', dependentItems: [{name: 'gases', qty: 1, uoh: 0}, {name: 'plants', qty: 1, uoh: 0}] },	
+    {level: 2, days: 3, workers: 2, basePrice: 100, mass: 10, quantity: 0, cost: 0, name: 'electronics',     color: 'blue',    shape: 'doubleCircle', dependentItems: [{name: 'precious metals', qty: 1, uoh: 0}, {name: 'crystals', qty: 1, uoh: 0}] },
+    {level: 2, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'medicine',        color: 'red',     shape: 'doubleCircle', dependentItems: [{name: 'chemicals', qty: 1, uoh: 0}, {name: 'plants', qty: 1, uoh: 0}] },
     {level: 2, days: 3, workers: 3, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'textiles',        color: 'green',   shape: 'doubleCircle', dependentItems: [{name: 'animals', qty: 1, uoh: 0}, {name: 'plants', qty: 1, uoh: 0}] },
-    {level: 2, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'foods', 			 color: '#663300', shape: 'doubleCircle', dependentItems: [{name: 'plants', qty: 1, uoh: 0}] },
-    {level: 2, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'explosives',      color: 'yellow',  shape: 'doubleCircle', dependentItems: [{name: 'ore', qty: 1, uoh: 0}, {name: 'chemicals', qty: 1, uoh: 0}] },
-    {level: 2, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'jewelry',         color: '#6600FF', shape: 'doubleCircle', dependentItems: [{name: 'precious metals', qty: 1, uoh: 0}, {name: 'crystals', qty: 1, uoh: 0}] },
-    {level: 2, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'refined metals',  color: 'grey',    shape: 'doubleCircle', dependentItems: [{name: 'ore', qty: 1, uoh: 0}] },
+    {level: 2, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'foods', 			 color: '#663300', shape: 'doubleCircle', dependentItems: [{name: 'plants', qty: 1, uoh: 0}] },
+    {level: 2, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'explosives',      color: 'yellow',  shape: 'doubleCircle', dependentItems: [{name: 'ore', qty: 1, uoh: 0}, {name: 'chemicals', qty: 1, uoh: 0}] },
+    {level: 2, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'jewelry',         color: '#6600FF', shape: 'doubleCircle', dependentItems: [{name: 'precious metals', qty: 1, uoh: 0}, {name: 'crystals', qty: 1, uoh: 0}] },
+    {level: 2, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'refined metals',  color: 'grey',    shape: 'doubleCircle', dependentItems: [{name: 'ore', qty: 1, uoh: 0}] },
 	
-    {level: 3, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'engines',         color: 'grey',    shape: 'triangle', dependentItems: [{name: 'refined metals', qty: 1, uoh: 0}, {name: 'electronics', qty: 1, uoh: 0}] },
-    {level: 3, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'arms',            color: 'red',     shape: 'triangle', dependentItems: [{name: 'refined metals', qty: 1, uoh: 0}, {name: 'explosives', qty: 1, uoh: 0}] },
-    {level: 3, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'sensors',         color: 'yellow',  shape: 'triangle', dependentItems: [{name: 'electronics', qty: 1, uoh: 0}, {name: 'precious metals', qty: 1, uoh: 0}] },
-    {level: 3, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'shields',         color: 'blue',    shape: 'triangle', dependentItems: [{name: 'electronics', qty: 1, uoh: 0}, {name: 'crystals', qty: 1, uoh: 0}] },
-    {level: 3, days: 3, workers: 5, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'missiles',        color: 'green',   shape: 'triangle', dependentItems: [{name: 'electronics', qty: 1, uoh: 0}, {name: 'explosives', qty: 1, uoh: 0}] }
+    {level: 3, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'engines',         color: 'grey',    shape: 'triangle', dependentItems: [{name: 'refined metals', qty: 1, uoh: 0}, {name: 'electronics', qty: 1, uoh: 0}] },
+    {level: 3, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'arms',            color: 'red',     shape: 'triangle', dependentItems: [{name: 'refined metals', qty: 1, uoh: 0}, {name: 'explosives', qty: 1, uoh: 0}] },
+    {level: 3, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'sensors',         color: 'yellow',  shape: 'triangle', dependentItems: [{name: 'electronics', qty: 1, uoh: 0}, {name: 'precious metals', qty: 1, uoh: 0}] },
+    {level: 3, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'shields',         color: 'blue',    shape: 'triangle', dependentItems: [{name: 'electronics', qty: 1, uoh: 0}, {name: 'crystals', qty: 1, uoh: 0}] },
+    {level: 3, days: 3, workers: 2, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'missiles',        color: 'green',   shape: 'triangle', dependentItems: [{name: 'electronics', qty: 1, uoh: 0}, {name: 'explosives', qty: 1, uoh: 0}] }
     ];
-
+	
+	this.calcBasePrice = function() {
+		var list = this.data;
+		for(var i in list) {
+			if(list[i].dependentItems.length > 0) {
+				for(var j in list[i].dependentItems) {
+					var item = this.get(list[i].dependentItems[j].name);
+					list[i].basePrice += item.basePrice * list[i].dependentItems[j].qty;
+				}
+			}
+		}
+	}
 
 	this.get = function(name) {
 		for(i in this.data){
@@ -32,6 +43,15 @@ function ItemStore() {
 				return this.data[i];
 			}
 		}
+	}
+	
+	this.getIndex = function(name) {
+		for(i in this.data){
+			if(this.data[i].name == name){
+				return i;
+			}
+		}	
+		return -1;
 	}
 	
 	this.getClone = function(name) {
@@ -69,6 +89,8 @@ function ItemStore() {
 		return shortList[num];
 
 	}
+	
+	this.calcBasePrice();
 }
 
 // function Item(planetType) {

@@ -4,7 +4,7 @@ function Market(planet) {
     this.items = new ItemStore();
     this.money = settings.marketStartMoney;
     this.priceMod = Math.random();
-	this.cash = 10000;
+	this.cash = settings.marketStartMoney;
 	this.margin = settings.marketMargin;
 	
 	for(var i in this.items.data) {
@@ -47,8 +47,9 @@ function Market(planet) {
 	
 		var result = new saleResult;
 		var item = this.items.get(name);
+		var index = this.items.getIndex(name);
 		
-		if(item.quantity <= 0) {
+		if(this.items.data[index].quantity <= 0) {
 			result.message = 'out of stock';
 			result.success = false;	
 		} else {
@@ -63,9 +64,9 @@ function Market(planet) {
 				} else {
 					result.message = 'agreed';
 					result.success = true;
-					result.qtyPurchaced = qty;
+					result.qty = qty;
 					result.totalPrice = qty * each;
-					item.quantity -= result.qtyPurchaced;
+					this.items.data[index].quantity -= result.qty;
 					this.cash += result.totalPrice;
 				}	
 			}
