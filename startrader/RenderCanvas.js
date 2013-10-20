@@ -45,9 +45,11 @@ function refreshUi(mode) {
         if(ship.destination != null) {
 			if(ship.destination.x > drawingCanvas.width - 120 || ship.destination.y > drawingCanvas.height - 55) {
 				// shift to upper right
+				drawText(ship.destination.x - ship.destination.size * 2 - 100, ship.destination.y - (ship.destination.size * 2) - 10, 'yellow', ship.destination.name);
 				btnTravel.move(ship.destination.x - ship.destination.size * 2 - 100, ship.destination.y - 15);
 				drawText(ship.destination.x - ship.destination.size * 2 - 100, ship.destination.y - ship.destination.size * 2, 'yellow', 'days to travel: ' + ship.daysToTravel());				
 			} else {	
+				drawText(ship.destination.x + ship.destination.size * 2, ship.destination.y + (ship.destination.size * 2) - 10, 'yellow', ship.destination.name);
 				btnTravel.move(ship.destination.x + ship.destination.size * 2, ship.destination.y + 25);
 				drawText(ship.destination.x + ship.destination.size * 2, ship.destination.y + ship.destination.size * 2, 'yellow', 'days to travel: ' + ship.daysToTravel());
 			}

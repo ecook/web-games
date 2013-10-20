@@ -71,7 +71,7 @@ function Producer(planet, item, level) {
 				//produce and sell product
 				var produced = totalPossible;
 				this.item.quantity += produced;
-				this.item.result = this.planet.market.sell(this.item.name, produced, this.item.basePrice + (this.item.basePrice * this.margin));
+				this.item.result = this.planet.market.sell(this.item.name, produced, this.item.basePrice + (this.item.basePrice * this.margin) + (this.wage * this.workers));
 				if(this.item.result != undefined && this.item.result.success) {
 					this.cash += parseInt(this.item.result.totalPrice);
 					this.item.quantity -= this.item.result.qty;
@@ -270,6 +270,22 @@ function Producer(planet, item, level) {
 	this.setEfficiency();
 }
 
+getTopThree = function(madeOf) {
+	var list = new Array();
+	list[0] = {value: madeOf.water, name: 'water'};
+	list[1] = {value: madeOf.ore, name: 'ore'};
+	list[2] = {value: madeOf.preciousMetals, name: 'precious metals'};
+	list[3] = {value: madeOf.crystals, name: 'crystals'};
+	list[4] = {value: madeOf.gases, name: 'gases'};
+	list[5] = {value: madeOf.plants, name: 'plants'};	
+	list[6] = {value: madeOf.animals, name: 'animals'};
+	
+	list.sort(function(a, b){
+		return b.value - a.value;
+	});
+	var results = [list[0].name,list[1].name,list[2].name];
+	return results;
+}
 
 GenerateProducers = function(planet) {
 
@@ -277,7 +293,14 @@ GenerateProducers = function(planet) {
 	var prevCount = 0;
 	var level2Count = 0;
 
-    for(var i = 0; i < random(settings.producerLevelOneMin, settings.producerLevelOneMax); i++) {
+	//add producers based on top 3 attributes
+	var topThree = getTopThree(planet.type.madeOf);
+	for(var itemName in topThree) {
+        prods[prevCount] = new Producer(planet, Items.getClone(topThree[itemName]), 1);
+		prevCount++;		
+	}
+	
+    for(var i = prevCount; i < random(settings.producerLevelOneMin, settings.producerLevelOneMax); i++) {
         prods[i] = new Producer(planet, Items.getClone(Items.pick(1)), 1);
 		prevCount++;
     }

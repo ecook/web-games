@@ -34,7 +34,7 @@ $('document').ready( function() {
 
     // Check the element is in the DOM and the browser supports canvas
     if(drawingCanvas != null && drawingCanvas.getContext) {
-        // Initaliase a 2-dimensional drawing context
+        // Initialise a 2-dimensional drawing context
         context = drawingCanvas.getContext('2d');
         //Canvas commands go here
 

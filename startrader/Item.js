@@ -1,13 +1,13 @@
 function ItemStore() {
 
     this.data = [
-    {level: 1, days: 3, workers: 2, basePrice: 100, mass: 10, quantity: 0, cost: 0, name: 'ore', 			 color: 'grey',    shape: 'circle', dependentItems: [] },
+    {level: 1, days: 2, workers: 2, basePrice: 150, mass: 10, quantity: 0, cost: 0, name: 'ore', 			 color: 'grey',    shape: 'circle', dependentItems: [] },
     {level: 1, days: 5, workers: 5, basePrice: 600, mass: 10, quantity: 0, cost: 0, name: 'precious metals', color: 'yellow',  shape: 'circle', dependentItems: [] },
     {level: 1, days: 4, workers: 3, basePrice: 250, mass: 10, quantity: 0, cost: 0, name: 'crystals', 		 color: 'red',     shape: 'circle', dependentItems: [] },
-    {level: 1, days: 3, workers: 2, basePrice: 210, mass: 10, quantity: 0, cost: 0, name: 'gases', 		 	 color: 'white',   shape: 'circle', dependentItems: [] },
+    {level: 1, days: 3, workers: 2, basePrice: 300, mass: 10, quantity: 0, cost: 0, name: 'gases', 		 	 color: 'white',   shape: 'circle', dependentItems: [] },
     {level: 1, days: 3, workers: 2, basePrice: 210, mass: 10, quantity: 0, cost: 0, name: 'animals', 		 color: '#663300', shape: 'circle', dependentItems: [] },
-    {level: 1, days: 3, workers: 1, basePrice: 210, mass: 10, quantity: 0, cost: 0, name: 'plants',			 color: 'green',   shape: 'circle', dependentItems: [] },
-	{level: 1, days: 1, workers: 1, basePrice: 1,   mass: 10, quantity: 0, cost: 0, name: 'water',			 color: 'blue',    shape: 'circle', dependentItems: [] },
+    {level: 1, days: 3, workers: 1, basePrice: 150, mass: 10, quantity: 0, cost: 0, name: 'plants',			 color: 'green',   shape: 'circle', dependentItems: [] },
+	{level: 1, days: 1, workers: 1, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'water',			 color: 'blue',    shape: 'circle', dependentItems: [] },
 	
     {level: 2, days: 3, workers: 2, basePrice: 200, mass: 10, quantity: 0, cost: 0, name: 'chemicals',  	 color: 'red',     shape: 'doubleCircle', dependentItems: [{name: 'gases', qty: 1, uoh: 0}, {name: 'plants', qty: 1, uoh: 0}] },	
     {level: 2, days: 3, workers: 2, basePrice: 100, mass: 10, quantity: 0, cost: 0, name: 'electronics',     color: 'blue',    shape: 'doubleCircle', dependentItems: [{name: 'precious metals', qty: 1, uoh: 0}, {name: 'crystals', qty: 1, uoh: 0}] },
