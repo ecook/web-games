@@ -48,24 +48,25 @@ function Market(planet) {
 		var result = new saleResult;
 		var item = this.items.get(name);
 		var index = this.items.getIndex(name);
+		var price = this.price(name);
 		
 		if(this.items.data[index].quantity <= 0) {
 			result.message = 'out of stock';
 			result.success = false;	
 		} else {
-			var each = item.basePrice + (item.basePrice * this.margin);
-			if(each > offer) {
+			if(price > offer) {
 				result.message = 'offer too low';
 				result.success = false;	
 			} else {
-				if(qty * each > offer) {
+				if(qty * price > offer) {
 					result.message = 'not enough money for quantity requested';
 					result.success = false;	
 				} else {
 					result.message = 'agreed';
 					result.success = true;
 					result.qty = qty;
-					result.totalPrice = qty * each;
+					result.totalPrice = qty * price;
+					this.items.data[index].cost = price / qty;
 					this.items.data[index].quantity -= result.qty;
 					this.cash += result.totalPrice;
 				}	
@@ -77,7 +78,11 @@ function Market(planet) {
 	
 	this.price = function(name) {
 		var item = this.items.get(name);
-		return parseInt(item.basePrice + (item.basePrice * this.margin) + (item.basePrice * this.priceMod));
+		if(item.cost > 0){
+			return parseInt(item.cost + (item.cost * this.margin));
+		}else{
+			return parseInt(item.basePrice + (item.basePrice * this.margin));
+		}
 	}
 	
 	this.displayInventory = function() {

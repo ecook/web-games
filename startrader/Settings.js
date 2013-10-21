@@ -1,7 +1,7 @@
 var settings = {
 
     //general
-	version: '10-19-2013 8:00AM',
+	version: '10-19-2013 4:00PM',
 	debug: true,
     ticksPerDayGalaxy: 30,
 	ticksPerDayPlanet: 300,
