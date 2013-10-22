@@ -13,6 +13,7 @@ initialize = function() {
 	
 	// initialize project objects
 	views.add( new SampleView('viewMain', 0, 0, canvas.width, canvas.height, null));
+	//views.add( new SampleView('viewMain', 110, 150, 300, 200, null));
 	
 	views.show('viewMain');
 	

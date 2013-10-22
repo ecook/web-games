@@ -1,4 +1,4 @@
-function Button(x, y, width, height, foreColor, backColor, text, margin, font, size, action) {
+function Button(parent, x, y, width, height, foreColor, backColor, text, margin, font, size, action) {
 
 	this.x = x;
 	this.y = y;
@@ -14,6 +14,7 @@ function Button(x, y, width, height, foreColor, backColor, text, margin, font, s
 	this.font = font;
 	this.margin = margin;
 	this.action = action;
+	this.parent = parent;
 	
 	this.draw = function(c) {
 	
@@ -57,7 +58,7 @@ function Button(x, y, width, height, foreColor, backColor, text, margin, font, s
 }
 
 
-function Label(x, y, width, height, foreColor, backColor, text, font, size, action) {
+function Label(parent, x, y, width, height, foreColor, backColor, text, font, size, action) {
 
 	this.x = x;
 	this.y = y;
@@ -73,6 +74,7 @@ function Label(x, y, width, height, foreColor, backColor, text, font, size, acti
 	this.font = font;
 	this.margin = this.px;
 	this.action = action;
+	this.parent = parent;
 	
 	this.draw = function(c) {
 	

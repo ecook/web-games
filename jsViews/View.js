@@ -1,22 +1,22 @@
-var View = function(name, x, y, width, height, action) {
+var View = function(name, x, y, width, height, backColor, action) {
 
 	this.name = name;
 	this.x = x;
 	this.y = y;
 	this.width = width;
 	this.height = height;
+	this.fillStyle = backColor;
 	this.action = action;
 	this.isVisible = false;
-	this.fillStyle = 'red';
 	this.isActive = false;
 	this.controls = new Array();
+	this.rulers = new Rulers(x, y, width, height);
 }
 
 View.prototype.draw = function(context) {
 
 	if(this.isVisible) {
 		// draw background
-		//context.strokeStyle = this.borderColor;
 		context.fillStyle = this.fillStyle;
 		context.beginPath();
 		context.moveTo(this.x, this.y);
@@ -27,6 +27,11 @@ View.prototype.draw = function(context) {
 		context.closePath();
 		context.stroke();
 		context.fill();
+		
+		//draw rulers
+		if(settings.debug) {
+			this.rulers.draw(context);
+		}
 	
 		//draw controls
 		for(var i in this.controls) {
@@ -46,7 +51,9 @@ View.prototype.eventHandler = function(event) {
 				case 'mouseup': {
 					for(var i in this.controls) {
 						if(this.controls[i].isHit(event.pageX, event.pageY)) {
-							this.controls[i].action(this);
+							if(this.controls[i].action != null) {
+								this.controls[i].action(this);
+							}
 							break;
 						}
 					}
@@ -56,11 +63,11 @@ View.prototype.eventHandler = function(event) {
 }
 
 View.prototype.show = function() {
-	this.isVisible = true;
-	this.isActive = true;
+	Object.getPrototypeOf(this).isVisible = true;
+	Object.getPrototypeOf(this).isActive = true;
 }
 
 View.prototype.hide = function() {
-	this.isVisible = false;
-	this.isActive = false;	
+	Object.getPrototypeOf(this).isVisible = false;
+	Object.getPrototypeOf(this).isActive = false;	
 }

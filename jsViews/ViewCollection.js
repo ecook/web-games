@@ -1,6 +1,5 @@
 ViewCollection = function() {
 
-	this.activeView = 0;
 	this.views = new Array();
 
 }
@@ -34,7 +33,6 @@ ViewCollection.prototype.show = function(name) {
 	for(var v in this.views) {
 		if(this.views[v].name == name) {
 			this.views[v].show();
-			this.activeView = v;
 			break;
 		}
 	}	

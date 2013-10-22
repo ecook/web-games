@@ -16,3 +16,7 @@ Object.setPrototypeOf = Object.setPrototypeOf || function (obj, proto) {
     obj.__proto__ = proto;
     return obj; 
 }
+
+Object.getPrototypeOf = Object.getPrototypeOf || function (obj) {
+	return obj.__proto__;
+}
