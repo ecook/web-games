@@ -1,4 +1,5 @@
 // globals
+var drawTools = new DrawTools();
 var views = new ViewCollection();
 var canvas = null;
 var context = null;
