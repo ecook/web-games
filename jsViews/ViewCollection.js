@@ -1,12 +1,16 @@
 ViewCollection = function() {
 
 	this.views = new Array();
+	this.modalMessage = new ViewMessage();
 
+	this.add(this.modalMessage);
 }
 
 ViewCollection.prototype.add = function(view) {
 
 	this.views[this.views.length] = view;
+	
+	this.views.sort(function(a,b){return b.drawOrder < a.drawOrder});
 
 }
 
@@ -36,4 +40,8 @@ ViewCollection.prototype.show = function(name) {
 			break;
 		}
 	}	
+}
+
+ViewCollection.prototype.showMessage = function(x, y, message) {
+	this.modalMessage.show(x, y, message);
 }
