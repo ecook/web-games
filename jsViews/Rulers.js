@@ -9,9 +9,9 @@ var Rulers = function(parent) {
 		for(var i in this.rulers) {
 			if(this.rulers[i].name == name) {
 				if(this.rulers[i].isVerticle) {
-					return this.rulers[i].value; //+ this.parent.x;
+					return this.rulers[i].value; // + this.parent.x;
 				} else {
-					return this.rulers[i].value; //+ this.parent.y;
+					return this.rulers[i].value; // + this.parent.y;
 				}
 				break;
 			}	

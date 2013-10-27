@@ -33,9 +33,9 @@ View = function(name, x, y, width, height, backColor, drawOrder, action) {
 	}
 	
 	this.mousemove = function(caller, event) {
-		if(this.isMoving) {
-			this.x = event.x;
-			this.y = event.y;
+		if(Object.getPrototypeOf(caller).isMoving) {
+			Object.getPrototypeOf(caller).x = event.x;
+			Object.getPrototypeOf(caller).y = event.y;
 		}
 	}
 	
@@ -71,7 +71,7 @@ View = function(name, x, y, width, height, backColor, drawOrder, action) {
 							this.mouseup(this, event);
 						}
 						for(var i in this.controls) {
-							if(this.controls[i].isHit(event.pageX, event.pageY)) {
+							if(this.controls[i].isHit(event.layerX, event.layerY)) {
 								if(this.controls[i].mouseup != null) {
 									this.controls[i].mouseup(this, event);
 								}
@@ -85,7 +85,7 @@ View = function(name, x, y, width, height, backColor, drawOrder, action) {
 							this.mousedown(this, event);
 						}					
 						for(var i in this.controls) {
-							if(this.controls[i].isHit(event.pageX, event.pageY)) {
+							if(this.controls[i].isHit(event.layerX, event.layerY)) {
 								if(this.controls[i].mousedown != null) {
 									this.controls[i].mousedown(this, event);
 								}
@@ -99,7 +99,7 @@ View = function(name, x, y, width, height, backColor, drawOrder, action) {
 							this.mousemove(this, event);
 						}
 						for(var i in this.controls) {
-							if(this.controls[i].isHit(event.pageX, event.pageY)) {
+							if(this.controls[i].isHit(event.layerX, event.layerY)) {
 								if(this.controls[i].mousemove != null) {
 									this.controls[i].mousemove(this, event);
 								}
@@ -113,7 +113,7 @@ View = function(name, x, y, width, height, backColor, drawOrder, action) {
 							this.keyup(this, event);
 						}
 						for(var i in this.controls) {
-							if(this.controls[i].isHit(event.pageX, event.pageY)) {
+							if(this.controls[i].isHit(event.layerX, event.layerY)) {
 								if(this.controls[i].keyup != null) {
 									this.controls[i].keyup(this, event);
 								}
@@ -127,7 +127,7 @@ View = function(name, x, y, width, height, backColor, drawOrder, action) {
 							this.keydown(this, event);
 						}					
 						for(var i in this.controls) {
-							if(this.controls[i].isHit(event.pageX, event.pageY)) {
+							if(this.controls[i].isHit(event.layerX, event.layerY)) {
 								if(this.controls[i].keydown != null) {
 									this.controls[i].keydown(this, event);
 								}

@@ -49,14 +49,17 @@ function Button(parent, x, y, width, height, foreColor, backColor, value) {
 	this.draw = function(c) {
 	
 		if(this.isVisible) {
+			var x1 = this.x + this.parent.x;
+			var y1 = this.y + this.parent.y;
+		
 			drawTools.context = c;
-			drawTools.recFill(this.x, this.y, this.width, this. height, this.backColor);
-			drawTools.recOutline(this.x, this.y, this.width, this. height, this.foreColor, 1);
+			drawTools.recFill(x1, y1, this.width, this. height, this.backColor);
+			drawTools.recOutline(x1, y1, this.width, this. height, this.foreColor, 1);
 		
 			// draw button text
 			context.fillStyle = this.foreColor;
 			context.font = this.px + 'px ' + this.font;
-			context.fillText(this.value, this.x, this.y + this.height);
+			context.fillText(this.value, x1, y1 + this.height);
 		}
 	
 	}
@@ -69,13 +72,15 @@ function Label(parent, x, y, width, height, foreColor, backColor, value) {
 	Object.setPrototypeOf(this, new Control(parent, x, y, width, height, foreColor, backColor, value));
 	
 	this.draw = function(c) {
+		var x1 = this.x + this.parent.x;
+		var y1 = this.y + this.parent.y;
 	
 		if(this.isVisible) {
 		
 			// draw label text
 			context.fillStyle = this.foreColor;
 			context.font = this.px + 'px ' + this.font;
-			context.fillText(this.value, this.x, this.y + this.height);
+			context.fillText(this.value, x1, y1 + this.height);
 		}
 	
 	}
