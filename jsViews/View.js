@@ -1,4 +1,4 @@
-var View = function(name, x, y, width, height, backColor, drawOrder, action) {
+View = function(name, x, y, width, height, backColor, drawOrder, action) {
 
 	this.name = name;
 	this.x = x;
@@ -13,11 +13,32 @@ var View = function(name, x, y, width, height, backColor, drawOrder, action) {
 	this.drawOrder = drawOrder;
 	this.controls = new Array();
 	this.rulers = new Rulers(this);
+	this.isMoving = false;
 	
-	this.dragButton = new Button(this, this.x + 0, this.y + 0, 20, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', '+', 10, 'Arial', 12);
+	this.mousemove;
+	this.mouseup;
+	this.mousedown;
+	this.keyup;
+	this.keydown;	
+	
+	this.dragButton = new Button(this, 0, 0, 20, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', '+');
 	this.addControl(this.dragButton); 
 
-
+	this.dragButton.mousedown = function(caller, event) {
+		Object.getPrototypeOf(caller).isMoving = true;
+	}
+	
+	this.dragButton.mouseup = function(caller, event) {
+		Object.getPrototypeOf(caller).isMoving = false;
+	}
+	
+	this.mousemove = function(caller, event) {
+		if(this.isMoving) {
+			this.x = event.x;
+			this.y = event.y;
+		}
+	}
+	
 	this.draw = function(context) {
 
 		if(this.isVisible) {
@@ -46,6 +67,9 @@ var View = function(name, x, y, width, height, backColor, drawOrder, action) {
 			if(this.isActive) {
 				switch(event.type) {
 					case 'mouseup': {
+						if(this.mouseup != null) {
+							this.mouseup(this, event);
+						}
 						for(var i in this.controls) {
 							if(this.controls[i].isHit(event.pageX, event.pageY)) {
 								if(this.controls[i].mouseup != null) {
@@ -57,6 +81,9 @@ var View = function(name, x, y, width, height, backColor, drawOrder, action) {
 						break;
 					}
 					case 'mousedown': {
+						if(this.mousedown != null) {
+							this.mousedown(this, event);
+						}					
 						for(var i in this.controls) {
 							if(this.controls[i].isHit(event.pageX, event.pageY)) {
 								if(this.controls[i].mousedown != null) {
@@ -65,8 +92,12 @@ var View = function(name, x, y, width, height, backColor, drawOrder, action) {
 								break;
 							}
 						}
+						break;
 					}
 					case 'mousemove': {
+						if(this.mousemove != null) {
+							this.mousemove(this, event);
+						}
 						for(var i in this.controls) {
 							if(this.controls[i].isHit(event.pageX, event.pageY)) {
 								if(this.controls[i].mousemove != null) {
@@ -78,6 +109,9 @@ var View = function(name, x, y, width, height, backColor, drawOrder, action) {
 						break;
 					}
 					case 'keyup': {
+						if(this.keyup != null) {
+							this.keyup(this, event);
+						}
 						for(var i in this.controls) {
 							if(this.controls[i].isHit(event.pageX, event.pageY)) {
 								if(this.controls[i].keyup != null) {
@@ -89,6 +123,9 @@ var View = function(name, x, y, width, height, backColor, drawOrder, action) {
 						break;
 					}
 					case 'keydown': {
+						if(this.keydown != null) {
+							this.keydown(this, event);
+						}					
 						for(var i in this.controls) {
 							if(this.controls[i].isHit(event.pageX, event.pageY)) {
 								if(this.controls[i].keydown != null) {

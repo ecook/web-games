@@ -13,7 +13,7 @@ initialize = function() {
 	context = canvas.getContext('2d');
 	
 	// initialize project objects
-	views.add( new SampleView('viewMain', 0, 0, canvas.width, canvas.height, 1, null));
+	views.add( new SampleView('viewMain', 100, 100, 800, 500, 'black', null));
 	//views.add( new SampleView('viewMain', 110, 150, 300, 200, null));
 	
 	views.show('viewMain');
@@ -45,7 +45,7 @@ tick = function() {
 	
 		//clear the canvas
 		context.fillStyle = settings.canvasBackColor;
-		context.fillRect(canvas.x, canvas.y, canvas.width, canvas.height);
+		context.fillRect(0, 0, canvas.width, canvas.height);
 		
 		// draw views
 		views.draw(context);

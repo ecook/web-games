@@ -6,7 +6,7 @@ var settings = {
     ticksPerSecond: 33,
 	ticksPerAi: 1,
     ticksPerFrame: 1,
-	canvasBackColor: '#000000'
+	canvasBackColor: '#A37A00'
 
 
 }

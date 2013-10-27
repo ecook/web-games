@@ -50,13 +50,13 @@ function Button(parent, x, y, width, height, foreColor, backColor, value) {
 	
 		if(this.isVisible) {
 			drawTools.context = c;
-			drawTools.recFill(parent.x + this.x, parent.y + this.y, this.width, this. height, this.backColor);
-			drawTools.recOutline(parent.x + this.x, parent.y + this.y, this.width, this. height, this.foreColor, 1);
+			drawTools.recFill(this.x, this.y, this.width, this. height, this.backColor);
+			drawTools.recOutline(this.x, this.y, this.width, this. height, this.foreColor, 1);
 		
 			// draw button text
 			context.fillStyle = this.foreColor;
 			context.font = this.px + 'px ' + this.font;
-			context.fillText(this.value, parent.x + this.x, parent.y + this.y + this.height);
+			context.fillText(this.value, this.x, this.y + this.height);
 		}
 	
 	}
@@ -75,7 +75,7 @@ function Label(parent, x, y, width, height, foreColor, backColor, value) {
 			// draw label text
 			context.fillStyle = this.foreColor;
 			context.font = this.px + 'px ' + this.font;
-			context.fillText(this.value, parent.x + this.x, parent.y + this.y + this.height);
+			context.fillText(this.value, this.x, this.y + this.height);
 		}
 	
 	}

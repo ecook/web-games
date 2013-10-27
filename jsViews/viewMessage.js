@@ -1,13 +1,14 @@
 var ViewMessage = function(){
 
-	Object.setPrototypeOf(this, new View('Message', 0, 0, 250, 100, 'grey', 99, null))
+	Object.setPrototypeOf(this, new View('Message', 800, 0, 250, 100, 'grey', 99, null))
 
 	this.borderColor = 'white';
+	this.message;
 	
-	this.rulers.add('x1', true, 10 + this.x);
-	this.rulers.add('y1', false, 25 + this.y);
+	this.rulers.add('x1', true, 10);
+	this.rulers.add('y1', false, 25);
 
-	this.button1 = new Button(this, this.x + 10, this.y + this.height - 30, 40, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'ok');
+	this.button1 = new Button(this, 10, this.height - 30, 40, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'ok');
 	this.label1 = new Label(this, this.rulers.get('x1'), this.rulers.get('y1'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', this.message);
 	
 	this.addControl(this.button1);
@@ -17,14 +18,18 @@ var ViewMessage = function(){
 	
 		if(this.isVisible) {
 			// call base draw method
-			Object.getPrototypeOf(this).draw(context);
+			var obj = Object.getPrototypeOf(this);
+			obj.width = context.measureText(this.message).width + 20;			
+			obj.draw(context);
 			
 			// draw border
 			drawTools.context = context;			
-			drawTools.recOutline(this.x, this.y, this.width, this.height, this.borderColor, 3);
+			drawTools.recOutline(obj.x, obj.y, obj.width, obj.height, this.borderColor, 3);
+			
+
+			this.label1.value = this.message;
 		}
 	}
-
 
 	this.button1.mouseup = function(caller, event) {
 		Object.getPrototypeOf(caller).hide();
@@ -34,11 +39,9 @@ var ViewMessage = function(){
 		var self = Object.getPrototypeOf(this);
 		self.x = x;
 		self.y = y;
-		self.message = message;
+		this.message = message;
 		self.isVisible = true;
 		self.isActive = true;
-		
-		//relative update of objects in view
 		
 	}
 		
