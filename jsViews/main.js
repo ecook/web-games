@@ -13,10 +13,10 @@ initialize = function() {
 	context = canvas.getContext('2d');
 	
 	// initialize project objects
-	views.add( new SampleView('viewMain', 100, 100, 800, 500, 'black', null));
+	views.add( new SampleView('viewMain', 800, 500, 'black', null));
 	//views.add( new SampleView('viewMain', 110, 150, 300, 200, null));
 	
-	views.show('viewMain');
+	views.show('viewMain', 100, 100);
 	
 	// start the main loop
 	interval = setInterval(tick, settings.ticksPerSecond);

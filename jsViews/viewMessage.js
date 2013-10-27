@@ -1,6 +1,6 @@
 var ViewMessage = function(){
 
-	Object.setPrototypeOf(this, new View('Message', 0, 0, 250, 100, 'grey', 99, null))
+	Object.setPrototypeOf(this, new View('Message', 250, 100, 'grey', 99, null))
 
 	this.borderColor = 'white';
 	this.message;

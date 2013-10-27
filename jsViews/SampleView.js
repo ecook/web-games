@@ -1,6 +1,6 @@
-var SampleView = function(name, x, y, width, height, backColor, action){
+var SampleView = function(name, width, height, backColor, action){
 
-	Object.setPrototypeOf(this, new View(name, x, y, width, height, backColor, action))
+	Object.setPrototypeOf(this, new View(name, width, height, backColor, action))
 
 	this.borderColor = 'white';
 	
@@ -48,6 +48,9 @@ var SampleView = function(name, x, y, width, height, backColor, action){
 	}
 	
 	this.mousemove = function(caller, event) {
+		var parent = Object.getPrototypeOf(caller);
+		parent.mousemove(caller, event);
+		
 		this.labelX.value = 'X: ' + event.x;
 		this.labelY.value = 'Y: ' + event.y;	
 	}

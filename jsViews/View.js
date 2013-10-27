@@ -1,8 +1,8 @@
-View = function(name, x, y, width, height, backColor, drawOrder, action) {
+View = function(name, width, height, backColor, drawOrder, action) {
 
 	this.name = name;
-	this.x = x;
-	this.y = y;
+	this.x = 0;
+	this.y = 0;
 	this.width = width;
 	this.height = height;
 	this.fillStyle = backColor;
@@ -14,6 +14,7 @@ View = function(name, x, y, width, height, backColor, drawOrder, action) {
 	this.controls = new Array();
 	this.rulers = new Rulers(this);
 	this.isMoving = false;
+	this.movingOffset = {x:0, y:0};
 	
 	this.mousemove;
 	this.mouseup;
@@ -26,16 +27,17 @@ View = function(name, x, y, width, height, backColor, drawOrder, action) {
 
 	this.dragButton.mousedown = function(caller, event) {
 		Object.getPrototypeOf(caller).isMoving = true;
+		this.movingOffset = {x:event.layerX - Object.getPrototypeOf(caller).x, y:event.layerY - Object.getPrototypeOf(caller).y}
 	}
 	
-	this.dragButton.mouseup = function(caller, event) {
+	this.mouseup = function(caller, event) {
 		Object.getPrototypeOf(caller).isMoving = false;
 	}
 	
 	this.mousemove = function(caller, event) {
-		if(Object.getPrototypeOf(caller).isMoving) {
-			Object.getPrototypeOf(caller).x = event.x;
-			Object.getPrototypeOf(caller).y = event.y;
+		if(caller.isMoving) {
+			Object.getPrototypeOf(caller).x = event.layerX - caller.movingOffset.x;
+			Object.getPrototypeOf(caller).y = event.layerY - caller.movingOffset.y;
 		}
 	}
 	
@@ -140,7 +142,9 @@ View = function(name, x, y, width, height, backColor, drawOrder, action) {
 			}
 	}
 
-	this.show = function() {
+	this.show = function(x, y) {
+		Object.getPrototypeOf(this).x = x;
+		Object.getPrototypeOf(this).y = y;
 		Object.getPrototypeOf(this).isVisible = true;
 		Object.getPrototypeOf(this).isActive = true;
 	}

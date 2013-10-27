@@ -33,10 +33,10 @@ ViewCollection.prototype.events = function(event) {
 	}	
 }
 
-ViewCollection.prototype.show = function(name) {
+ViewCollection.prototype.show = function(name, x, y) {
 	for(var v in this.views) {
 		if(this.views[v].name == name) {
-			this.views[v].show();
+			this.views[v].show(x, y);
 			break;
 		}
 	}	
