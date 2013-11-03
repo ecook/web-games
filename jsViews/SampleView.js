@@ -8,16 +8,22 @@ var SampleView = function(name, width, height, backColor, action){
 	this.rulers.add('y1', false, 100);
 	this.rulers.add('x2', true, 150);
 	this.rulers.add('y2', false, 150);
+	this.rulers.add('y3', false, 250);
+	this.rulers.add('x3', false, 170);
 	
 	this.button1 = new Button(this, this.rulers.get('x2'), this.rulers.get('y2'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'test');
 	this.label1 = new Label(this, this.rulers.get('x1'), this.rulers.get('y1'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'This is a label');
 	this.labelX = new Label(this, this.rulers.get('x1'), 0, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'X:');
 	this.labelY = new Label(this, this.rulers.get('x2'), 0, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'Y:');
+	this.testCheckbox1 = new Checkbox(this, this.rulers.get('x1'), this.rulers.get('y3'), 'white', 'yellow');
+	this.testTextbox = new TextBox(this, this.rulers.get('x3'), this.rulers.get('y3'), 200, 20, 'white', 'yellow', 'test text');
 	
 	this.addControl(this.button1);
 	this.addControl(this.label1);
 	this.addControl(this.labelX);
 	this.addControl(this.labelY);
+	this.addControl(this.testCheckbox1);
+	this.addControl(this.testTextbox);
 	
 	this.draw = function(context) {
 	

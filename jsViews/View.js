@@ -115,7 +115,7 @@ View = function(name, width, height, backColor, drawOrder, action) {
 							this.keyup(this, event);
 						}
 						for(var i in this.controls) {
-							if(this.controls[i].isHit(event.layerX, event.layerY)) {
+							if(this.controls[i].isActive) {
 								if(this.controls[i].keyup != null) {
 									this.controls[i].keyup(this, event);
 								}

@@ -11,6 +11,7 @@ initialize = function() {
 	// setup globals and views
 	canvas = document.getElementById('canvas1');
 	context = canvas.getContext('2d');
+	canvas.focus();
 	
 	// initialize project objects
 	views.add( new SampleView('viewMain', 800, 500, 'black', null));
@@ -60,8 +61,6 @@ fireEvent = function(event) {
 	views.events(event);
 	return false;
 }
-
-
 
 
 
