@@ -3,25 +3,40 @@
 <html>
   <head>
     <title>Star Trader</title>
-    <script type="text/javascript" src="jquery-1.7.2.js"></script>
     <script type="text/javascript" src="Settings.js"></script>
-	<script type="text/javascript" src="Controls.js"></script>
+	
+	<script type="text/javascript" src="../jsViews/DrawTools.js"></script>
+	<script type="text/javascript" src="../jsViews/Controls.js"></script>
+	<script type="text/javascript" src="../jsViews/Rulers.js"></script>
+	<script type="text/javascript" src="../jsViews/View.js"></script>
+	<script type="text/javascript" src="../jsViews/ViewMessage.js"></script>	
+	<script type="text/javascript" src="../jsViews/ViewCollection.js"></script>	
+	
     <script type="text/javascript" src="Item.js"></script>	
     <script type="text/javascript" src="Market.js"></script>	
     <script type="text/javascript" src="Producer.js"></script>
     <script type="text/javascript" src="Planet.js"></script>
     <script type="text/javascript" src="Ship.js"></script>
+	
 	<script type="text/javascript" src="SaleView.js"></script>		
 	<script type="text/javascript" src="Trade.js"></script>		
-    <script type="text/javascript" src="RenderCanvas.js"></script>
-    <script type="text/javascript" src="events.js"></script>	
+	
+	<script type="text/javascript" src="GalaxyView.js"></script>
+	
     <script type="text/javascript" src="Main.js"></script>
+    <script type="text/javascript" src="CustomShapes.js"></script>	
 
     <meta charset="UTF-8">
 
   </head>
-  <body>
-    <canvas id="myDrawing" width="1280" height="720" style="border: solid; border-color: Red; border-size: 2px;">This page requires an HTML5 compliant browser</canvas>
+  <body onload="initialize();">
+    <canvas id="canvas1" width="1280" height="720" tabindex=0
+		onmousemove="fireEvent(event);"
+		onmouseup="fireEvent(event);"
+		onmousedown="fireEvent(event);"
+		onkeyup="fireEvent(event);" >
+		This page requires an HTML5 compliant browser
+	</canvas>
   </body>
 </html>
 

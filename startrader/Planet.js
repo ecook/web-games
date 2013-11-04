@@ -22,9 +22,11 @@ function Planet(x, y) {
     this.draw = function(c)
     {
 		if(this.type.atmosphere) {
-			drawShape('circle', this.atmoColor(), this.size + 2, this.x, this.y);
+			//drawShape('circle', this.atmoColor(), this.size + 2, this.x, this.y);
+			drawTools.circle(this.x, this.y, this.size + 2, this.atmoColor(), null);
 		}
-		drawShape('circle', this.color(), this.size, this.x, this.y);
+		//drawShape('circle', this.color(), this.size, this.x, this.y);
+		drawTools.circle(this.x, this.y, this.size + 2, null, this.color());
 
         if(this.isDestination) {
             c.strokeStyle = "white";

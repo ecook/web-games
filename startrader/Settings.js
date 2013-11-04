@@ -1,12 +1,20 @@
 var settings = {
 
     //general
-	version: '10-19-2013 4:00PM',
-	debug: true,
-    ticksPerDayGalaxy: 30,
-	ticksPerDayPlanet: 300,
-    ticksPerSecond: 33,
+	// version: '10-19-2013 4:00PM',
+	// debug: true,
+    // ticksPerDayGalaxy: 30,
+	// ticksPerDayPlanet: 300,
+    // ticksPerSecond: 33,
     //mouseAdjustOffset: 10,
+	
+	//general
+	version: '11-2-2013 10:00PM',
+	debug: true,
+    ticksPerSecond: 33,
+	ticksPerAi: 1,
+    ticksPerFrame: 1,
+	canvasBackColor: '#A37A00',
 
     //ship
 	shipStartCash: 500,
@@ -65,4 +73,13 @@ var settings = {
 	producerModSevereWeather: 1.5,
 	producerNextProductionColor: '#FF9999'
 
+}
+
+Object.setPrototypeOf = Object.setPrototypeOf || function (obj, proto) {
+    obj.__proto__ = proto;
+    return obj; 
+}
+
+Object.getPrototypeOf = Object.getPrototypeOf || function (obj) {
+	return obj.__proto__;
 }
