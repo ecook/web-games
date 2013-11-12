@@ -30,11 +30,15 @@ function Control(parent, x, y, width, height, foreColor, backColor, value) {
 	this.isHit = function(x, y) {
 		// var x = x + parent.x;
 		// var y = y + parent.y;
-		if(x >= this.x + this.parent.x && x <= this.x + this.parent.x + this.width && y >= this.y + this.parent.y && y <= this.y + this.parent.y + this.height) {
-			return true;
+		if(this.isVisible && this.isEnabled) {
+			if(x >= this.x + this.parent.x && x <= this.x + this.parent.x + this.width && y >= this.y + this.parent.y && y <= this.y + this.parent.y + this.height) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
-		}
+		}	
 	}
 
 }

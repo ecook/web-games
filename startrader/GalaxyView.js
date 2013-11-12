@@ -41,15 +41,21 @@ var GalaxyView = function(name, width, height, backColor, action){
 			}	
 			
 			if(ship.destination != null) {
+				var lblX = 0;
+				var lblY = 0;
 				if(ship.destination.x > canvas.width - 120 || ship.destination.y > canvas.height - 55) {
-					// shift to upper right
-					this.lblDestination.move(ship.destination.x - ship.destination.size * 2 - 100, ship.destination.y - (ship.destination.size * 2) - 10);
-					this.btnTravel.move(ship.destination.x - ship.destination.size * 2 - 100, ship.destination.y - 15);
-					this.lblDestination.move(ship.destination.x - ship.destination.size * 2 - 100, ship.destination.y - ship.destination.size * 2);				
+					// shift to upper left
+					lblX = ship.destination.x - ship.destination.size * 2 - 100;
+					lblY = ship.destination.y - (ship.destination.size * 2);
+					this.lblDestination.move(lblX, slblY - 10);
+					this.btnTravel.move(lblX, lblY - 15);
+					this.lblDaysToTravel.move(lblX, lblY);				
 				} else {	
-					this.lblDestination.move(ship.destination.x + ship.destination.size * 2, ship.destination.y + (ship.destination.size * 2) - 10);
-					this.btnTravel.move(ship.destination.x + ship.destination.size * 2, ship.destination.y + 25);
-					this.lblDestination.move(ship.destination.x + ship.destination.size * 2, ship.destination.y + ship.destination.size * 2);	
+					lblX = ship.destination.x + ship.destination.size * 2;
+					lblY = ship.destination.y + (ship.destination.size * 2);
+					this.lblDestination.move(lblX, lblY - 10);
+					this.btnTravel.move(lblX, lblY + 25);
+					this.lblDaysToTravel.move(lblX, lblY);	
 				}
 				this.lblDestination.value = ship.destination.name;
 				this.lblDaysToTravel.value =  'days to travel: ' + ship.daysToTravel();
@@ -68,22 +74,21 @@ var GalaxyView = function(name, width, height, backColor, action){
 			else
 				this.btnLand.visible = false;
 		
-		
-			// drawTools.recOutline(this.x + 300, this.y + 200, 300, 200, 'red', 3);
-			// drawTools.recFill(this.x + 100, this.y + 50, 100, 50, 'green');	
-			// drawTools.circle(this.x + 30, this.y + 100, 25, 'white', 'blue');
-			// drawTools.circle(this.x + 425, this.y + 330, 50, 'green');
-			// drawTools.circle(this.x + 325, this.y + 375, 25, 'white', 'blue');
-			// drawTools.circle(this.x + 325, this.y + 475, 25, null, 'yellow');
-			
-			// draw the travel info
-			//drawTools.customShape('triangle', this.x + 400, this.y + 300, .25, 'red', 'yellow');
+			ship.draw(context);
 
 		}
 	}
 	
+	this.process = function() {
+		ship.move();
+	}
+	
 	this.btnLand.mouseup = function(caller, event) {
 		views.showMessage(500, 300, 'Land button clicked');
+	}
+	
+	this.btnTravel.mouseup = function(caller, event) {
+		ship.travel();
 	}
 	
 	this.mouseup = function(caller, event) {

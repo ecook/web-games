@@ -18,7 +18,9 @@ initialize = function() {
 	canvas.focus();
 	
 	// initialize project objects
-	views.add( new GalaxyView('viewGalaxy', canvas.width, canvas.height, 'black', null));
+	var viewGalaxy = new GalaxyView('viewGalaxy', canvas.width, canvas.height, 'black', null);
+	viewGalaxy.setDragable(false);
+	views.add( viewGalaxy );
 	//views.add( new SampleView('viewMain', 110, 150, 300, 200, null));
 	
 	views.show('viewGalaxy', 0, 0);

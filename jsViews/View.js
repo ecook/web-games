@@ -24,6 +24,12 @@ View = function(name, width, height, backColor, drawOrder, action) {
 	
 	this.dragButton = new Button(this, 0, 0, 20, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', '+');
 	this.addControl(this.dragButton); 
+	
+	this.setDragable = function(isDragable) {
+			this.dragable = isDragable;
+			this.dragButton.isVisible = isDragable;
+			this.dragButton.isEnabled = isDragable;	
+	}
 
 	this.dragButton.mousedown = function(caller, event) {
 		Object.getPrototypeOf(caller).isMoving = true;

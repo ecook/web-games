@@ -9,10 +9,10 @@ var settings = {
     //mouseAdjustOffset: 10,
 	
 	//general
-	version: '11-2-2013 10:00PM',
+	version: '11-11-2013 10:30PM',
 	debug: true,
     ticksPerSecond: 33,
-	ticksPerAi: 1,
+	ticksPerAi: 40,
     ticksPerFrame: 1,
 	canvasBackColor: '#A37A00',
 
