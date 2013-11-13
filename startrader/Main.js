@@ -21,7 +21,11 @@ initialize = function() {
 	var viewGalaxy = new GalaxyView('viewGalaxy', canvas.width, canvas.height, 'black', null);
 	viewGalaxy.setDragable(false);
 	views.add( viewGalaxy );
-	//views.add( new SampleView('viewMain', 110, 150, 300, 200, null));
+	
+	var viewPlanet = new PlanetView('viewPlanet', canvas.width, canvas.height, 'black', null);
+	viewPlanet.setDragable(false);
+	viewPlanet.hide();
+	views.add( viewPlanet );
 	
 	views.show('viewGalaxy', 0, 0);
 	

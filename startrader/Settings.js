@@ -1,19 +1,13 @@
 var settings = {
 
-    //general
-	// version: '10-19-2013 4:00PM',
-	// debug: true,
-    // ticksPerDayGalaxy: 30,
-	// ticksPerDayPlanet: 300,
-    // ticksPerSecond: 33,
-    //mouseAdjustOffset: 10,
-	
 	//general
-	version: '11-11-2013 10:30PM',
+	version: '11-12-2013 10:30PM',
 	debug: true,
     ticksPerSecond: 33,
-	ticksPerAi: 40,
+	ticksPerAi: 1,
     ticksPerFrame: 1,
+	ticksPerDayGalaxy: 30,
+	ticksPerDayPlanet: 300,
 	canvasBackColor: '#A37A00',
 
     //ship

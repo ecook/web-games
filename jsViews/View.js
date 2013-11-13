@@ -156,8 +156,10 @@ View = function(name, width, height, backColor, drawOrder, action) {
 	}
 
 	this.hide = function() {
-		this.isVisible = false;
-		this.isActive = false;	
+		// this.isVisible = false;
+		// this.isActive = false;	
+		Object.getPrototypeOf(this).isVisible = false;
+		Object.getPrototypeOf(this).isActive = false;
 	}
 
 }

@@ -1,8 +1,9 @@
-var GalaxyView = function(name, width, height, backColor, action){
+var PlanetView = function(name, width, height, backColor, action){
 
 	Object.setPrototypeOf(this, new View(name, width, height, backColor, action))
 
 	this.borderColor = 'white';
+	this.planet;
 	
 	this.rulers.add('x1', true, 10);
 	this.rulers.add('y1', false, height - 30);
@@ -35,58 +36,20 @@ var GalaxyView = function(name, width, height, backColor, action){
 			drawTools.context = context;			
 			drawTools.recOutline(this.x, this.y, this.width, this.height, this.borderColor, 2);
 			
-			// draw the planets
-			for(var i in galaxy) {
-				galaxy[i].draw(context);
-			}	
-			
-			if(ship.destination != null) {
-				var lblX = 0;
-				var lblY = 0;
-				if(ship.destination.x > canvas.width - 120 || ship.destination.y > canvas.height - 55) {
-					// shift to upper left
-					lblX = ship.destination.x - ship.destination.size * 2 - 100;
-					lblY = ship.destination.y - (ship.destination.size * 2);
-					this.lblDestination.move(lblX, slblY - 10);
-					this.btnTravel.move(lblX, lblY - 15);
-					this.lblDaysToTravel.move(lblX, lblY);				
-				} else {	
-					lblX = ship.destination.x + ship.destination.size * 2;
-					lblY = ship.destination.y + (ship.destination.size * 2);
-					this.lblDestination.move(lblX, lblY - 10);
-					this.btnTravel.move(lblX, lblY + 25);
-					this.lblDaysToTravel.move(lblX, lblY);	
-				}
-				this.lblDestination.value = ship.destination.name;
-				this.lblDaysToTravel.value =  'days to travel: ' + ship.daysToTravel();
-				
-				if(!ship.isTraveling)
-					this.btnTravel.visible = true;
-				else
-					this.btnTravel.visible = false;
-
-			} else {
-				this.btnTravel.visible = false;		
-			}
-			
-			if(!ship.isTraveling) 
-				this.btnLand.visible = true;
-			else
-				this.btnLand.visible = false;
-		
-			ship.draw(context);
+			// draw the planet
+			this.planet.drawDetails(context, canvas);
 
 		}
 	}
 	
 	this.process = function() {
-		ship.move();
+		if(this.planet != null) {
+			this.planet.ai();
+		}	
 	}
 	
 	this.btnLand.mouseup = function(caller, event) {
-		//views.showMessage(500, 300, 'Land button clicked');
-		views.show('viewPlanet', 0, 0);
-		caller.hide();
+		views.showMessage(500, 300, 'Land button clicked');
 	}
 	
 	this.btnTravel.mouseup = function(caller, event) {
@@ -109,6 +72,17 @@ var GalaxyView = function(name, width, height, backColor, action){
 		
 		this.lblX.value = 'X: ' + event.x;
 		this.lblY.value = 'Y: ' + event.y;	
+	}
+	
+	this.show = function(x, y) {
+		this.planet = ship.planet;
+		
+		var parent = Object.getPrototypeOf(this);
+		parent.show(x, y);
+		parent.x = x;
+		parent.y = y;
+		parent.isVisible = true;
+		parent.isActive = true;
 	}
 	
 }
