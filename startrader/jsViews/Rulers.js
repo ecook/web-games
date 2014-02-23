@@ -5,23 +5,18 @@ var Rulers = function(parent) {
 	this.lineColor = 'red';
 	
 	this.get = function(name) {
-
-		this.rulers.forEach(function (ruler) {
+        var value = 0;
+        this.rulers.forEach(function (ruler) {
             if (ruler.name == name) {
-                if (ruler.isVerticle) {
-                    return ruler.value; // + this.parent.x;
-                } else {
-                    return ruler.value; // + this.parent.y;
-                }
+                value = ruler.value; // + this.parent.x;
             }
-            return 0;
         });
-
+        return value;
 	}
 
 	this.add = function(name, isVerticle, value) {
 
-		this.rulers[this.rulers.length] = { name: name, isVerticle: isVerticle, value: value };
+		this.rulers[this.rulers.length] = new Ruler(name, isVerticle, value);
 
 	}
 	
@@ -31,15 +26,16 @@ var Rulers = function(parent) {
 		var y1 = this.parent.y;
 		var x2 = this.parent.x + this.parent.width;
 		var y2 = this.parent.y + this.parent.height;
+        var lineColor = this.lineColor;
 
 		this.rulers.forEach(function (ruler) {
-            if (ruler.isVerticle) {
-                //draw verticle line
-                drawTools.line(ruler.value + x1, y1, ruler.value + x1, y2, this.lineColor);
+            if (ruler.isVertical) {
+                //draw vertical line
+                drawTools.line(ruler.value + x1, y1, ruler.value + x1, y2, lineColor);
 
             } else {
                 //draw horizontal line
-                drawTools.line(x1, ruler.value + y1, x2, ruler.value + y1, this.lineColor);
+                drawTools.line(x1, ruler.value + y1, x2, ruler.value + y1, lineColor);
 
             }
         });
@@ -49,3 +45,8 @@ var Rulers = function(parent) {
 }
 
 
+var Ruler = function(name, isVertical, value) {
+    this.name = name;
+    this.isVertical = isVertical;
+    this.value = value;
+}

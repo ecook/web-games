@@ -14,12 +14,12 @@ function Control(parent, x, y, width, height, foreColor, backColor, value) {
 	
 	this.isEnabled = true;
 	this.isVisible = true;
-	
-	this.mousemove;
-	this.mouseup;
-	this.mousedown;
-	this.keyup;
-	this.keydown;	
+
+    this.mousemove = function (caller, event) {};
+    this.mouseup = function (caller, event) {};
+    this.mousedown = function (caller, event) {};
+    this.keyup = function (caller, event) {};
+    this.keydown = function (caller, event) {};
 	
 	this.move = function(x, y) {
 		this.x = x;
@@ -31,15 +31,19 @@ function Control(parent, x, y, width, height, foreColor, backColor, value) {
 		// var x = x + parent.x;
 		// var y = y + parent.y;
 		if(this.isVisible && this.isEnabled) {
-			if(x >= this.x + this.parent.x && x <= this.x + this.parent.x + this.width && y >= this.y + this.parent.y && y <= this.y + this.parent.y + this.height) {
-				return true;
-			} else {
-				return false;
-			}
+            return x >= this.x + this.parent.x && x <= this.x + this.parent.x + this.width && y >= this.y + this.parent.y && y <= this.y + this.parent.y + this.height;
 		} else {
 			return false;
 		}	
 	}
+
+    this.hide = function() {
+        this.isVisible = false;
+    }
+
+    this.show = function() {
+        this.isVisible = true;
+    }
 
 }
 

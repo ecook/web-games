@@ -19,38 +19,15 @@ function Planet(x, y) {
 		this.workers[i] = parseInt(this.population * settings.workerStartLevels[i]);
 	}
 
-    this.draw = function(drawTools)
-    {
-		if(this.type.atmosphere) {
-			//drawShape('circle', this.atmoColor(), this.size + 2, this.x, this.y);
-			drawTools.circle(this.x, this.y, this.size + 2, this.atmoColor(), null);
-		}
-		//drawShape('circle', this.color(), this.size, this.x, this.y);
-		drawTools.circle(this.x, this.y, this.size + 2, null, this.color());
-
-        if(this.isDestination) {
-            drawTools.circle(this.x, this.y, this.size + 5, "white", null);
-        }
-    }
-
-    this.drawDetails = function(c, drawingCanvas) {
+    this.drawDetails = function(drawTools) {
 
         //planet background
 		if(this.type.atmosphere) {
-			c.fillStyle = this.atmoColor();
-			c.beginPath();
-			c.arc(drawingCanvas.width/2, drawingCanvas.height, drawingCanvas.width/2 + 4,0,Math.PI,true);
-			c.closePath();
-			c.stroke();
-			c.fill();
+            drawTools.arc(drawTools.canvas.width/2, drawTools.canvas.height, drawTools.canvas.width/2 + 4,0,Math.PI, this.atmoColor());
 		}
 
-        c.fillStyle = this.color();
-        c.beginPath();
-        c.arc(drawingCanvas.width/2, drawingCanvas.height, drawingCanvas.width/2,0,Math.PI,true);
-        c.closePath();
-        c.stroke();
-        c.fill();
+        drawTools.arc(drawTools.canvas.width/2, drawTools.canvas.height, drawTools.canvas.width/2,0,Math.PI, this.color());
+
 		
 		// population
 		var x = 20;
@@ -64,8 +41,8 @@ function Planet(x, y) {
         this.market.draw(c);
 
         //producers
-		var x = new Array();
-		var y = new Array();
+		var x = [];
+		var y = [];
         x[0] = 50;
         y[0] = drawingCanvas.height - 75;
         x[1] = 75;

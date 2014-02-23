@@ -15,6 +15,7 @@ var DrawTools = function(canvas) {
             if (shape.name == name) {
                 found = true;
                 shape.points[shape.points.length] = { x: x, y: y};
+                return;
             }
         });
 
@@ -25,23 +26,25 @@ var DrawTools = function(canvas) {
 	}
 	
 	this.customShape = function(name, x, y, scale, lineColor, fillColor) {
+        var ctx = this.context;
 
         this.shapes.forEach(function(shape) {
 			if(shape.name == name) {
-				this.context.strokeStyle = lineColor;
-                this.context.beginPath();
-                this.context.moveTo(parseInt(shape.points[0].x * scale) + x, parseInt(shape.points[0].y * scale) + y);
+                ctx.strokeStyle = lineColor;
+                ctx.beginPath();
+                ctx.moveTo(parseInt(shape.points[0].x * scale) + x, parseInt(shape.points[0].y * scale) + y);
 				if(shape.points.length > 1) {
 					for(var p = 1; p < shape.points.length; p++) {
-                        this.context.lineTo(parseInt(shape.points[p].x * scale) + x, parseInt(shape.points[p].y * scale) + y);
+                        ctx.lineTo(parseInt(shape.points[p].x * scale) + x, parseInt(shape.points[p].y * scale) + y);
 					}
 				}
-                this.context.closePath();
-                this.context.stroke();
+                ctx.closePath();
+                ctx.stroke();
 				if(fillColor != null) {
-                    this.context.fillStyle = fillColor;
-                    this.context.fill();
+                    ctx.fillStyle = fillColor;
+                    ctx.fill();
 				}
+                return;
 			}
 		}		)
 	}
@@ -102,6 +105,15 @@ var DrawTools = function(canvas) {
 
     this.textWidth = function(text) {
         return this.context.measureText(text).width;
+    }
+
+    this.arc = function(x, y, radius, start, end, color) {
+        this.context.fillStyle = color;
+        this.context.beginPath();
+        this.context.arc(x, y, radius, start, end );
+        this.context.closePath();
+        this.context.stroke();
+        this.context.fill();
     }
 
     // checkbox control X

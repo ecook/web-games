@@ -14,25 +14,25 @@ var ViewMessage = function(){
 	this.addControl(this.button1);
 	this.addControl(this.label1);
 	
-	this.draw = function(context) {
+	this.draw = function(drawTools) {
 	
 		if(this.isVisible) {
 			this.label1.value = this.message;	
 		
 			// call base draw method
 			var obj = Object.getPrototypeOf(this);
-			obj.width = context.measureText(this.message).width + 20;			
-			obj.draw(context);
+			obj.width = drawTools.textWidth(this.message) + 20;
+			obj.draw(drawTools);
 			
 			// draw border
-			drawTools.context = context;			
 			drawTools.recOutline(obj.x, obj.y, obj.width, obj.height, this.borderColor, 3);
 			
 		}
 	}
 
 	this.button1.mouseup = function(caller, event) {
-		Object.getPrototypeOf(caller).hide();
+		//Object.getPrototypeOf(caller).hide();
+        caller.hide();
 	}
 	
 	this.show = function(x, y, message) {

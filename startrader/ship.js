@@ -12,17 +12,6 @@ function Ship(planet) {
     this.isTraveling = false;
 	this.cash = settings.shipStartCash;
 
-    this.draw = function(drawTools)
-    {
-        // draw the ship
-        drawTools.circle(this.x - this.offset, this.y - this.offset, this.size, "red", "white");
-
-		// draw the destination line
-        if(this.destination != null && this.isTraveling == false) {
-            drawTools.line(this.x, this.y, this.destination.x, this.destination.y, "white");
-        }
-
-    }
 	
 	this.move = function() {
         if(this.isTraveling){

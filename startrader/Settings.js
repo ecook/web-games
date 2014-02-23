@@ -1,7 +1,7 @@
 var settings = {
 
 	//general
-	version: '11-12-2013 10:30PM',
+	version: '2-22-2014 8:20PM',
 	debug: true,
     ticksPerSecond: 33,
 	ticksPerAi: 1,

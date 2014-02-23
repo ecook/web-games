@@ -40,6 +40,16 @@ ViewCollection = function(canvas) {
         this.views.forEach(function (view) {
             if (view.name == name) {
                 view.show(x, y);
+                return;
+            }
+        });
+    };
+
+    this.hide = function (name) {
+        this.views.forEach(function (view) {
+            if (view.name == name) {
+                view.hide();
+                return;
             }
         });
     };
