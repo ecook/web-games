@@ -4,7 +4,7 @@ function Planet(x, y) {
     this.x = x;
     this.y = y;
     this.type = this.GeneratePlanetType();
-	this.workers = new Array();
+	this.workers = [];
     this.size = settings.planetSize;
     this.isDestination = false;
     this.market = new Market(this);
@@ -19,7 +19,7 @@ function Planet(x, y) {
 		this.workers[i] = parseInt(this.population * settings.workerStartLevels[i]);
 	}
 
-    this.draw = function(c)
+    this.draw = function(drawTools)
     {
 		if(this.type.atmosphere) {
 			//drawShape('circle', this.atmoColor(), this.size + 2, this.x, this.y);
@@ -29,12 +29,7 @@ function Planet(x, y) {
 		drawTools.circle(this.x, this.y, this.size + 2, null, this.color());
 
         if(this.isDestination) {
-            c.strokeStyle = "white";
-            //c.fillStyle = this.color();
-            c.beginPath();
-            c.arc(this.x,this.y,this.size + 5,0,Math.PI*2,true);
-            c.closePath();
-            c.stroke();
+            drawTools.circle(this.x, this.y, this.size + 5, "white", null);
         }
     }
 

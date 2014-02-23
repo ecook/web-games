@@ -12,27 +12,15 @@ function Ship(planet) {
     this.isTraveling = false;
 	this.cash = settings.shipStartCash;
 
-    this.draw = function(c)
+    this.draw = function(drawTools)
     {
         // draw the ship
-        c.strokeStyle = "red";
-        c.fillStyle = "white";
-        c.beginPath();
-        c.arc(this.x - this.offset, this.y - this.offset,this.size,0,Math.PI*2,true);
-        c.closePath();
-        c.stroke();
-        c.fill();
+        drawTools.circle(this.x - this.offset, this.y - this.offset, this.size, "red", "white");
 
 		// draw the destination line
         if(this.destination != null && this.isTraveling == false) {
-            c.strokeStyle = "white";
-            c.beginPath();
-            c.moveTo(this.x, this.y);
-            c.lineTo(this.destination.x, this.destination.y);
-            c.closePath();
-            c.stroke();
+            drawTools.line(this.x, this.y, this.destination.x, this.destination.y, "white");
         }
-
 
     }
 	
@@ -70,9 +58,9 @@ function Ship(planet) {
     this.cargoAmount = function() {
 
         var total = 0;
-        for(var i in this.items.data) {
-            total += this.items.data[i].quantity;
-        }
+        this.items.data.forEach(function (item) {
+            total += item.quantity;
+        });
 
         return total;
     }

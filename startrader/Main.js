@@ -1,23 +1,25 @@
 // globals
-var drawTools = new DrawTools();
-var views = new ViewCollection();
-var canvas = null;
-var context = null;
+var views;
+//var canvas = null;
+//var context = null;
 var interval;  //use this reference to stop the interval
+
+// Global game objects
 var ship;
-var galaxy = new Array();
+var galaxy = [];
 var days = 0;
 var Items;
 
 // code starts here
 initialize = function() {
 
-	// setup globals and views
-	canvas = document.getElementById('canvas1');
-	context = canvas.getContext('2d');
+	// setup canvas
+	var canvas = document.getElementById('canvas1');
 	canvas.focus();
 	
-	// initialize project objects
+	// initialize Views
+    views = new ViewCollection(canvas);
+
 	var viewGalaxy = new GalaxyView('viewGalaxy', canvas.width, canvas.height, 'black', null);
 	viewGalaxy.setDragable(false);
 	views.add( viewGalaxy );
@@ -64,13 +66,9 @@ tick = function() {
 	// draw views
 	if(ticksPerFrame >= settings.ticksPerFrame) {
 		ticksPerFrame = 0;
-	
-		//clear the canvas
-		context.fillStyle = settings.canvasBackColor;
-		context.fillRect(0, 0, canvas.width, canvas.height);
 		
 		// draw views
-		views.draw(context);
+		views.draw();
 
 	} else {
 		ticksPerFrame++;

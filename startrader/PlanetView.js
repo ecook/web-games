@@ -9,7 +9,7 @@ var PlanetView = function(name, width, height, backColor, action){
 	this.rulers.add('y1', false, height - 30);
 	this.rulers.add('x2', true, width - 50);
 	
-	this.btnLand = new Button(this, this.rulers.get('x2'), this.rulers.get('y1'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'test');
+	this.btnLaunch = new Button(this, this.rulers.get('x2'), this.rulers.get('y1'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'Launch');
 	this.lblVersion = new Label(this, this.rulers.get('x1'), this.rulers.get('y1'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', settings.version);
 	this.lblX = new Label(this, this.rulers.get('x1'), 10, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'This is a label');
 	this.lblY = new Label(this, this.rulers.get('x1'), 40, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'This is a label');
@@ -17,7 +17,7 @@ var PlanetView = function(name, width, height, backColor, action){
 	this.lblDestination= new Label(this, 0, 10, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'This is a label');
 	this.lblDaysToTravel = new Label(this, 0, 40, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'This is a label');
 	
-	this.addControl(this.btnLand);
+	this.addControl(this.btnLaunch);
 	this.addControl(this.lblVersion);
 	this.addControl(this.lblX);
 	this.addControl(this.lblY);
@@ -39,6 +39,7 @@ var PlanetView = function(name, width, height, backColor, action){
 			// draw the planet
 			this.planet.drawDetails(context, canvas);
 
+            parent.drawControls(context);
 		}
 	}
 	
@@ -48,7 +49,7 @@ var PlanetView = function(name, width, height, backColor, action){
 		}	
 	}
 	
-	this.btnLand.mouseup = function(caller, event) {
+	this.btnLaunch.mouseup = function(caller, event) {
 		views.showMessage(500, 300, 'Land button clicked');
 	}
 	
