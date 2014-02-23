@@ -19,7 +19,7 @@ function Planet(x, y) {
 		this.workers[i] = parseInt(this.population * settings.workerStartLevels[i]);
 	}
 
-    this.drawDetails = function(drawTools) {
+/*    this.drawDetails = function(drawTools) {
 
         //planet background
 		if(this.type.atmosphere) {
@@ -82,7 +82,7 @@ function Planet(x, y) {
 		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'plants: ' + this.type.madeOf.plants);
 		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'animals: ' + this.type.madeOf.animals);		
 		
-    }
+    }*/
 
     this.ai = function()
     {
