@@ -9,9 +9,13 @@ var PlanetView = function(name, width, height, backColor, action){
 	this.rulers.add('y1', false, height - 30);
 	this.rulers.add('x2', true, width - 50);
 	
-	this.btnLaunch = new Button(this, this.rulers.get('x2'), this.rulers.get('y1'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'Launch');
+	this.btnLaunch = new Button(this, this.rulers.get('x2') -100, this.rulers.get('y1'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'Launch');
+    this.addControl(this.btnLaunch);
+
+//    this.producer1 = new Shape(this, x, y, width, height, foreColor, backColor, 'producer');
+//    this.addControl(this.producer1);
 	
-	this.addControl(this.btnLaunch);
+
 	
 	this.draw = function(drawTools) {
 	
@@ -25,14 +29,17 @@ var PlanetView = function(name, width, height, backColor, action){
 			
 			// draw the planet
             //planet background
-            if(this.type.atmosphere) {
-                drawTools.arc(drawTools.canvas.width/2, drawTools.canvas.height, drawTools.canvas.width/2 + 4,0,Math.PI, this.atmoColor());
+            if(this.planet.type.atmosphere) {
+                drawTools.arc(drawTools.canvas.width/2, drawTools.canvas.height, drawTools.canvas.width/2 + 4, 0, Math.PI, this.planet.atmoColor());
             }
 
-            drawTools.arc(drawTools.canvas.width/2, drawTools.canvas.height, drawTools.canvas.width/2,0,Math.PI, this.color());
+            drawTools.arc(drawTools.canvas.width/2, drawTools.canvas.height, drawTools.canvas.width/2, 0, Math.PI, this.planet.color());
 			//this.planet.drawDetails(drawTools);
 
             parent.drawControls(drawTools);
+
+            //draw producer details
+
 		}
 	}
 	
@@ -49,13 +56,11 @@ var PlanetView = function(name, width, height, backColor, action){
 	}
 	
 	this.show = function(x, y) {
-		this.planet = ship.planet;
-
 		var parent = Object.getPrototypeOf(this);
 		parent.show(x, y);
-		parent.x = x;
-		parent.y = y;
-		parent.isActive = true;
+
+        this.planet = ship.planet;
+        setTicksPerDay(settings.ticksPerDayPlanet);
 	}
 	
 }

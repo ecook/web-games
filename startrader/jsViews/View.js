@@ -26,10 +26,63 @@ View = function (name, width, height, backColor, drawOrder, action) {
     this.addControl(this.dragButton);
 
     this.setDragable = function (isDragable) {
-        this.isDragable = isDragable;
-        this.dragButton.isVisible = this.isDragable;
-        this.dragButton.isEnabled = this.isDragable;
+        if(this.hasOwnProperty('isDragable')) {
+            this.isDragable = isDragable;
+            this.dragButton.isVisible = this.isDragable;
+            this.dragButton.isEnabled = this.isDragable;
+        } else {
+            var parent = Object.getPrototypeOf(this);
+            if(parent.hasOwnProperty('isDragable')) {
+                parent.isDragable = isDragable;
+                parent.dragButton.isVisible = this.isDragable;
+                parent.dragButton.isEnabled = this.isDragable;
+            }
+        }
     };
+
+    this.setVisible = function (isVisible) {
+        if(this.hasOwnProperty('isVisible')) {
+            this.isVisible = isVisible;
+        } else {
+            var parent = Object.getPrototypeOf(this);
+            if(parent.hasOwnProperty('isVisible')) {
+                parent.isVisible = isVisible;
+            }
+        }
+    };
+
+    this.setActive = function(isActive) {
+        if(this.hasOwnProperty('isActive')) {
+            this.isActive = isActive;
+        } else {
+            var parent = Object.getPrototypeOf(this);
+            if(parent.hasOwnProperty('isActive')) {
+                parent.isActive = isActive;
+            }
+        }
+    }
+
+    this.setX = function(x) {
+        if(this.hasOwnProperty('x')) {
+            this.x = x;
+        } else {
+            var parent = Object.getPrototypeOf(this);
+            if(parent.hasOwnProperty('x')) {
+                parent.x = x;
+            }
+        }
+    }
+
+    this.setY = function(y) {
+        if(this.hasOwnProperty('y')) {
+            this.y = y;
+        } else {
+            var parent = Object.getPrototypeOf(this);
+            if(parent.hasOwnProperty('y')) {
+                parent.y = y;
+            }
+        }
+    }
 
     this.dragButton.mousedown = function (caller, event) {
         Object.getPrototypeOf(caller).isMoving = true;
@@ -157,17 +210,15 @@ View = function (name, width, height, backColor, drawOrder, action) {
     };
 
     this.show = function (x, y) {
-        Object.getPrototypeOf(this).x = x;
-        Object.getPrototypeOf(this).y = y;
-        Object.getPrototypeOf(this).isVisible = true;
-        Object.getPrototypeOf(this).isActive = true;
+        this.setX(x);
+        this.setY(y);
+        this.setVisible(true);
+        this.setActive(true);
     };
 
     this.hide = function () {
-        // this.isVisible = false;
-        // this.isActive = false;
-        Object.getPrototypeOf(this).isVisible = false;
-        Object.getPrototypeOf(this).isActive = false;
+        this.setVisible(false);
+        this.setActive(false);
     }
 
 };

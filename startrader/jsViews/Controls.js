@@ -197,3 +197,18 @@ function TextBox(parent, x, y, width, height, foreColor, backColor, value) {
 
 }
 
+function Shape(parent, x, y, width, height, foreColor, backColor, value)  {
+    Object.setPrototypeOf(this, new Control(parent, x, y, width, height, foreColor, backColor, value));
+
+    this.draw = function(drawTools) {
+        var x1 = this.x + this.parent.x;
+        var y1 = this.y + this.parent.y;
+
+        if(this.isVisible) {
+
+            drawTools.customShape(this.value, x1, y1, this.scale, this.foreColor, this.backColor);
+        }
+
+    }
+}
+

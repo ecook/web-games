@@ -1,14 +1,17 @@
 // globals
 var views;
-//var canvas = null;
-//var context = null;
 var interval;  //use this reference to stop the interval
 
 // Global game objects
 var ship;
 var galaxy = [];
-var days = 0;
 var Items;
+
+var ticksPerAi = 0;
+var ticksPerFrame = 0;
+var ticksPerDay = 0;
+var days = 0;
+var ticksPerDayTotal = 0;
 
 // code starts here
 initialize = function() {
@@ -47,12 +50,11 @@ initialize = function() {
 
 }
 
-var ticksPerAi = 0;
-var ticksPerFrame = 0;
+
 // main tick loop
 tick = function() {
 
-	// project logic or ai
+	// process ai
 	if(ticksPerAi >= settings.ticksPerAi) {
 		ticksPerAi = 0;
 
@@ -62,6 +64,14 @@ tick = function() {
 	} else {
 		ticksPerAi++;
 	}
+
+    // day counter
+    if(ticksPerDay >= ticksPerDayTotal) {
+        ticksPerDay = 0;
+        days++;
+    } else {
+        ticksPerDay++;
+    }
 	
 	// draw views
 	if(ticksPerFrame >= settings.ticksPerFrame) {
@@ -74,6 +84,10 @@ tick = function() {
 		ticksPerFrame++;
 	}
 
+}
+
+setTicksPerDay = function(ticks) {
+    ticksPerDayTotal = ticks;
 }
 
 fireEvent = function(event) {

@@ -16,12 +16,11 @@ ViewCollection = function(canvas) {
 
     this.draw = function() {
         //clear the canvas
-        var dt = this.drawTools;
         this.drawTools.ClearCanvas();
 
         this.views.forEach(function (view) {
-            view.draw(dt);
-        });
+            view.draw(this.drawTools);
+        }, this);
     };
 
     this.process = function() {
@@ -37,21 +36,21 @@ ViewCollection = function(canvas) {
     };
 
     this.show = function (name, x, y) {
-        this.views.forEach(function (view) {
-            if (view.name == name) {
-                view.show(x, y);
-                return;
+        for(var i in this.views) {
+            if(this.views[i].name == name) {
+                this.views[i].show(x, y);
+                break;
             }
-        });
+        }
     };
 
     this.hide = function (name) {
-        this.views.forEach(function (view) {
-            if (view.name == name) {
-                view.hide();
-                return;
+        for(var i in this.views) {
+            if(this.views[i].name == name) {
+                this.views[i].hide();
+                break;
             }
-        });
+        }
     };
 
     this.showMessage = function(x, y, message) {

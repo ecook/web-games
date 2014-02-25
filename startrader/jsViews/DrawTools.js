@@ -11,13 +11,13 @@ var DrawTools = function(canvas) {
 
 	this.addShapePoint = function(name, x, y) {
 		var found = false;
-		this.shapes.forEach(function(shape){
-            if (shape.name == name) {
+        for(var i in this.shapes) {
+            if(this.shapes[i].name == name) {
                 found = true;
-                shape.points[shape.points.length] = { x: x, y: y};
-                return;
+                this.shapes[i].points[this.shapes[i].points.length] = { x: x, y: y};
+                break;
             }
-        });
+        }
 
 		if(!found) {
 			//create new shape

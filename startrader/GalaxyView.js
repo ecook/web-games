@@ -8,10 +8,13 @@ var GalaxyView = function (name, width, height, backColor, action) {
     this.rulers.add('x1', true, 10);
     this.rulers.add('y1', false, height - 30);
     this.rulers.add('x2', true, width - 50);
+    this.rulers.add('x3', true, width - 100);
+    this.rulers.add('y2', false, 30);
 
     // add controls
     this.btnLand = new Button(this, this.rulers.get('x2'), this.rulers.get('y1'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'Land');
     this.lblVersion = new Label(this, this.rulers.get('x1'), this.rulers.get('y1'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', settings.version);
+    this.lblDays = new Label(this, this.rulers.get('x3'), this.rulers.get('y2'), 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', 'days: ');
     this.lblX = new Label(this, this.rulers.get('x1'), 10, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', '');
     this.lblY = new Label(this, this.rulers.get('x1'), 40, 60, 20, 'yellow', 'rgba(0, 0, 255, 0.7)', '');
     this.btnTravel = new Button(this, 0, 0, 40, 20, 'yellow', 'blue', 'Go');
@@ -20,6 +23,7 @@ var GalaxyView = function (name, width, height, backColor, action) {
 
     this.addControl(this.btnLand);
     this.addControl(this.lblVersion);
+    this.addControl(this.lblDays);
     this.addControl(this.lblX);
     this.addControl(this.lblY);
     this.addControl(this.btnTravel);
@@ -88,7 +92,6 @@ var GalaxyView = function (name, width, height, backColor, action) {
                 this.btnLand.show();
             }
 
-            // draw ship
             // draw the ship
             drawTools.circle(ship.x - ship.offset, ship.y - ship.offset, ship.size, "red", "white");
 
@@ -96,6 +99,8 @@ var GalaxyView = function (name, width, height, backColor, action) {
             if(ship.destination != null && ship.isTraveling == false) {
                 drawTools.line(ship.x, ship.y, ship.destination.x, ship.destination.y, "white");
             }
+
+            this.lblDays.value = 'days: ' + days;
 
             this.drawControls(drawTools);
         }
@@ -132,6 +137,13 @@ var GalaxyView = function (name, width, height, backColor, action) {
 
         this.lblX.value = 'X: ' + event.x;
         this.lblY.value = 'Y: ' + event.y;
+    }
+
+    this.show = function(x, y) {
+        var parent = Object.getPrototypeOf(this);
+        parent.show(x, y);
+
+        setTicksPerDay(settings.ticksPerDayGalaxy);
     }
 
 };
