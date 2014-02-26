@@ -129,7 +129,7 @@ function Producer(planet, item, level) {
 		this.nextProduction = days + parseInt(this.daysRequired);
 	}
 
-    this.draw = function(c, x, y, size) {
+/*    this.draw = function(c, x, y, size) {
 	
 		// cache hit box
 		this.x = x;
@@ -238,7 +238,7 @@ function Producer(planet, item, level) {
 			// draw closed
 			drawShape('rectangleX', 'red', size, x, y);		
 		}
-    }
+    }*/
 	
 	this.hit = function(x, y) {
 		if(x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height) 

@@ -107,10 +107,10 @@ var DrawTools = function(canvas) {
         return this.context.measureText(text).width;
     }
 
-    this.arc = function(x, y, radius, start, end, color) {
+    this.halfCircle = function(x, y, radius, start, end, color) {
         this.context.fillStyle = color;
         this.context.beginPath();
-        this.context.arc(x, y, radius, start, end );
+        this.context.arc(x, y, radius, start, end, true);
         this.context.closePath();
         this.context.stroke();
         this.context.fill();
@@ -122,4 +122,8 @@ var DrawTools = function(canvas) {
     this.addShapePoint('checkboxX', 50, 50);
     this.addShapePoint('checkboxX', 100, 0);
     this.addShapePoint('checkboxX', 0, 100);
+
+    this.addShapePoint('circle', 10, 10);
+    this.addShapePoint('circle', 0, 10);
+    this.addShapePoint('circle', 5, 0);
 }
