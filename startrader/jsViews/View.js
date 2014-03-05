@@ -5,6 +5,7 @@ View = function (name, width, height, backColor, drawOrder, action) {
     this.y = 0;
     this.width = width;
     this.height = height;
+    this.foreColor = 'red';
     this.fillStyle = backColor;
     this.action = action;
     this.isVisible = false;
@@ -104,7 +105,7 @@ View = function (name, width, height, backColor, drawOrder, action) {
 
         if (this.isVisible) {
             // draw background
-            drawTools.recFill(this.x, this.y, this.width, this.height, this.fillStyle);
+            drawTools.recFill(this.x, this.y, this.width, this.height, this.foreColor, this.fillStyle);
 
             //draw rulers
             if (settings.debug) {

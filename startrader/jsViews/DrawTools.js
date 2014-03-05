@@ -71,9 +71,10 @@ var DrawTools = function(canvas) {
 		this.context.stroke();
 	}
 	
-	this.recFill = function(x, y, width, height, color) {
+	this.recFill = function(x, y, width, height, lineColor, fillColor) {
 
-		this.context.fillStyle = color;
+        this.context.strokeStyle = lineColor;
+		this.context.fillStyle = fillColor;
 		this.context.fillRect(x, y, width, height);
 
 	}
@@ -114,6 +115,78 @@ var DrawTools = function(canvas) {
         this.context.closePath();
         this.context.stroke();
         this.context.fill();
+    }
+
+    this.createShape = function(type) {
+        var newObject = null;
+
+        switch (type){
+            case 'line':
+            {
+                newObject = {type: 'line', x1: 0, y1: 0, x2: 0, y2: 0, color: 'red'};
+                break;
+            }
+            case 'circle':
+            {
+                newObject = {type: 'circle', x: 0, y: 0, radius: 0, lineColor: 'red', fillColor: 'red'};
+                break;
+            }
+            case 'rectangle':
+            {
+                newObject = {type: 'rectangle', x: 0, y: 0, width: 0, height: 0, lineColor: 'red', fillColor: 'red'};
+                break;
+            }
+            case 'shape':
+            {
+                newObject = {type: 'shape', x: 0, y: 0, lineColor: 'red', fillColor: 'red', points: [{x: 0, y: 0}]};
+                break;
+            }
+            default:
+            {
+                console.log('unknown shape type ' + type);
+                break;
+            }
+        }
+
+        return newObject;
+    }
+
+    this.drawShape = function(x, y, shapes) {
+
+        shapes.forEach(function(shape){
+
+            switch (shape.type){
+                case 'line':
+                {
+                    this.line(shape.x1 + x, shape.y1 + y, shape.x2 + x, shape.y2 + y, shape.color);
+                    break;
+                }
+                case 'circle':
+                {
+                    this.circle(shape.x + x, shape.y + y, shape.radius, shape.lineColor, shape.fillColor);
+                    break;
+                }
+                case 'rectangle':
+                {
+                    this.recFill(shape.x + x, shape.y + y, shape.width, shape.height, shape.lineColor, shape.fillColor);
+                    break;
+                }
+                case 'shape':
+                {
+                    //{type: 'shape', x: 0, y: 0, lineColor: '', fillColor: '', points: []};
+                    this.context.beginPath();
+                    this.context.strokeStyle = shape.lineColor;
+                    this.context.fillStyle = shape.fillColor;
+                    this.context.moveTo(shape.x + x, shape.y + y);
+                    for(var i = 0; i < shape.points.length; i++) {
+                        this.context.lineTo(shape.points[i].x + x + shape.x, shape.points[i].y + y + shape.y);
+                    }
+                    this.context.closePath();
+                    this.context.stroke();
+                    break;
+                }
+            }
+        }, this)
     }
 
     // checkbox control X

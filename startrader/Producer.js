@@ -19,6 +19,54 @@ function Producer(planet, item, level) {
 	// for(var i in this.item.dependentItems) {
 		// this.stores[this.stores.length] = Items.getClone(this.item.dependentItems[i].name);
 	// }
+    this.shapes = [];
+    this.imageBuilding = views.drawTools.createShape('rectangle');
+    this.imageBuilding.lineColor = 'red';
+    this.imageBuilding.fillColor = 'orange';
+    this.imageBuilding.width = 75;
+    this.imageBuilding.height = 50;
+    this.shapes[this.shapes.length] = this.imageBuilding;
+
+//    this.imageCircle = views.drawTools.createShape('circle');
+//    this.imageCircle.radius = 25;
+//    this.imageCircle.fillColor = 'grey';
+//    this.shapes[this.shapes.length] = this.imageCircle;
+
+    this.imageStacks = views.drawTools.createShape('shape');
+    this.imageStacks.x = 45;
+    this.imageStacks.lineColor = 'green';
+    this.imageStacks.fillColor = 'yellow';
+    this.imageStacks.points[0] = {x: 0, y: 0};
+    this.imageStacks.points[1] = {x: 0, y: -20};
+    this.imageStacks.points[2] = {x: 7, y: -13};
+    this.imageStacks.points[3] = {x: 7, y: 0};
+    this.shapes[this.shapes.length] = this.imageStacks;
+
+    this.imageStacks2 = views.drawTools.createShape('shape');
+    this.imageStacks2.x = 52;
+    this.imageStacks2.lineColor = 'green';
+    this.imageStacks2.fillColor = 'yellow';
+    this.imageStacks2.points[0] = {x: 0, y: 0};
+    this.imageStacks2.points[1] = {x: 0, y: -20};
+    this.imageStacks2.points[2] = {x: 7, y: -13};
+    this.imageStacks2.points[3] = {x: 7, y: 0};
+    this.shapes[this.shapes.length] = this.imageStacks2;
+
+    this.imageStacks3 = views.drawTools.createShape('shape');
+    this.imageStacks3.x = 59;
+    this.imageStacks3.lineColor = 'green';
+    this.imageStacks3.fillColor = 'yellow';
+    this.imageStacks3.points[0] = {x: 0, y: 0};
+    this.imageStacks3.points[1] = {x: 0, y: -20};
+    this.imageStacks3.points[2] = {x: 7, y: -13};
+    this.imageStacks3.points[3] = {x: 7, y: 0};
+    this.shapes[this.shapes.length] = this.imageStacks3;
+
+//    this.imageLine = views.drawTools.createShape('line');
+//    this.imageLine.x2 = 55;
+//    this.imageLine.y2 = 55;
+//    this.imageLine.lineColor = 'yellow';
+//    this.shapes[this.shapes.length] = this.imageLine;
 	
 	this.item.result = new saleResult();
 
@@ -128,6 +176,10 @@ function Producer(planet, item, level) {
 	this.calcNextProduction = function() {
 		this.nextProduction = days + parseInt(this.daysRequired);
 	}
+
+    this.image = function() {
+        return this.shapes;
+    }
 
 /*    this.draw = function(c, x, y, size) {
 	

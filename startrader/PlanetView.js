@@ -53,10 +53,15 @@ var PlanetView = function(name, width, height, backColor, action){
             this.planet.producers.forEach(function(producer) {
                 if(producer.level != level) {
                     level++;
-                    x = 100;
-                    y = 600 - ((producer.height * producer.level));
+                    if(producer.level > 2) {
+                        x = 200;
+                    } else {
+                        x = 100;
+                    }
+                    y = 600 - (50 * level);
                 }
-                this.drawProducer(drawTools, x, y, producer);
+                //this.drawProducer(drawTools, x, y, producer);
+                drawTools.drawShape(x, y, producer.image());
                 x += 100;
             }, this)
 

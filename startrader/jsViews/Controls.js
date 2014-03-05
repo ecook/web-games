@@ -60,7 +60,7 @@ function Button(parent, x, y, width, height, foreColor, backColor, value) {
 			var x1 = this.x + this.parent.x;
 			var y1 = this.y + this.parent.y;
 
-			drawTools.recFill(x1, y1, this.width, this. height, this.backColor);
+			drawTools.recFill(x1, y1, this.width, this. height, this.foreColor, this.backColor);
 			drawTools.recOutline(x1, y1, this.width, this. height, this.foreColor, 1);
 		
 			// draw button text

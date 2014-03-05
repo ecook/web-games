@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c986cc9-8d11-4230-81a9-ca021a95ea6e" name="Default" comment="fixed showing and hiding of views, can't break out of foreach. only use if you really want to iterate over ALL elements in array&#10;">
+    <list default="true" id="5c986cc9-8d11-4230-81a9-ca021a95ea6e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsViews/Controls.js" afterPath="$PROJECT_DIR$/jsViews/Controls.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsViews/DrawTools.js" afterPath="$PROJECT_DIR$/jsViews/DrawTools.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PlanetView.js" afterPath="$PROJECT_DIR$/PlanetView.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Producer.js" afterPath="$PROJECT_DIR$/Producer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsViews/View.js" afterPath="$PROJECT_DIR$/jsViews/View.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="startrader.iws" />
@@ -40,7 +42,7 @@
       <file leaf-file-name="View.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jsViews/View.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="0" selection-start="3446" selection-end="3446" vertical-scroll-proportion="0.0" vertical-offset="1537" max-vertical-offset="3995">
+            <state line="117" column="6" selection-start="3670" selection-end="3670" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="4012">
               <folding />
             </state>
           </provider>
@@ -49,7 +51,7 @@
       <file leaf-file-name="PlanetView.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PlanetView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="0" selection-start="2383" selection-end="2383" vertical-scroll-proportion="0.73555166" vertical-offset="702" max-vertical-offset="3417">
+            <state line="55" column="44" selection-start="2132" selection-end="2132" vertical-scroll-proportion="0.55691767" vertical-offset="617" max-vertical-offset="3502">
               <folding />
             </state>
           </provider>
@@ -58,20 +60,8 @@
       <file leaf-file-name="Planet.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Planet.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="19" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.0" vertical-offset="406" max-vertical-offset="2210">
-              <folding>
-                <element signature="e#3600#5106#0" expanded="false" />
-                <element signature="e#5147#5340#0" expanded="false" />
-                <element signature="e#5383#5423#0" expanded="false" />
-                <element signature="e#5456#5726#0" expanded="false" />
-                <element signature="e#5762#6033#0" expanded="false" />
-                <element signature="e#6063#6272#0" expanded="false" />
-                <element signature="e#6558#6849#0" expanded="false" />
-                <element signature="e#6899#7305#0" expanded="false" />
-                <element signature="e#7356#8657#0" expanded="false" />
-                <element signature="e#8750#9017#0" expanded="false" />
-                <element signature="e#9044#9941#0" expanded="false" />
-              </folding>
+            <state line="42" column="19" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="6817">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,17 +69,16 @@
       <file leaf-file-name="Producer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Producer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="23" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5491">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Item.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Item.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3162">
-              <folding />
+            <state line="55" column="29" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.0" vertical-offset="490" max-vertical-offset="1649">
+              <folding>
+                <element signature="e#2713#6011#0" expanded="false" />
+                <element signature="e#6052#6116#0" expanded="false" />
+                <element signature="e#6183#9978#0" expanded="false" />
+                <element signature="e#10008#10141#0" expanded="false" />
+                <element signature="e#10177#10851#0" expanded="false" />
+                <element signature="e#10911#11446#0" expanded="false" />
+                <element signature="e#11485#12320#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,7 +95,16 @@
       <file leaf-file-name="DrawTools.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jsViews/DrawTools.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="39" selection-start="3677" selection-end="3677" vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="2278">
+            <state line="179" column="66" selection-start="5486" selection-end="5486" vertical-scroll-proportion="0.0" vertical-offset="2657" max-vertical-offset="3519">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controls.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jsViews/Controls.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="4" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.0" vertical-offset="724" max-vertical-offset="3740">
               <folding />
             </state>
           </provider>
@@ -115,7 +113,7 @@
       <file leaf-file-name="CustomShapes.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CustomShapes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+            <state line="19" column="0" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="459">
               <folding />
             </state>
           </provider>
@@ -156,14 +154,14 @@
         <option value="$PROJECT_DIR$/jsViews/ViewMessage.js" />
         <option value="$PROJECT_DIR$/Ship.js" />
         <option value="$PROJECT_DIR$/Planet.js" />
-        <option value="$PROJECT_DIR$/jsViews/Controls.js" />
         <option value="$PROJECT_DIR$/Main.js" />
         <option value="$PROJECT_DIR$/GalaxyView.js" />
         <option value="$PROJECT_DIR$/jsViews/ViewCollection.js" />
-        <option value="$PROJECT_DIR$/jsViews/View.js" />
-        <option value="$PROJECT_DIR$/Producer.js" />
         <option value="$PROJECT_DIR$/CustomShapes.js" />
+        <option value="$PROJECT_DIR$/jsViews/Controls.js" />
+        <option value="$PROJECT_DIR$/jsViews/View.js" />
         <option value="$PROJECT_DIR$/jsViews/DrawTools.js" />
+        <option value="$PROJECT_DIR$/Producer.js" />
         <option value="$PROJECT_DIR$/PlanetView.js" />
       </list>
     </option>
@@ -245,6 +243,14 @@
     <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager" selected="JavaScript Debug.StarTraderTest">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -255,23 +261,15 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -326,7 +324,11 @@
       <created>1393309979764</created>
       <updated>1393309979764</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed backgroud planet view and started producer draw">
+      <created>1393390013079</created>
+      <updated>1393390013079</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -356,6 +358,7 @@
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33887044" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.4997367" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3831672" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18062139" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3089701" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -365,12 +368,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38401777" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -388,29 +390,76 @@
     <MESSAGE value="got galaxyView finished with ship movement working, and added begining of planetView&#10;" />
     <MESSAGE value="galaxy view working great." />
     <MESSAGE value="fixed showing and hiding of views, can't break out of foreach. only use if you really want to iterate over ALL elements in array&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed showing and hiding of views, can't break out of foreach. only use if you really want to iterate over ALL elements in array&#10;" />
+    <MESSAGE value="fixed backgroud planet view and started producer draw" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed backgroud planet view and started producer draw" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="60" />
+      <option name="time" value="68" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jsViews/Controls.js">
+    <entry file="file://$PROJECT_DIR$/Producer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="44" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.0" vertical-offset="667" max-vertical-offset="3740">
+        <state line="9" column="23" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="5491">
+          <folding>
+            <element signature="e#2713#6011#0" expanded="false" />
+            <element signature="e#6052#6116#0" expanded="false" />
+            <element signature="e#6183#9978#0" expanded="false" />
+            <element signature="e#10008#10141#0" expanded="false" />
+            <element signature="e#10177#10851#0" expanded="false" />
+            <element signature="e#10911#11446#0" expanded="false" />
+            <element signature="e#11485#12320#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3162">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GalaxyView.js">
+    <entry file="file://$PROJECT_DIR$/jsViews/ViewCollection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="0" selection-start="4918" selection-end="4918" vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="2635">
+        <state line="39" column="0" selection-start="881" selection-end="881" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1105">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsViews/DrawTools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="39" selection-start="3677" selection-end="3677" vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="2278">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomShapes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="459">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="20" selection-start="353" selection-end="353" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1428">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsViews/Controls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="44" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.0" vertical-offset="667" max-vertical-offset="3740" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GalaxyView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="0" selection-start="4918" selection-end="4918" vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="2635" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.js">
@@ -429,9 +478,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Ship.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="41" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1207">
-          <folding />
-        </state>
+        <state line="10" column="41" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1207" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jsViews/View.js">
@@ -479,35 +526,18 @@
     <entry file="file://$PROJECT_DIR$/Planet.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="0" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="986">
-          <folding>
-            <element signature="e#636#3569#0" expanded="false" />
-            <element signature="e#3600#5106#0" expanded="false" />
-            <element signature="e#5147#5340#0" expanded="false" />
-            <element signature="e#5383#5423#0" expanded="false" />
-            <element signature="e#5456#5726#0" expanded="false" />
-            <element signature="e#5762#6033#0" expanded="false" />
-            <element signature="e#6063#6272#0" expanded="false" />
-            <element signature="e#6558#6849#0" expanded="false" />
-            <element signature="e#6899#7305#0" expanded="false" />
-            <element signature="e#7356#8657#0" expanded="false" />
-            <element signature="e#8750#9017#0" expanded="false" />
-            <element signature="e#9044#9941#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GalaxyView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="34" selection-start="1156" selection-end="1156" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="2431">
-          <folding />
-        </state>
+        <state line="20" column="34" selection-start="1156" selection-end="1156" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="2431" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Ship.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="41" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1207">
-          <folding />
-        </state>
+        <state line="10" column="41" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1207" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jsViews/View.js">
@@ -555,27 +585,22 @@
     <entry file="file://$PROJECT_DIR$/Planet.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="32" selection-start="1033" selection-end="1033" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="7293">
-          <folding>
-            <element signature="e#636#3569#0" expanded="false" />
-            <element signature="e#3600#5106#0" expanded="false" />
-            <element signature="e#5147#5340#0" expanded="false" />
-            <element signature="e#5383#5423#0" expanded="false" />
-            <element signature="e#5456#5726#0" expanded="false" />
-            <element signature="e#5762#6033#0" expanded="false" />
-            <element signature="e#6063#6272#0" expanded="false" />
-            <element signature="e#6558#6849#0" expanded="false" />
-            <element signature="e#6899#7305#0" expanded="false" />
-            <element signature="e#7356#8657#0" expanded="false" />
-            <element signature="e#8750#9017#0" expanded="false" />
-            <element signature="e#9044#9941#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Producer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5491">
-          <folding />
+          <folding>
+            <element signature="e#2713#6011#0" expanded="false" />
+            <element signature="e#6052#6116#0" expanded="false" />
+            <element signature="e#6183#9978#0" expanded="false" />
+            <element signature="e#10008#10141#0" expanded="false" />
+            <element signature="e#10177#10851#0" expanded="false" />
+            <element signature="e#10911#11446#0" expanded="false" />
+            <element signature="e#11485#12320#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -602,9 +627,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jsViews/Controls.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="26" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="3570">
-          <folding />
-        </state>
+        <state line="15" column="26" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="3570" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jsViews/Rulers.js">
@@ -630,9 +653,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Ship.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="41" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <folding />
-        </state>
+        <state line="10" column="41" selection-start="296" selection-end="296" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Settings.js">
@@ -658,42 +679,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GalaxyView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="0" selection-start="4918" selection-end="4918" vertical-scroll-proportion="0.0" vertical-offset="1791" max-vertical-offset="2635">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsViews/Controls.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="75" selection-start="1194" selection-end="1194" vertical-scroll-proportion="0.0" vertical-offset="718" max-vertical-offset="3740">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jsViews/View.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="0" selection-start="3446" selection-end="3446" vertical-scroll-proportion="0.0" vertical-offset="1537" max-vertical-offset="3995">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Planet.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="19" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.0" vertical-offset="406" max-vertical-offset="2210">
-          <folding>
-            <element signature="e#3600#5106#0" expanded="false" />
-            <element signature="e#5147#5340#0" expanded="false" />
-            <element signature="e#5383#5423#0" expanded="false" />
-            <element signature="e#5456#5726#0" expanded="false" />
-            <element signature="e#5762#6033#0" expanded="false" />
-            <element signature="e#6063#6272#0" expanded="false" />
-            <element signature="e#6558#6849#0" expanded="false" />
-            <element signature="e#6899#7305#0" expanded="false" />
-            <element signature="e#7356#8657#0" expanded="false" />
-            <element signature="e#8750#9017#0" expanded="false" />
-            <element signature="e#9044#9941#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="117" column="0" selection-start="4918" selection-end="4918" vertical-scroll-proportion="0.0" vertical-offset="1791" max-vertical-offset="2635" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RenderCanvas.js">
@@ -724,20 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jsViews/DrawTools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="39" selection-start="3677" selection-end="3677" vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="2278">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Producer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="245" selection-end="245" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5491">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Item.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3162">
@@ -745,9 +717,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jsViews/Controls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="4" selection-start="1362" selection-end="1362" vertical-scroll-proportion="0.0" vertical-offset="724" max-vertical-offset="3740">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsViews/View.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="6" selection-start="3670" selection-end="3670" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="4012">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Planet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="19" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.0" vertical-offset="406" max-vertical-offset="2210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsViews/DrawTools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="179" column="66" selection-start="5486" selection-end="5486" vertical-scroll-proportion="0.0" vertical-offset="2657" max-vertical-offset="3519">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Producer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="29" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.0" vertical-offset="490" max-vertical-offset="1649">
+          <folding>
+            <element signature="e#2713#6011#0" expanded="false" />
+            <element signature="e#6052#6116#0" expanded="false" />
+            <element signature="e#6183#9978#0" expanded="false" />
+            <element signature="e#10008#10141#0" expanded="false" />
+            <element signature="e#10177#10851#0" expanded="false" />
+            <element signature="e#10911#11446#0" expanded="false" />
+            <element signature="e#11485#12320#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PlanetView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="2383" selection-end="2383" vertical-scroll-proportion="0.73555166" vertical-offset="702" max-vertical-offset="3417">
+        <state line="55" column="44" selection-start="2132" selection-end="2132" vertical-scroll-proportion="0.55691767" vertical-offset="617" max-vertical-offset="3502">
           <folding />
         </state>
       </provider>
