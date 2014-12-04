@@ -2,6 +2,8 @@ function Producer(planet, item, level) {
 
     this.planet = planet;
     this.item = item;
+	this.x = 0;
+	this.y = 0;
     //this.efficiency = 0;
 	this.workersNeeded = 0;
 	this.daysRequired = 0;

@@ -60,7 +60,8 @@ var PlanetView = function(name, width, height, backColor, action){
                     }
                     y = 600 - (50 * level);
                 }
-                //this.drawProducer(drawTools, x, y, producer);
+                producer.x = x;
+                producer.y = y;
                 drawTools.drawShape(x, y, producer.image());
                 this.drawProducer(drawTools, x, y, producer);
                 x += 100;
@@ -82,16 +83,6 @@ var PlanetView = function(name, width, height, backColor, action){
                 var npPixelsPerDay = parseInt(producer.width / producer.daysRequired);
                 var npWidth = (producer.daysRequired - (producer.nextProduction - days)) * npPixelsPerDay;
                 drawTools.recFill(x, y, npWidth, npHeight, settings.producerNextProductionColor, settings.producerNextProductionColor);
-//                c.fillStyle = settings.producerNextProductionColor;
-//                c.beginPath();
-//                c.moveTo(x, y);
-//                c.lineTo(x + npWidth, y);
-//                c.lineTo(x + npWidth, y + npHeight);
-//                c.lineTo(x, y + npHeight);
-//                c.lineTo(x, y);
-//                c.closePath();
-//                c.stroke();
-//                c.fill();
             }
 
             //workers
@@ -125,49 +116,43 @@ var PlanetView = function(name, width, height, backColor, action){
                 }
             }
 
-/*            if(producer.selected) {
+            if(producer.selected) {
 
                 //draw selection box
-                context.strokeStyle = 'red';
-                context.beginPath();
-                context.moveTo(x - 2, y - 2);
-                context.lineTo(x + size * 2 + 4, y - 2);
-                context.lineTo(x + size * 2 + 4, y + size + 2);
-                context.lineTo(x - 2, y + size + 2);
-                context.lineTo(x - 2, y - 2);
-                context.closePath();
-                context.stroke();
+                drawTools.recOutline(x, y, producer.width, producer.height, 'red', 3);
 
                 //draw stats
                 var statsX = settings.producerStatsX;
                 var statsY = settings.producerStatsY;
                 var statsColor = settings.producerStatsColor;
                 var statsSpacing = 20;
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'item: ' + producer.item.name);
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'last sales: ' + producer.item.result.message);
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'tech level: ' + producer.level);
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'uoh: ' + producer.item.quantity);
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'workers: ' + producer.workers);
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'cash: ' + producer.cash);
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'wage: ' + producer.wage);
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'madeMoney: ' + producer.madeMoney);
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'margin: ' + producer.margin);
-                drawText(statsX, statsY+=statsSpacing, statsColor, 'trend: ' + producer.trend);
+                var pixels = 14;
+                var font = 'areal';
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'item: ' + producer.item.name);
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'last sales: ' + producer.item.result.message);
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'tech level: ' + producer.level);
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'uoh: ' + producer.item.quantity);
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'workers: ' + producer.workers);
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'cash: ' + producer.cash);
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'wage: ' + producer.wage);
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'madeMoney: ' + producer.madeMoney);
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'margin: ' + producer.margin);
+                drawTools.text(statsX, statsY+=statsSpacing, pixels, font, statsColor, 'trend: ' + producer.trend);
 
                 if(producer.item.dependentItems.length > 0) {
                     statsY = settings.producerStatsY;
-                    drawText(statsX + 150, statsY+=statsSpacing, statsColor, 'dependent Items: ' + producer.item.dependentItems.length);
+                    drawTools.text(statsX + 150, statsY+=statsSpacing, pixels, font, statsColor, 'dependent Items: ' + producer.item.dependentItems.length);
                     statsY += statsSpacing;
                     for(var idx in producer.item.dependentItems) {
                         statsY += idx * statsSpacing;
-                        drawText(statsX + 150, statsY, statsColor, 'uoh: ' + producer.item.dependentItems[idx].uoh);
-                        drawText(statsX + 190, statsY, statsColor, 'qty: ' + producer.item.dependentItems[idx].qty);
-                        drawText(statsX + 250, statsY, statsColor, 'name: ' + producer.item.dependentItems[idx].name);
+                        drawTools.text(statsX + 150, statsY, pixels, font, statsColor, 'uoh: ' + producer.item.dependentItems[idx].uoh);
+                        drawTools.text(statsX + 190, statsY, pixels, font, statsColor, 'qty: ' + producer.item.dependentItems[idx].qty);
+                        drawTools.text(statsX + 250, statsY, pixels, font, statsColor, 'name: ' + producer.item.dependentItems[idx].name);
                         if(producer.item.dependentItems[idx].lastSaleResult != undefined)
-                            drawText(statsX + 390, statsY, statsColor, 'last purchase: ' + producer.item.dependentItems[idx].lastSaleResult.message);
+                            drawTools.text(statsX + 390, statsY, pixels, font, statsColor, 'last purchase: ' + producer.item.dependentItems[idx].lastSaleResult.message);
                     }
                 }
-            }*/
+            }
 
         } else {
 
@@ -182,13 +167,24 @@ var PlanetView = function(name, width, height, backColor, action){
 		if(this.planet != null) {
 			this.planet.ai();
 		}	
-	}
+	};
 	
 	this.btnLaunch.mouseup = function(caller, event) {
 		//views.showMessage(500, 300, 'Launch button clicked');
         views.show('viewGalaxy', 0, 0);
         views.hide(caller.name);
-	}
+	};
+
+    this.mouseup = function (caller, event) {
+        this.planet.producers.forEach(function(p){
+            if(p.hit(event.x, event.y)){
+                p.selected = true;
+            } else {
+                p.selected = false;
+            }
+        });
+
+    };
 	
 	this.show = function(x, y) {
 		var parent = Object.getPrototypeOf(this);
@@ -198,4 +194,4 @@ var PlanetView = function(name, width, height, backColor, action){
         setTicksPerDay(settings.ticksPerDayPlanet);
 	}
 	
-}
+};

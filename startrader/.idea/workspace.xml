@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c986cc9-8d11-4230-81a9-ca021a95ea6e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsViews/Controls.js" afterPath="$PROJECT_DIR$/jsViews/Controls.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsViews/DrawTools.js" afterPath="$PROJECT_DIR$/jsViews/DrawTools.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PlanetView.js" afterPath="$PROJECT_DIR$/PlanetView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Producer.js" afterPath="$PROJECT_DIR$/Producer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsViews/View.js" afterPath="$PROJECT_DIR$/jsViews/View.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="startrader.iws" />
@@ -51,7 +46,7 @@
       <file leaf-file-name="PlanetView.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PlanetView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="44" selection-start="2132" selection-end="2132" vertical-scroll-proportion="0.55691767" vertical-offset="617" max-vertical-offset="3502">
+            <state line="55" column="44" selection-start="2132" selection-end="2132" vertical-scroll-proportion="0.5588752" vertical-offset="617" max-vertical-offset="3502">
               <folding />
             </state>
           </provider>
@@ -328,7 +323,11 @@
       <created>1393390013079</created>
       <updated>1393390013079</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactored drawTools shapes, added stacks to producers&#10;">
+      <created>1394001597390</created>
+      <updated>1394001597390</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -355,7 +354,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33887044" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33962265" sideWeight="0.4997367" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.4997367" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3831672" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -369,7 +369,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32890365" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -391,7 +390,8 @@
     <MESSAGE value="galaxy view working great." />
     <MESSAGE value="fixed showing and hiding of views, can't break out of foreach. only use if you really want to iterate over ALL elements in array&#10;" />
     <MESSAGE value="fixed backgroud planet view and started producer draw" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed backgroud planet view and started producer draw" />
+    <MESSAGE value="refactored drawTools shapes, added stacks to producers&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored drawTools shapes, added stacks to producers&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -762,7 +762,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PlanetView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="44" selection-start="2132" selection-end="2132" vertical-scroll-proportion="0.55691767" vertical-offset="617" max-vertical-offset="3502">
+        <state line="55" column="44" selection-start="2132" selection-end="2132" vertical-scroll-proportion="0.5588752" vertical-offset="617" max-vertical-offset="3502">
           <folding />
         </state>
       </provider>
