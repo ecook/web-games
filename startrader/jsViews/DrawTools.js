@@ -26,27 +26,36 @@ var DrawTools = function(canvas) {
 	}
 	
 	this.customShape = function(name, x, y, scale, lineColor, fillColor) {
-        var ctx = this.context;
+        var ctx = this.context,
+            radius = 4 * scale;
 
-        this.shapes.forEach(function(shape) {
-			if(shape.name == name) {
-                ctx.strokeStyle = lineColor;
-                ctx.beginPath();
-                ctx.moveTo(parseInt(shape.points[0].x * scale) + x, parseInt(shape.points[0].y * scale) + y);
-				if(shape.points.length > 1) {
-					for(var p = 1; p < shape.points.length; p++) {
-                        ctx.lineTo(parseInt(shape.points[p].x * scale) + x, parseInt(shape.points[p].y * scale) + y);
-					}
-				}
-                ctx.closePath();
-                ctx.stroke();
-				if(fillColor != null) {
-                    ctx.fillStyle = fillColor;
-                    ctx.fill();
-				}
-                return;
-			}
-		}		)
+        if(name === 'circle') {
+            this.circle(x + radius, y + radius, radius, lineColor, fillColor);
+        } else if (name === 'doubleCircle') {
+            this.circle(x + radius, y + radius, radius, lineColor, fillColor);
+            this.circle(x + (radius * 3), y + radius, radius, lineColor, fillColor);
+        } else {
+
+            this.shapes.forEach(function (shape) {
+                if (shape.name == name) {
+                    ctx.strokeStyle = lineColor;
+                    ctx.beginPath();
+                    ctx.moveTo(parseInt(shape.points[0].x * scale) + x, parseInt(shape.points[0].y * scale) + y);
+                    if (shape.points.length > 1) {
+                        for (var p = 1; p < shape.points.length; p++) {
+                            ctx.lineTo(parseInt(shape.points[p].x * scale) + x, parseInt(shape.points[p].y * scale) + y);
+                        }
+                    }
+                    ctx.closePath();
+                    ctx.stroke();
+                    if (fillColor != null) {
+                        ctx.fillStyle = fillColor;
+                        ctx.fill();
+                    }
+                    return;
+                }
+            })
+        }
 	}
 
 	this.recOutline = function(x, y, width, height, color, thickness) {
@@ -196,7 +205,28 @@ var DrawTools = function(canvas) {
     this.addShapePoint('checkboxX', 100, 0);
     this.addShapePoint('checkboxX', 0, 100);
 
-    this.addShapePoint('circle', 10, 10);
-    this.addShapePoint('circle', 0, 10);
-    this.addShapePoint('circle', 5, 0);
+    // triangle
+    this.addShapePoint('triangle', 10, 10);
+    this.addShapePoint('triangle', 0, 10);
+    this.addShapePoint('triangle', 5, 0);
+
+    // downarrow
+    this.addShapePoint('arrowDown', 2, 0);
+    this.addShapePoint('arrowDown', 5, 0);
+    this.addShapePoint('arrowDown', 5, 5);
+    this.addShapePoint('arrowDown', 7, 5);
+    this.addShapePoint('arrowDown', 3, 8);
+    this.addShapePoint('arrowDown', 0, 5);
+    this.addShapePoint('arrowDown', 2, 5);
+    this.addShapePoint('arrowDown', 2, 0);
+
+    // arrowUp
+    this.addShapePoint('arrowUp', 3, 0);
+    this.addShapePoint('arrowUp', 7, 3);
+    this.addShapePoint('arrowUp', 5, 3);
+    this.addShapePoint('arrowUp', 5, 8);
+    this.addShapePoint('arrowUp', 2, 8);
+    this.addShapePoint('arrowUp', 2, 3);
+    this.addShapePoint('arrowUp', 0, 3);
+    this.addShapePoint('arrowUp', 3, 0);
 }

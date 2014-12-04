@@ -4,7 +4,7 @@ function ItemStore() {
     {level: 1, days: 2, workers: 2, basePrice: 150, mass: 10, quantity: 0, cost: 0, name: 'ore', 			 color: 'grey',    shape: 'circle', dependentItems: [] },
     {level: 1, days: 5, workers: 5, basePrice: 600, mass: 10, quantity: 0, cost: 0, name: 'precious metals', color: 'yellow',  shape: 'circle', dependentItems: [] },
     {level: 1, days: 4, workers: 3, basePrice: 250, mass: 10, quantity: 0, cost: 0, name: 'crystals', 		 color: 'red',     shape: 'circle', dependentItems: [] },
-    {level: 1, days: 3, workers: 2, basePrice: 300, mass: 10, quantity: 0, cost: 0, name: 'gases', 		 	 color: 'white',   shape: 'circle', dependentItems: [] },
+    {level: 1, days: 3, workers: 2, basePrice: 300, mass: 10, quantity: 0, cost: 0, name: 'gases', 		 	 color: 'aqua',   shape: 'circle', dependentItems: [] },
     {level: 1, days: 3, workers: 2, basePrice: 210, mass: 10, quantity: 0, cost: 0, name: 'animals', 		 color: '#663300', shape: 'circle', dependentItems: [] },
     {level: 1, days: 3, workers: 1, basePrice: 150, mass: 10, quantity: 0, cost: 0, name: 'plants',			 color: 'green',   shape: 'circle', dependentItems: [] },
 	{level: 1, days: 1, workers: 1, basePrice: 10,  mass: 10, quantity: 0, cost: 0, name: 'water',			 color: 'blue',    shape: 'circle', dependentItems: [] },

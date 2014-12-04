@@ -1,13 +1,13 @@
 var settings = {
 
 	//general
-	version: '2-22-2014 8:20PM',
+	version: '12-3-2014 11:20PM',
 	debug: true,
     ticksPerSecond: 33,
 	ticksPerAi: 1,
     ticksPerFrame: 1,
 	ticksPerDayGalaxy: 30,
-	ticksPerDayPlanet: 300,
+	ticksPerDayPlanet: 30,
 	canvasBackColor: '#A37A00',
 
     //ship
@@ -65,7 +65,7 @@ var settings = {
 	purchaseInventoryCashTheshold: 500,
 	producerModExtremeTemperature: 0.5,
 	producerModSevereWeather: 1.5,
-	producerNextProductionColor: '#FF9999'
+	producerNextProductionColor: 'white'
 
 }
 

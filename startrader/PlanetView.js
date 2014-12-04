@@ -62,16 +62,17 @@ var PlanetView = function(name, width, height, backColor, action){
                 }
                 //this.drawProducer(drawTools, x, y, producer);
                 drawTools.drawShape(x, y, producer.image());
+                this.drawProducer(drawTools, x, y, producer);
                 x += 100;
             }, this)
 
 		}
-	}
+	};
 
     this.drawProducer = function(drawTools, x, y, producer) {
 
 //        drawTools.customShape('producer', x, y, 1, 'while', 'grey');
-        drawTools.recFill(x, y, 70, 50, '#686856');
+        drawTools.recFill(x, y, producer.width, producer.height, '#686856');
 
         if(producer.isOpen) {
 
@@ -80,7 +81,7 @@ var PlanetView = function(name, width, height, backColor, action){
                 var npHeight = producer.height;
                 var npPixelsPerDay = parseInt(producer.width / producer.daysRequired);
                 var npWidth = (producer.daysRequired - (producer.nextProduction - days)) * npPixelsPerDay;
-                drawTools.recFill(x, y, x + npWidth, y + npHeight, settings.producerNextProductionColor);
+                drawTools.recFill(x, y, npWidth, npHeight, settings.producerNextProductionColor, settings.producerNextProductionColor);
 //                c.fillStyle = settings.producerNextProductionColor;
 //                c.beginPath();
 //                c.moveTo(x, y);
@@ -95,9 +96,9 @@ var PlanetView = function(name, width, height, backColor, action){
 
             //workers
             var j = x + 5;
-            var k = y + producer.size - 3;
-            for(var i = 0; i < producer.workers; i+=producer.workersRequired) {
-                drawTools.circle(j, k, 3, 'white', 'white');
+            var k = y + producer.height - 4;
+            for(var i = 0; i < producer.workers; i++) {
+                drawTools.circle(j, k, 3, 'black', 'black');
                 j+=8;
             }
 
@@ -106,9 +107,9 @@ var PlanetView = function(name, width, height, backColor, action){
 
             // arrow
             if(producer.madeMoney) {
-                drawTools.customShape('arrowUp', x + 15, y + 10, 5, 'green', 'green');
+                drawTools.customShape('arrowUp', x + 25, y + 10, 3, 'green', 'green');
             } else {
-                drawTools.customShape('arrowDown', x + 15, y + 10, 5, 'red', 'red');
+                drawTools.customShape('arrowDown', x + 25, y + 10, 3, 'red', 'red');
             }
 
             // required products
@@ -119,7 +120,7 @@ var PlanetView = function(name, width, height, backColor, action){
                 for(var i in producer.item.dependentItems) {
                     depend = Items.get(producer.item.dependentItems[i].name);
                     //drawShape(depend.shape, depend.color, 6, j, k);
-                    drawTools.customShape(depend.shape, j, k, 6, depend.color, depend.color);
+                    drawTools.customShape(depend.shape, j, k, 2, depend.color, depend.color);
                     j += 20;
                 }
             }
@@ -172,10 +173,10 @@ var PlanetView = function(name, width, height, backColor, action){
 
             // draw closed
             //drawShape('rectangleX', 'red', size, x, y);
-            drawTools.line(x, y, x - producer.width, y - producer.height, 'red');
+            drawTools.line(x, y, x + producer.width, y + producer.height, 'red');
             drawTools.line(x, y + producer.height, x + producer.width, y, 'red');
         }
-    }
+    };
 	
 	this.process = function() {
 		if(this.planet != null) {
