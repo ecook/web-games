@@ -22,6 +22,7 @@ initialize = function() {
 	
 	// initialize Views
     views = new ViewCollection(canvas);
+	loadCustomShapes(views.drawTools);
 
 	var viewGalaxy = new GalaxyView('viewGalaxy', canvas.width, canvas.height, 'black', null);
 	viewGalaxy.setDragable(false);

@@ -65,8 +65,10 @@ var PlanetView = function(name, width, height, backColor, action){
                 drawTools.drawShape(x, y, producer.image());
                 this.drawProducer(drawTools, x, y, producer);
                 x += 100;
-            }, this)
+            }, this);
 
+            this.planet.drawDetails(drawTools);
+            this.planet.market.draw(drawTools);
 		}
 	};
 

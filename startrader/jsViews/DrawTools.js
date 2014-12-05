@@ -205,28 +205,5 @@ var DrawTools = function(canvas) {
     this.addShapePoint('checkboxX', 100, 0);
     this.addShapePoint('checkboxX', 0, 100);
 
-    // triangle
-    this.addShapePoint('triangle', 10, 10);
-    this.addShapePoint('triangle', 0, 10);
-    this.addShapePoint('triangle', 5, 0);
 
-    // downarrow
-    this.addShapePoint('arrowDown', 2, 0);
-    this.addShapePoint('arrowDown', 5, 0);
-    this.addShapePoint('arrowDown', 5, 5);
-    this.addShapePoint('arrowDown', 7, 5);
-    this.addShapePoint('arrowDown', 3, 8);
-    this.addShapePoint('arrowDown', 0, 5);
-    this.addShapePoint('arrowDown', 2, 5);
-    this.addShapePoint('arrowDown', 2, 0);
-
-    // arrowUp
-    this.addShapePoint('arrowUp', 3, 0);
-    this.addShapePoint('arrowUp', 7, 3);
-    this.addShapePoint('arrowUp', 5, 3);
-    this.addShapePoint('arrowUp', 5, 8);
-    this.addShapePoint('arrowUp', 2, 8);
-    this.addShapePoint('arrowUp', 2, 3);
-    this.addShapePoint('arrowUp', 0, 3);
-    this.addShapePoint('arrowUp', 3, 0);
-}
+};

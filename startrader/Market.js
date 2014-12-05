@@ -11,19 +11,21 @@ function Market(planet) {
 		this.items.data[i].quantity = settings.marketStartStock[this.items.data[i].level-1];
 	}
 
-    this.draw = function(c) {
+    this.draw = function(drawTools) {
 		
 		//draw stats
 		var statsX = settings.marketStatsX;
 		var statsY = settings.marketStatsY;
 		var statsSpacing = 20;
-		drawText(statsX, statsY+=statsSpacing, settings.marketStatsColor, 'Market inventory');
-		drawText(statsX, statsY+=statsSpacing, settings.marketStatsColor, 'cash on hand: ' + parseInt(this.cash));
-		drawText(statsX, statsY+=statsSpacing, settings.marketStatsColor, '----------------');
+		var pixels = 12;
+		var font = 'arial';
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.marketStatsColor, 'Market inventory');
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.marketStatsColor, 'cash on hand: ' + parseInt(this.cash));
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.marketStatsColor, '----------------');
 		for(var i in this.items.data) {
-			drawText(statsX, statsY+=statsSpacing, settings.marketStatsColor, this.items.data[i].quantity + ' : ' + this.items.data[i].name);
+			drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.marketStatsColor, this.items.data[i].quantity + ' : ' + this.items.data[i].name);
 		}
-    }
+    };
 	
 	this.sell = function(name, qty, price) {
 		var result = new saleResult;

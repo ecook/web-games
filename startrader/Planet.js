@@ -19,70 +19,37 @@ function Planet(x, y) {
 		this.workers[i] = parseInt(this.population * settings.workerStartLevels[i]);
 	}
 
-/*    this.drawDetails = function(drawTools) {
-
-        //planet background
-		if(this.type.atmosphere) {
-            drawTools.arc(drawTools.canvas.width/2, drawTools.canvas.height, drawTools.canvas.width/2 + 4,0,Math.PI, this.atmoColor());
-		}
-
-        drawTools.arc(drawTools.canvas.width/2, drawTools.canvas.height, drawTools.canvas.width/2,0,Math.PI, this.color());
-
-		
-		// population
-		var x = 20;
-		var y = drawingCanvas.height - 10;
-		for(var i = 0; i < this.population; i+=settings.populationPerIcon) {
-			drawShape('circle', 'white', 5, x, y);
-			x+=15;
-		}
-
-        //market
-        this.market.draw(c);
-
-        //producers
-		var x = [];
-		var y = [];
-        x[0] = 50;
-        y[0] = drawingCanvas.height - 75;
-        x[1] = 75;
-        y[1] = drawingCanvas.height - 125;		
-        x[2] = 100;
-        y[2] = drawingCanvas.height - 175;			
-		
-        var size = 40;
-        for(var p in this.producers){
-            this.producers[p].draw(c, x[this.producers[p].level-1], y[this.producers[p].level-1], size);
-            x[this.producers[p].level-1] += (size * 2) + 10;
-        }
+    this.drawDetails = function(drawTools) {
 		
 		//planet stats
 		var statsX = settings.planetStatsX;
 		var statsY = settings.planetStatsY;
 		var statsSpacing = 20;
-		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'name: ' + this.name);
-		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'temperature: ' + this.type.temperature);
-		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'weather: ' + this.type.weather);
-		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'population: ' + this.population);
-		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'cash: ' + parseInt(this.cash));
-		drawText(statsX, statsY+=statsSpacing, settings.planetStatsColor, 'available workers');
+		var pixels = 12;
+		var font = 'arial';
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetStatsColor, 'name: ' + this.name);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetStatsColor, 'temperature: ' + this.type.temperature);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetStatsColor, 'weather: ' + this.type.weather);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetStatsColor, 'population: ' + this.population);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetStatsColor, 'cash: ' + parseInt(this.cash));
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetStatsColor, 'available workers');
 		for(var level in this.workers) {
-			drawText(statsX + 20, statsY+=statsSpacing, settings.planetStatsColor, 'level ' + (parseInt(level) + 1) + ':      ' + this.workers[level]);
+			drawTools.text(statsX + 20, statsY+=statsSpacing, pixels, font, settings.planetStatsColor, 'level ' + (parseInt(level) + 1) + ':      ' + this.workers[level]);
 		}
 		
 		//madeOf stats
 		statsX = settings.planetMadeOfStatsX;
 		statsY = settings.planetMadeOfStatsY;
 		statsSpacing = 20;
-		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'water: ' + this.type.madeOf.water);
-		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'ore: ' + this.type.madeOf.ore);
-		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'gases: ' + this.type.madeOf.gases);
-		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'crystals: ' + this.type.madeOf.crystals);
-		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'precious Metals: ' + this.type.madeOf.preciousMetals);	
-		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'plants: ' + this.type.madeOf.plants);
-		drawText(statsX, statsY+=statsSpacing, settings.planetMadeOfStatsColor, 'animals: ' + this.type.madeOf.animals);		
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetMadeOfStatsColor, 'water: ' + this.type.madeOf.water);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetMadeOfStatsColor, 'ore: ' + this.type.madeOf.ore);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetMadeOfStatsColor, 'gases: ' + this.type.madeOf.gases);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetMadeOfStatsColor, 'crystals: ' + this.type.madeOf.crystals);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetMadeOfStatsColor, 'precious Metals: ' + this.type.madeOf.preciousMetals);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetMadeOfStatsColor, 'plants: ' + this.type.madeOf.plants);
+		drawTools.text(statsX, statsY+=statsSpacing, pixels, font, settings.planetMadeOfStatsColor, 'animals: ' + this.type.madeOf.animals);
 		
-    }*/
+    };
 
     this.ai = function()
     {

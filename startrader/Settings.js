@@ -1,7 +1,7 @@
 var settings = {
 
 	//general
-	version: '12-3-2014 11:20PM',
+	version: '12-4-2014 5:15PM',
 	debug: true,
     ticksPerSecond: 33,
 	ticksPerAi: 1,
@@ -27,7 +27,7 @@ var settings = {
 	workerStartLevels: [0.5, 0.3, 0.2],
 	populationPerIcon: 5,
 	planetStatsColor: 'yellow',
-	planetStatsX: 10,
+	planetStatsX: 1000,
 	planetStatsY: 60,
 	populationCashThreshold: 1000,
 	populationDecreasePerDay: 1,
@@ -45,7 +45,7 @@ var settings = {
 	marketStartMoney: 10000,
 	marketMargin: .3,
 	marketStatsColor: 'yellow',
-	marketStatsX: 1130,
+	marketStatsX: 600,
 	marketStatsY: 5,
 	marketStartStock: [10, 5, 1],
 
